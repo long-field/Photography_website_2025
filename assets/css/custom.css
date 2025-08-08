@@ -270,7 +270,8 @@ footer .logo {
 .carousel-image {
     width: 100%;
     height: auto;
-    display: block;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .carousel-caption {
@@ -307,4 +308,10 @@ footer .logo {
     main {
         padding-top: 3rem;
     }
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
