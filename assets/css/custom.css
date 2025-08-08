@@ -12,27 +12,41 @@ h1, h2, h3 {
     color: #2c3e50;
 }
 
-/* Header / Navigation */
+/* ======= HEADER / NAVIGATION ======= */
 header {
-    position: sticky;
-    top: 0;
-    background: #e6ebe0; /* Soft sage green */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 20px;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
+    padding: 0 2rem;
+    background-color: #e6ebe0; /* Soft sage green */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+    overflow: visible;
 }
 
+/* Logo overlap effect */
 header .logo {
-    max-width: 200px;
+    position: absolute;
+    top: -20%; /* Adjust this to control how much hangs below */
+    left: 2rem;
+    height: 140%;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Nav stays on the right */
+header nav {
+    margin-left: auto;
+    z-index: 2;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 1.5rem;
     padding: 0;
     margin: 0;
 }
@@ -48,11 +62,12 @@ nav a:hover {
     color: #a8c0c6; /* Dusty blue */
 }
 
-/* Hero Section */
+/* ======= HERO SECTION ======= */
 .hero {
     position: relative;
     height: 100vh;
     overflow: hidden;
+    padding-top: 4rem; /* Create space below overlapping logo */
 }
 
 .hero-slider img {
@@ -89,7 +104,7 @@ nav a:hover {
     padding: 0 20px;
 }
 
-/* Call to Action Button */
+/* ======= CTA BUTTON ======= */
 .cta {
     background: #dba9a9; /* Blush rose */
     color: #ffffff;
@@ -101,11 +116,11 @@ nav a:hover {
 }
 
 .cta:hover {
-    background: #e6ebe0; /* Reused sage green */
+    background: #e6ebe0; /* Sage green */
     color: #2c3e50;
 }
 
-/* Gallery */
+/* ======= GALLERY ======= */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -133,11 +148,12 @@ nav a:hover {
     aspect-ratio: 2 / 3;
 }
 
-/* Gallery Nav */
+/* ======= GALLERY NAV ======= */
 .gallery-nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
     padding: 0;
     margin: 20px 0;
@@ -155,7 +171,21 @@ nav a:hover {
     background: #e6ebe0;
 }
 
-/* Contact */
+.gallery-nav button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.gallery-nav button.active {
+    border-bottom: 2px solid black;
+}
+
+/* ======= CONTACT SECTION ======= */
 .contact {
     padding: 40px;
     display: grid;
@@ -203,13 +233,13 @@ nav a:hover {
     background: #1a252f;
 }
 
-/* About */
+/* ======= ABOUT SECTION ======= */
 .about img {
     max-width: 300px;
     border-radius: 5px;
 }
 
-/* Footer */
+/* ======= FOOTER ======= */
 footer {
     background: #e6ebe0;
     color: #2c3e50;
@@ -221,48 +251,7 @@ footer .logo {
     max-width: 150px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .contact {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-}
-
-
-.gallery-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-}
-
-.gallery-nav button {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
-}
-
-.gallery-nav button.active {
-    border-bottom: 2px solid black;
-}
-
-
+/* ======= CAROUSEL STYLES ======= */
 .carousel-wrapper {
     display: flex;
     overflow-x: scroll;
@@ -291,4 +280,31 @@ footer .logo {
     background: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 0.5rem 1rem;
+}
+
+/* ======= RESPONSIVE STYLES ======= */
+@media (max-width: 768px) {
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header .logo {
+        top: -15%;
+        height: 120%;
+    }
+
+    .hero,
+    main {
+        padding-top: 3rem;
+    }
 }
