@@ -170,8 +170,7 @@ function initializeMain() {
             const section = document.createElement('section');
             section.className = 'gallery-section';
             section.innerHTML = `
-                <h2>${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-                <div class="gallery-grid"></div>
+                 <div class="gallery-grid"></div>
             `;
             galleries.appendChild(section);
 
