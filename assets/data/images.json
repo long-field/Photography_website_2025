@@ -1,0 +1,264 @@
+{
+  "weddings": [
+    {
+      "url": "assets/images/weddings/weddings01.jpg",
+      "title": "Weddings 01",
+      "description": "Wedding moment captured in soft light.",
+      "width": 2686,
+      "height": 3760
+    },
+    {
+      "url": "assets/images/weddings/weddings02.jpg",
+      "title": "Weddings 02",
+      "description": "Wedding moment captured in soft light.",
+      "width": 2487,
+      "height": 3482
+    },
+    {
+      "url": "assets/images/weddings/weddings03.jpg",
+      "title": "Weddings 03",
+      "description": "Wedding moment captured in soft light.",
+      "width": 4765,
+      "height": 2978
+    },
+    {
+      "url": "assets/images/weddings/weddings04.jpg",
+      "title": "Weddings 04",
+      "description": "Wedding moment captured in soft light.",
+      "width": 3448,
+      "height": 5168
+    },
+    {
+      "url": "assets/images/weddings/weddingsigning.jpg",
+      "title": "Weddingsigning",
+      "description": "Wedding moment captured in soft light.",
+      "width": 4753,
+      "height": 2971
+    }
+  ],
+  "portraits": [
+    {
+      "url": "assets/images/portraits/girlportret.jpg",
+      "title": "Girl Portret",
+      "description": "Portrait with natural elegance.",
+      "width": 2607,
+      "height": 3907
+    },
+    {
+      "url": "assets/images/portraits/upclosefrontfaceyounggirl.jpg",
+      "title": "Upclose Front Face Young Girl",
+      "description": "Portrait with natural elegance.",
+      "width": 5065,
+      "height": 2849
+    },
+    {
+      "url": "assets/images/portraits/banwpregnancyportret.jpg",
+      "title": "Banw Pregnancy Portret",
+      "description": "Portrait with natural elegance.",
+      "width": 2847,
+      "height": 3986
+    },
+    {
+      "url": "assets/images/portraits/mywifeandchild.jpg",
+      "title": "My Wife And Child",
+      "description": "Portrait with natural elegance.",
+      "width": 1737,
+      "height": 2432
+    },
+    {
+      "url": "assets/images/portraits/novaly.jpg",
+      "title": "Novaly",
+      "description": "Portrait with natural elegance.",
+      "width": 15110,
+      "height": 3407
+    },
+    {
+      "url": "assets/images/portraits/me.jpg",
+      "title": "Me",
+      "description": "Portrait with natural elegance.",
+      "width": 2732,
+      "height": 4096
+    },
+    {
+      "url": "assets/images/portraits/modelbywindow.jpg",
+      "title": "Model By Window",
+      "description": "Portrait with natural elegance.",
+      "width": 1755,
+      "height": 2458
+    },
+    {
+      "url": "assets/images/portraits/modelinbathingsuitbyarchitecturalwindow.jpg",
+      "title": "Model In Bathing Suit By Architectural Window",
+      "description": "Portrait with natural elegance.",
+      "width": 5706,
+      "height": 4076
+    },
+    {
+      "url": "assets/images/portraits/girlinfrontofwater.jpg",
+      "title": "Girl In Front Of Water",
+      "description": "Portrait with natural elegance.",
+      "width": 2766,
+      "height": 4146
+    }
+  ],
+  "artistic": [
+    {
+      "url": "assets/images/artistic/artpicture.jpg",
+      "title": "Art Picture",
+      "description": "Artistic composition with creative flair.",
+      "width": 3303,
+      "height": 4624
+    },
+    {
+      "url": "assets/images/artistic/artpictureinbarcelonbandw.jpg",
+      "title": "Art Picture In Barcelon Bandw",
+      "description": "Artistic composition with creative flair.",
+      "width": 3303,
+      "height": 4624
+    },
+    {
+      "url": "assets/images/artistic/artpicturestairsinbudapest.jpg",
+      "title": "Art Picture Stairs In Budapest",
+      "description": "Artistic composition with creative flair.",
+      "width": 1866,
+      "height": 1244
+    },
+    {
+      "url": "assets/images/artistic/artsydrummer.jpg",
+      "title": "Artsy Drummer",
+      "description": "Artistic composition with creative flair.",
+      "width": 2732,
+      "height": 4096
+    },
+    {
+      "url": "assets/images/artistic/artsyguitarplayer.jpg",
+      "title": "Artsy Guitar Player",
+      "description": "Artistic composition with creative flair.",
+      "width": 2732,
+      "height": 4096
+    },
+    {
+      "url": "assets/images/artistic/artsyindustrialcolorimageblueandgreen.jpg",
+      "title": "Artsy Industrial Color Image Blue And Green",
+      "description": "Artistic composition with creative flair.",
+      "width": 1543,
+      "height": 1025
+    },
+    {
+      "url": "assets/images/artistic/artsyminimalbandwiscecream.jpg",
+      "title": "Artsy Minimal Bandw Is Cream",
+      "description": "Artistic composition with creative flair.",
+      "width": 4096,
+      "height": 2720
+    },
+    {
+      "url": "assets/images/artistic/artsymodel.jpg",
+      "title": "Artsy Model",
+      "description": "Artistic composition with creative flair.",
+      "width": 4096,
+      "height": 2925
+    }
+  ],
+  "fashion": [
+    {
+      "url": "assets/images/fashion/fashionoutdoorspanishcitystairs.jpg",
+      "title": "Fashion Outdoor Spanish City Stairs",
+      "description": "Stylish fashion shot in vibrant settings.",
+      "width": 3166,
+      "height": 3958
+    },
+    {
+      "url": "assets/images/fashion/girlfashionshotoutdoor.jpg",
+      "title": "Girl Fashion Shot Outdoor",
+      "description": "Stylish fashion shot in vibrant settings.",
+      "width": 2015,
+      "height": 3020
+    }
+  ],
+  "music": [
+    {
+      "url": "assets/images/music/coolbassplayer.jpg",
+      "title": "Cool Bass Player",
+      "description": "Dynamic music-themed photography.",
+      "width": 4096,
+      "height": 2303
+    },
+    {
+      "url": "assets/images/music/guitarplayerlive.jpg",
+      "title": "Guitar Player Live",
+      "description": "Dynamic music-themed photography.",
+      "width": 1372,
+      "height": 1920
+    }
+  ],
+  "family": [
+    {
+      "url": "assets/images/family/kidsfamilyshootbandw.jpg",
+      "title": "Kids Family Shoot Bandw",
+      "description": "Heartwarming family moment.",
+      "width": 3195,
+      "height": 4472
+    },
+    {
+      "url": "assets/images/family/kiidshootoutdoorwithballoon.jpg",
+      "title": "Kiid Shoot Outdoor With Balloon",
+      "description": "Heartwarming family moment.",
+      "width": 5072,
+      "height": 3381
+    }
+  ],
+  "ballet": [
+    {
+      "url": "assets/images/ballet/ballletposebetweentrees.jpg",
+      "title": "Balllet Pose Between Trees",
+      "description": "Graceful ballet pose in serene settings.",
+      "width": 2702,
+      "height": 3782
+    },
+    {
+      "url": "assets/images/ballet/outdoorballetposesvenity.jpg",
+      "title": "Outdoor Ballet Pose Svenity",
+      "description": "Graceful ballet pose in serene settings.",
+      "width": 2504,
+      "height": 1789
+    }
+  ],
+  "golden-hour": [
+    {
+      "url": "assets/images/golden-hour/coolteenagegirlgoldenhourshoot.jpg",
+      "title": "Cool Teenage Girl Golden Hour Shoot",
+      "description": "Golden hour glow in stunning light.",
+      "width": 3963,
+      "height": 2644
+    },
+    {
+      "url": "assets/images/golden-hour/goldenhourlightblonderedhair.jpg",
+      "title": "Golden Hour Light Blonde Red Hair",
+      "description": "Golden hour glow in stunning light.",
+      "width": 1340,
+      "height": 1876
+    },
+    {
+      "url": "assets/images/golden-hour/girlshootgoldencolrs.jpg",
+      "title": "Girl Shoot Golden Colrs",
+      "description": "Golden hour glow in stunning light.",
+      "width": 4820,
+      "height": 2711
+    },
+    {
+      "url": "assets/images/golden-hour/girlshoottree.jpg",
+      "title": "Girl Shoot Tree",
+      "description": "Golden hour glow in stunning light.",
+      "width": 4217,
+      "height": 2814
+    },
+    {
+      "url": "assets/images/golden-hour/mybestshoteverwithcarolineasmodel.jpg",
+      "title": "My Best Shot Ever With Caroline As Model",
+      "description": "Golden hour glow in stunning light.",
+      "width": 2048,
+      "height": 1365
+    }
+  ]
+
+}

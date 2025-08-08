@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #ffffff;
+    color: #333;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #111;
+}
+
+a {
+    color: inherit; /* Remove blue default link color */
+    text-decoration: none;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 1000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    max-width: 200px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #111;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #888;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: slide 15s infinite;
+    pointer-events: none; /* So you can't click broken images */
+}
+
+.hero-slider img:nth-child(2) { animation-delay: 5s; }
+.hero-slider img:nth-child(3) { animation-delay: 10s; }
+
+@keyframes slide {
+    0%, 20% { opacity: 1; }
+    25%, 100% { opacity: 0; }
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 48px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.cta {
+    background: #2c3e50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-grid a {
+    display: block;
+    text-decoration: none;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: block;
+    opacity: 0;
+}
+
+.gallery-grid img.landscape { aspect-ratio: 3 / 2; }
+.gallery-grid img.portrait { aspect-ratio: 2 / 3; }
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-grid img[data-src] {
+    opacity: 0;
+}
+
+.gallery-grid img[src] {
+    opacity: 1;
+}
+
+.gallery-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0;
+}
+
+.gallery-nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.gallery-nav a:hover {
+    border-color: #2c3e50;
+}
+
+.contact {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-form, .booking {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background: #2c3e50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.about img {
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+footer {
+    background: #f4f4f4;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .logo {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        padding: 0 10px;
+    }
+}

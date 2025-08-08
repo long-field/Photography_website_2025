@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Dieter Vanlangenaker Photography</title>
+    <meta name="description" content="Contact Dieter Van Langenaker to book your wedding or portrait photography session.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+<div data-include="partials/header.html"></div>
+<main>
+    <section class="contact">
+        <h1>Contact & Book</h1>
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="date" placeholder="Event Date">
+                <textarea name="message" placeholder="Message" required></textarea>
+                <input type="text" name="_gotcha" style="display:none">
+                <div class="cf-turnstile" data-sitekey="your-turnstile-key"></div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <div class="booking">
+            <h2>Schedule a Session</h2>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/30min" style="min-width:320px;height:630px;"></div>
+            <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </section>
+</main>
+<div data-include="partials/footer.html"></div>
+<script src="assets/js/includes.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
