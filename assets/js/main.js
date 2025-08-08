@@ -63,20 +63,15 @@ function initializeMain() {
             hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
         };
 
-        // Toggle menu on hamburger click/tap
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            console.log('Hamburger clicked');
-            toggleMenu();
+        // Toggle menu
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("active");
         });
 
         // Close menu when a link is clicked
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                console.log('Nav link clicked, closing menu');
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-                hamburger.innerHTML = '☰';
+        document.querySelectorAll(".nav-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
             });
         });
 
@@ -89,12 +84,9 @@ function initializeMain() {
         });
 
         // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-                console.log('Clicked outside nav, closing menu');
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-                hamburger.innerHTML = '☰';
+        document.addEventListener("click", (event) => {
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove("active");
             }
         });
     } else {
@@ -119,7 +111,7 @@ function initializeMain() {
 
     const startHeroCarousel = () => {
         if (heroInterval) clearInterval(heroInterval);
-        heroInterval = setInterval(nextHeroSlide, 5000);
+        heroInterval = setInterval(nextHeroSlide, 1500);
 
         // Add click to skip
         heroSlider.addEventListener('click', () => {
