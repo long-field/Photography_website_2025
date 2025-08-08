@@ -5,6 +5,7 @@ body {
     background: #ffffff;
     color: #2c3e50;
     margin: 0;
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -22,8 +23,7 @@ header {
     padding: 0 2rem;
     background-color: #e6ebe0; /* Soft sage green */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 10;
-    overflow: visible;
+    z-index: 1000;
 }
 
 /* Logo overlap effect */
@@ -37,12 +37,12 @@ header .logo {
     pointer-events: none;
 }
 
-header nav {
+header nav.nav-menu {
     margin-left: auto;
-    z-index: 2;
+    z-index: 1002;
 }
 
-nav ul {
+header nav.nav-menu ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
@@ -50,15 +50,56 @@ nav ul {
     margin: 0;
 }
 
-nav a {
+header nav.nav-menu a {
     color: #2c3e50;
     text-decoration: none;
     font-family: 'Playfair Display', serif;
     transition: color 0.3s ease;
 }
 
-nav a:hover {
+header nav.nav-menu a:hover {
     color: #a8c0c6;
+}
+
+/* ======= HAMBURGER MENU ======= */
+button.hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #2c3e50;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1003;
+    padding: 0.5rem;
+}
+
+nav.nav-menu {
+    display: flex;
+}
+
+nav.nav-menu.active {
+    display: block;
+    transform: translateX(0);
+    border: 2px solid red; /* Debugging: Remove after confirmation */
+}
+
+/* Overlay for mobile menu */
+div.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+div.nav-overlay.active {
+    display: block;
 }
 
 /* ======= HERO SECTION ======= */
@@ -67,12 +108,13 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Maximize hero height, remove extra gap */
+    height: calc(100vh - 80px);
     background: transparent;
     position: relative;
     overflow: hidden;
-    margin-top: 2px; /* Halved again */
+    margin-top: 2px;
 }
+
 .hero-slider {
     position: relative;
     width: 98vw;
@@ -97,11 +139,9 @@ nav a:hover {
     transform: translateX(-50%);
     transition: opacity 0.5s ease;
     opacity: 0;
-    pointer-events: none;
-    background: transparent;
 }
 
-.hero-slider img:first-child {
+.hero-slider img.active {
     opacity: 1;
 }
 
@@ -196,6 +236,7 @@ nav a:hover {
 .gallery-nav button {
     background: none;
     border: none;
+    font-family: 'Playfair Display', serif;
     font-size: 1rem;
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -313,13 +354,82 @@ footer .logo {
     }
 
     .hero h1 {
-        font-size: 32px;
+        font-size: 24px;
+        top: 30%;
     }
 
-    nav ul {
+    .hero .cta {
+        top: 50%;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    button.hamburger {
+        display: block;
+    }
+
+    nav.nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100%;
+        background: #e6ebe0;
+        padding: 4rem 2rem;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+        z-index: 1002;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    nav.nav-menu.active {
+        display: block;
+        transform: translateX(0);
+        border: 2px solid red; /* Debugging: Remove after confirmation */
+        visibility: visible;
+        opacity: 1;
+    }
+
+    div.nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+    }
+
+    div.nav-overlay.active {
+        display: block;
+    }
+
+    nav.nav-menu ul {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 2rem;
+    }
+
+    nav.nav-menu ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav.nav-menu a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.5rem;
+        color: #2c3e50;
+        transition: background 0.3s ease;
+    }
+
+    nav.nav-menu a:hover {
+        background: #d3d8cf;
+        color: #2c3e50;
     }
 
     header .logo {
@@ -330,6 +440,48 @@ footer .logo {
     .hero,
     main {
         padding-top: 3rem;
+    }
+
+    /* ======= GALLERY NAVIGATION MOBILE ======= */
+    .gallery-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .gallery-nav button {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-bottom: 1px solid #e6ebe0;
+    }
+
+    .gallery-nav button.active {
+        border-bottom: 2px solid #2c3e50;
+    }
+
+    /* ======= HERO CAROUSEL MOBILE ======= */
+    .hero {
+        height: calc(100vh - 80px);
+        padding: 0;
+    }
+
+    .hero-slider {
+        width: 100vw;
+        height: 100%;
+        aspect-ratio: unset;
+        max-height: 60vh;
+    }
+
+    .hero-slider img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        max-width: none;
+        transform: none;
+        left: 0;
     }
 }
 

@@ -1,4 +1,27 @@
+// Flag to prevent multiple executions
+let isMainInitialized = false;
+
+document.addEventListener('includesLoaded', () => {
+    if (isMainInitialized) {
+        console.log('main.js already initialized, skipping');
+        return;
+    }
+    initializeMain();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if (!isMainInitialized) {
+            console.warn('includesLoaded event not fired, triggering manually');
+            initializeMain();
+        }
+    }, 1000);
+});
+
+function initializeMain() {
+    isMainInitialized = true;
+    console.log('Includes loaded, initializing main.js');
+
     let galleryData = null;
     let heroImages = [];
     let currentHeroIndex = 0;
@@ -19,13 +42,73 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // =============================
+    // HAMBURGER MENU LOGIC
+    // =============================
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav-menu');
+    const body = document.body;
+
+    // Create overlay element
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    body.appendChild(overlay);
+
+    if (hamburger && nav) {
+        console.log('Hamburger and nav found, setting up menu');
+        const toggleMenu = () => {
+            console.log('Toggling menu, current active state:', nav.classList.contains('active'));
+            console.log('Nav styles:', nav.style.cssText);
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+        };
+
+        // Toggle menu on hamburger click/tap
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Hamburger clicked');
+            toggleMenu();
+        });
+
+        // Close menu when a link is clicked
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Nav link clicked, closing menu');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            });
+        });
+
+        // Close menu when clicking the overlay
+        overlay.addEventListener('click', () => {
+            console.log('Overlay clicked, closing menu');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.innerHTML = '☰';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                console.log('Clicked outside nav, closing menu');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            }
+        });
+    } else {
+        console.error('Hamburger or nav not found:', { hamburger, nav });
+    }
+
+    // =============================
     // HERO SLIDER LOGIC
     // =============================
     const heroSlider = document.querySelector('.hero-slider');
 
     const showHeroSlide = (index) => {
         heroImages.forEach((img, i) => {
-            img.style.opacity = i === index ? '1' : '0';
+            img.classList.toggle('active', i === index);
         });
     };
 
@@ -45,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (heroSlider) {
+        console.log('Hero slider found, loading carousel');
         fetch('assets/data/hero-carousel.json')
             .then(response => {
                 if (!response.ok) throw new Error('Failed to load hero-carousel.json');
@@ -58,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const img = document.createElement('img');
                     img.dataset.src = image.url;
                     img.alt = image.alt || '';
-                    img.style.opacity = index === 0 ? '1' : '0';
+                    img.className = index === 0 ? 'active' : '';
                     img.style.transition = 'opacity 1s ease-in-out';
                     img.style.position = 'absolute';
                     img.style.top = '0';
@@ -84,75 +168,78 @@ document.addEventListener('DOMContentLoaded', () => {
     // =============================
     // GALLERY LOGIC
     // =============================
-
     const renderGallery = (category) => {
         const galleries = document.getElementById('galleries');
-        galleries.innerHTML = ''; // Clear previous gallery
+        if (galleries) {
+            galleries.innerHTML = ''; // Clear previous gallery
 
-        if (!galleryData || !galleryData[category]) return;
+            if (!galleryData || !galleryData[category]) return;
 
-        const section = document.createElement('section');
-        section.className = 'gallery-section';
-        section.innerHTML = `
-            <h2>${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-            <div class="gallery-grid"></div>
-        `;
-        galleries.appendChild(section);
+            const section = document.createElement('section');
+            section.className = 'gallery-section';
+            section.innerHTML = `
+                <h2>${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                <div class="gallery-grid"></div>
+            `;
+            galleries.appendChild(section);
 
-        const grid = section.querySelector('.gallery-grid');
+            const grid = section.querySelector('.gallery-grid');
 
-        galleryData[category].forEach(image => {
-            const a = document.createElement('a');
-            a.href = image.url;
-            a.setAttribute('data-lightbox', category);
-            a.setAttribute('data-title', image.description);
+            galleryData[category].forEach(image => {
+                const a = document.createElement('a');
+                a.href = image.url;
+                a.setAttribute('data-lightbox', category);
+                a.setAttribute('data-title', image.description);
 
-            const img = document.createElement('img');
-            img.dataset.src = image.url;
-            img.alt = image.title || '';
-            img.className = image.width > image.height ? 'landscape' : 'portrait';
+                const img = document.createElement('img');
+                img.dataset.src = image.url;
+                img.alt = image.title || '';
+                img.className = image.width > image.height ? 'landscape' : 'portrait';
 
-            a.appendChild(img);
-            grid.appendChild(a);
-        });
+                a.appendChild(img);
+                grid.appendChild(a);
+            });
 
-        lazyLoadImages();
+            lazyLoadImages();
+        }
     };
 
-    fetch('assets/data/images.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to load images.json');
-            return response.json();
-        })
-        .then(data => {
-            galleryData = data;
+    const galleryLinks = document.getElementById('gallery-links');
+    if (galleryLinks) {
+        console.log('Gallery links found, setting up navigation');
+        // Clear existing links to prevent duplicates
+        galleryLinks.innerHTML = '';
+        fetch('assets/data/images.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load images.json');
+                return response.json();
+            })
+            .then(data => {
+                galleryData = data;
+                const categories = Object.keys(data);
 
-            const galleryLinks = document.getElementById('gallery-links');
-            const categories = Object.keys(data);
+                categories.forEach((category, index) => {
+                    const li = document.createElement('li');
+                    const button = document.createElement('button');
+                    button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    button.dataset.category = category;
 
-            categories.forEach((category, index) => {
-                const li = document.createElement('li');
-                const button = document.createElement('button');
-                button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-                button.dataset.category = category;
+                    if (index === 0) {
+                        button.classList.add('active');
+                        renderGallery(category);
+                    }
 
-                if (index === 0) {
-                    button.classList.add('active');
-                    renderGallery(category);
-                }
+                    button.addEventListener('click', () => {
+                        console.log(`Gallery button clicked: ${category}`);
+                        document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        renderGallery(category);
+                    });
 
-                button.addEventListener('click', () => {
-                    document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    renderGallery(category);
+                    li.appendChild(button);
+                    galleryLinks.appendChild(li);
                 });
-
-                li.appendChild(button);
-                galleryLinks.appendChild(li);
-            });
-        })
-        .catch(error => console.error('Error loading images.json:', error));
-
-
-
-});
+            })
+            .catch(error => console.error('Error loading images.json:', error));
+    }
+}
