@@ -29,7 +29,7 @@ header {
 /* Logo overlap effect */
 header .logo {
     position: absolute;
-    top: -20%; /* Adjust this to control how much hangs below */
+    top: -20%;
     left: 2rem;
     height: 140%;
     object-fit: contain;
@@ -37,7 +37,6 @@ header .logo {
     pointer-events: none;
 }
 
-/* Nav stays on the right */
 header nav {
     margin-left: auto;
     z-index: 2;
@@ -59,54 +58,76 @@ nav a {
 }
 
 nav a:hover {
-    color: #a8c0c6; /* Dusty blue */
+    color: #a8c0c6;
 }
 
 /* ======= HERO SECTION ======= */
 .hero {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Maximize hero height, remove extra gap */
+    background: transparent;
     position: relative;
-    height: 100vh;
     overflow: hidden;
-    padding-top: 4rem; /* Create space below overlapping logo */
+    margin-top: 2px; /* Halved again */
+}
+.hero-slider {
+    position: relative;
+    width: 98vw;
+    aspect-ratio: 16 / 10;
+    max-height: 85vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .hero-slider img {
-    width: 100%;
+    width: auto;
     height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     position: absolute;
     top: 0;
-    left: 0;
-    opacity: 0;
-    animation: slide 15s infinite;
+    left: 50%;
+    transform: translateX(-50%);
     transition: opacity 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+    background: transparent;
 }
 
-.hero-slider img:nth-child(1) { animation-delay: 0s; }
-.hero-slider img:nth-child(2) { animation-delay: 5s; }
-.hero-slider img:nth-child(3) { animation-delay: 10s; }
-
-@keyframes slide {
-    0%, 20% { opacity: 1; }
-    25%, 100% { opacity: 0; }
+.hero-slider img:first-child {
+    opacity: 1;
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
-    color: #ffffff;
-    font-size: 48px;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-size: 48px;
     text-align: center;
-    padding: 0 20px;
+}
+
+.hero .cta {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 /* ======= CTA BUTTON ======= */
 .cta {
-    background: #dba9a9; /* Blush rose */
+    background: #dba9a9;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -116,7 +137,7 @@ nav a:hover {
 }
 
 .cta:hover {
-    background: #e6ebe0; /* Sage green */
+    background: #e6ebe0;
     color: #2c3e50;
 }
 
@@ -144,6 +165,7 @@ nav a:hover {
 .gallery-grid img.landscape {
     aspect-ratio: 3 / 2;
 }
+
 .gallery-grid img.portrait {
     aspect-ratio: 2 / 3;
 }
@@ -257,6 +279,7 @@ footer .logo {
     overflow-x: scroll;
     gap: 1rem;
     scroll-snap-type: x mandatory;
+    padding: 1rem 2rem;
 }
 
 .carousel-slide {
@@ -309,6 +332,8 @@ footer .logo {
         padding-top: 3rem;
     }
 }
+
+/* ======= GENERAL CONTAINER SPACING ======= */
 .container {
     max-width: 1200px;
     margin: 0 auto;

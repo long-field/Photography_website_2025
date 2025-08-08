@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     let galleryData = null;
+    let heroImages = [];
+    let currentHeroIndex = 0;
+    let heroInterval = null;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -15,8 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
         images.forEach(img => observer.observe(img));
     };
 
-    // Populate hero slider from hero-carousel.json
+    // =============================
+    // HERO SLIDER LOGIC
+    // =============================
     const heroSlider = document.querySelector('.hero-slider');
+
+    const showHeroSlide = (index) => {
+        heroImages.forEach((img, i) => {
+            img.style.opacity = i === index ? '1' : '0';
+        });
+    };
+
+    const nextHeroSlide = () => {
+        currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+        showHeroSlide(currentHeroIndex);
+    };
+
+    const startHeroCarousel = () => {
+        if (heroInterval) clearInterval(heroInterval);
+        heroInterval = setInterval(nextHeroSlide, 5000);
+
+        // Add click to skip
+        heroSlider.addEventListener('click', () => {
+            nextHeroSlide();
+        });
+    };
 
     if (heroSlider) {
         fetch('assets/data/hero-carousel.json')
@@ -25,21 +51,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(images => {
-                heroSlider.innerHTML = ''; // Clear any hardcoded images
+                heroSlider.innerHTML = ''; // Clear any existing content
+                heroImages = [];
 
-                images.forEach(image => {
+                images.forEach((image, index) => {
                     const img = document.createElement('img');
                     img.dataset.src = image.url;
                     img.alt = image.alt || '';
+                    img.style.opacity = index === 0 ? '1' : '0';
+                    img.style.transition = 'opacity 1s ease-in-out';
+                    img.style.position = 'absolute';
+                    img.style.top = '0';
+                    img.style.left = '50%';
+                    img.style.transform = 'translateX(-50%)';
+                    img.style.height = '100%';
+                    img.style.width = 'auto';
+                    img.style.maxWidth = '100%';
+                    img.style.objectFit = 'contain';
+                    img.style.pointerEvents = 'none';
+
+                    heroImages.push(img);
                     heroSlider.appendChild(img);
                 });
 
-                // Lazy load the new images
-                const lazyHeroImages = heroSlider.querySelectorAll('img[data-src]');
-                lazyHeroImages.forEach(img => observer.observe(img));
+                // Lazy load and start carousel
+                lazyLoadImages();
+                startHeroCarousel();
             })
             .catch(error => console.error('Error loading hero-carousel.json:', error));
     }
+
+    // =============================
+    // GALLERY LOGIC
+    // =============================
 
     const renderGallery = (category) => {
         const galleries = document.getElementById('galleries');
@@ -65,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const img = document.createElement('img');
             img.dataset.src = image.url;
-            img.alt = image.title;
+            img.alt = image.title || '';
             img.className = image.width > image.height ? 'landscape' : 'portrait';
 
             a.appendChild(img);
@@ -92,14 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
                 button.dataset.category = category;
 
-                // Auto-select first category on page load
                 if (index === 0) {
                     button.classList.add('active');
                     renderGallery(category);
                 }
 
                 button.addEventListener('click', () => {
-                    // Remove active class from all buttons
                     document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     renderGallery(category);
@@ -110,7 +152,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => console.error('Error loading images.json:', error));
-
-
-
 });
