@@ -7,21 +7,23 @@
     <meta name="description" content="Explore wedding, portrait, and artistic photography by Dieter Vanlangenaker.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-    <!-- Added jQuery (required for Lightbox2) -->
+    <!-- jQuery for Lightbox2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
 </head>
 <body>
 <div data-include="partials/header.html"></div>
 <main class="container">
     <section class="portfolio">
-        <h1>Portfolio</h1>
-        <nav class="gallery-nav">
-            <ul id="gallery-links"></ul>
-            <!-- Select is created dynamically in JS, but nav is here for positioning -->
-        </nav>
+        <!-- Wrapped h1 and nav in div for header layout -->
+        <div class="portfolio-header">
+            <h1>Portfolio</h1>
+            <nav class="gallery-nav">
+                <ul id="gallery-links"></ul>
+                <!-- Select is created dynamically in JS -->
+            </nav>
+        </div>
         <div id="galleries"></div>
     </section>
 </main>

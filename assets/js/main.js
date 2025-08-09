@@ -1,8 +1,7 @@
-// Changes:
-// - In renderGallery: Set a transparent placeholder src on img to prevent broken/underline during load.
-// - Gallery logic: Populate both ul (buttons for desktop) and a new select (dropdown for mobile). Handle active state and changes for both.
-// - Added separate logic for about-carousel: Loads from new JSON, slower interval (3000ms), slower transition (set in CSS), different styles/classes to avoid hero regression.
-// - Minor console logs for debugging.
+/* Changes:
+- Updated gallery logic to sync selected option with underline effect (adds selected attribute).
+- No changes to carousel or other logic, as they remain unaffected.
+*/
 
 let isMainInitialized = false;
 
@@ -163,7 +162,7 @@ function initializeMain() {
     }
 
     // =============================
-    // ABOUT CAROUSEL LOGIC (NEW)
+    // ABOUT CAROUSEL LOGIC
     // =============================
     const aboutCarousel = document.querySelector('.about-carousel');
     let aboutImages = [];
@@ -287,6 +286,9 @@ function initializeMain() {
                         button.classList.add('active');
                         renderGallery(category);
                         gallerySelect.value = category; // Sync with select
+                        // Update selected attribute for underline
+                        gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
+                        gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                     });
 
                     li.appendChild(button);
@@ -303,6 +305,7 @@ function initializeMain() {
                 const firstCategory = categories[0];
                 document.querySelector(`#gallery-links button[data-category="${firstCategory}"]`).classList.add('active');
                 gallerySelect.value = firstCategory;
+                gallerySelect.querySelector(`option[value="${firstCategory}"]`).setAttribute('selected', 'selected');
                 renderGallery(firstCategory);
 
                 // Handle select change
@@ -313,6 +316,9 @@ function initializeMain() {
                     const activeButton = document.querySelector(`#gallery-links button[data-category="${category}"]`);
                     if (activeButton) activeButton.classList.add('active');
                     renderGallery(category);
+                    // Update selected attribute for underline
+                    gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
+                    gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                 });
             })
             .catch(error => console.error('Error loading images.json:', error));

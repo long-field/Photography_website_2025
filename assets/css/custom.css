@@ -1,9 +1,10 @@
 /* Changes:
-- Added .gallery-grid a { text-decoration: none; color: inherit; } to remove blue underlines on links.
-- Added styles for mobile gallery dropdown (.gallery-select).
-- Added styles for about-carousel (smaller, full-width images with cover fit).
-- Updated media query for mobile to hide ul and show select in gallery-nav.
-- Minor tweaks to .gallery-nav for better centering and scrolling prevention.
+- Ensured .gallery-select is hidden on desktop (display: none for >768px).
+- Added .portfolio-header to position <h1> and .gallery-select on the same line, with select aligned right.
+- Removed border from .gallery-select and styled active option with underline (via JS-generated span for visual effect).
+- Adjusted .about img rule to avoid affecting other images since portrait is removed.
+- Centered .about-carousel with margin: auto.
+- Added box-sizing and padding adjustments to .contact-form input, textarea to prevent overflow.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
@@ -11,7 +12,6 @@
 main {
     padding-top: 100px; /* Pushes content below navbar */
 }
-
 
 body {
     font-family: 'Lato', sans-serif;
@@ -52,7 +52,6 @@ header .logo {
     z-index: 1;
     pointer-events: none;
 }
-
 
 header nav.nav-menu {
     margin-left: auto;
@@ -244,7 +243,7 @@ div.nav-overlay.active {
     aspect-ratio: 2 / 3;
 }
 
-/* Added to remove blue underlines on gallery links */
+/* Remove blue underlines on gallery links */
 .gallery-grid a {
     text-decoration: none;
     color: inherit;
@@ -289,6 +288,14 @@ div.nav-overlay.active {
     border-bottom: 2px solid black;
 }
 
+/* Added for portfolio header layout */
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 /* ======= CONTACT SECTION ======= */
 .contact {
     padding: 40px;
@@ -314,12 +321,18 @@ div.nav-overlay.active {
     border: 1px solid #2c3e50;
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: #e6ebe0;
     outline: none;
+}
+
+/* Ensure form stays within bounds */
+.contact-form {
+    box-sizing: border-box;
 }
 
 .contact-form button {
@@ -338,18 +351,18 @@ div.nav-overlay.active {
 }
 
 /* ======= ABOUT SECTION ======= */
-.about img {
-    max-width: 300px;
-    border-radius: 5px;
+/* Removed max-width since portrait image is replaced by carousel */
+.about {
+    text-align: center; /* Center content */
 }
 
-/* Added for about carousel */
+/* Centered carousel */
 .about-carousel {
     position: relative;
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16 / 9;
-    margin: 2rem auto;
+    margin: 2rem auto; /* Centered with auto margins */
     overflow: hidden;
 }
 
@@ -516,30 +529,29 @@ footer .logo {
 
     /* ======= GALLERY NAVIGATION MOBILE ======= */
     .gallery-nav ul {
-        display: flex; /* Default for desktop */
+        display: none; /* Hide buttons on mobile */
     }
 
     .gallery-select {
-        display: none; /* Hidden on desktop */
+        display: block; /* Show dropdown on mobile */
+        width: auto; /* Fit content */
+        padding: 0.5rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        border: none; /* No borders */
+        background: transparent;
+        cursor: pointer;
+        text-align: right;
     }
 
-    /* Mobile: Hide ul, show select */
-    @media (max-width: 768px) {
-        .gallery-nav ul {
-            display: none;
-        }
+    /* Style selected option visually with underline */
+    .gallery-select option[selected] {
+        text-decoration: underline;
+    }
 
-        .gallery-select {
-            display: block;
-            width: 100%;
-            padding: 0.5rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            border: 1px solid #2c3e50;
-            background: white;
-            cursor: pointer;
-            margin: 20px 0;
-        }
+    /* Ensure select stays in header on mobile */
+    .portfolio-header .gallery-select {
+        margin-left: auto;
     }
 
     /* ======= HERO CAROUSEL MOBILE ======= */
@@ -569,6 +581,17 @@ footer .logo {
     .about-carousel {
         max-width: 100%;
         aspect-ratio: 4 / 3; /* Tighter for mobile */
+    }
+}
+
+/* Ensure select is hidden on desktop */
+@media (min-width: 769px) {
+    .gallery-select {
+        display: none; /* Hidden on desktop */
+    }
+
+    .gallery-nav ul {
+        display: flex; /* Show buttons on desktop */
     }
 }
 
