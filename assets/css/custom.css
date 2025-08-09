@@ -476,17 +476,30 @@ footer .logo {
 
     /* ======= GALLERY NAVIGATION MOBILE ======= */
     .gallery-nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;              /* Keep items in one row */
+        flex-wrap: nowrap;                 /* Prevent wrapping */
+        overflow-x: auto;                  /* Enable horizontal scroll */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         gap: 0.5rem;
+        padding: 0.5rem 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .gallery-nav li {
+        flex: 0 0 auto; /* Prevent items from shrinking */
     }
 
     .gallery-nav button {
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem;
+        white-space: nowrap; /* Keep text on one line */
+        padding: 0.5rem 1rem;
         font-size: 1rem;
-        border-bottom: 1px solid #e6ebe0;
+        background: none;
+        border: none;
+        font-family: 'Playfair Display', serif;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
     }
 
     .gallery-nav button.active {
