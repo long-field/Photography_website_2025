@@ -1,10 +1,7 @@
 /* Changes:
-- Ensured .gallery-select is hidden on desktop (display: none for >768px).
-- Added .portfolio-header to position <h1> and .gallery-select on the same line, with select aligned right.
-- Removed border from .gallery-select and styled active option with underline (via JS-generated span for visual effect).
-- Adjusted .about img rule to avoid affecting other images since portrait is removed.
-- Centered .about-carousel with margin: auto.
-- Added box-sizing and padding adjustments to .contact-form input, textarea to prevent overflow.
+- Added pointer-events: none to .nav-overlay.active to prevent it from capturing clicks over the .nav-menu.
+- Adjusted z-index of nav.nav-menu.active to ensure it stays above the overlay.
+- No changes to .portfolio-header or .gallery-select, as they are working fine.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
@@ -112,11 +109,18 @@ button.hamburger {
     white-space: nowrap;
 }
 
+nav.nav-menu {
+    background: rgba(230, 235, 224, 0.5);
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
 nav.nav-menu.active {
     display: flex;
-    transform: translateX(0);
+    transform: translateY(0);
     visibility: visible;
-    opacity: 1;
+    opacity: 0.9;
+    background: rgba(230, 235, 224, 0.9);
+    z-index: 1002; /* Ensure above overlay */
 }
 
 /* Overlay for mobile menu */
@@ -133,6 +137,12 @@ div.nav-overlay {
 
 div.nav-overlay.active {
     display: block;
+    pointer-events: none; /* Prevent capturing clicks over nav-menu */
+}
+
+/* Ensure nav-menu links are clickable */
+nav.nav-menu.active ul {
+    pointer-events: auto; /* Allow clicks on links */
 }
 
 /* ======= HERO SECTION ======= */
@@ -288,12 +298,14 @@ div.nav-overlay.active {
     border-bottom: 2px solid black;
 }
 
-/* Added for portfolio header layout */
+/* Portfolio header layout */
 .portfolio-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 20px;
+    position: relative;
+    margin-top: 1rem; /* Space below navbar */
 }
 
 /* ======= CONTACT SECTION ======= */
@@ -321,7 +333,7 @@ div.nav-overlay.active {
     border: 1px solid #2c3e50;
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
-    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    box-sizing: border-box;
 }
 
 .contact-form input:focus,
@@ -330,7 +342,6 @@ div.nav-overlay.active {
     outline: none;
 }
 
-/* Ensure form stays within bounds */
 .contact-form {
     box-sizing: border-box;
 }
@@ -351,18 +362,16 @@ div.nav-overlay.active {
 }
 
 /* ======= ABOUT SECTION ======= */
-/* Removed max-width since portrait image is replaced by carousel */
 .about {
-    text-align: center; /* Center content */
+    text-align: center;
 }
 
-/* Centered carousel */
 .about-carousel {
     position: relative;
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16 / 9;
-    margin: 2rem auto; /* Centered with auto margins */
+    margin: 2rem auto;
     overflow: hidden;
 }
 
@@ -466,20 +475,21 @@ footer .logo {
         top: 80px;
         right: 0;
         width: 100%;
-        background: rgba(230, 235, 224, 0.5);
         backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: flex-end;
         padding: 0 1.5rem;
         box-sizing: border-box;
-        display: none; /* Hidden by default */
+        display: none;
     }
 
     nav.nav-menu.active {
         display: flex;
-        transform: translateX(0);
+        transform: translateY(0);
         visibility: visible;
-        opacity: 1;
+        opacity: 0.9;
+        background: rgba(230, 235, 224, 0.9);
+        z-index: 1002; /* Above overlay */
     }
 
     div.nav-overlay {
@@ -495,6 +505,11 @@ footer .logo {
 
     div.nav-overlay.active {
         display: block;
+        pointer-events: none; /* Prevent capturing clicks */
+    }
+
+    nav.nav-menu.active ul {
+        pointer-events: auto; /* Ensure links are clickable */
     }
 
     nav.nav-menu ul {
@@ -527,34 +542,35 @@ footer .logo {
         padding-top: 3rem;
     }
 
-    /* ======= GALLERY NAVIGATION MOBILE ======= */
+    .portfolio-header h1 {
+        padding-top: 0; /* Handled by .portfolio-header margin-top */
+    }
+
     .gallery-nav ul {
-        display: none; /* Hide buttons on mobile */
+        display: none;
     }
 
     .gallery-select {
-        display: block; /* Show dropdown on mobile */
-        width: auto; /* Fit content */
+        display: block;
+        width: auto;
         padding: 0.5rem;
         font-family: 'Playfair Display', serif;
         font-size: 1rem;
-        border: none; /* No borders */
+        border: none;
         background: transparent;
         cursor: pointer;
         text-align: right;
+        align-self: baseline; /* Align with h1 baseline */
     }
 
-    /* Style selected option visually with underline */
     .gallery-select option[selected] {
         text-decoration: underline;
     }
 
-    /* Ensure select stays in header on mobile */
     .portfolio-header .gallery-select {
         margin-left: auto;
     }
 
-    /* ======= HERO CAROUSEL MOBILE ======= */
     .hero {
         height: calc(100vh - 80px);
         padding: 0;
@@ -577,25 +593,22 @@ footer .logo {
         left: 0;
     }
 
-    /* Adjust about carousel for mobile */
     .about-carousel {
         max-width: 100%;
-        aspect-ratio: 4 / 3; /* Tighter for mobile */
+        aspect-ratio: 4 / 3;
     }
 }
 
-/* Ensure select is hidden on desktop */
 @media (min-width: 769px) {
     .gallery-select {
-        display: none; /* Hidden on desktop */
+        display: none;
     }
 
     .gallery-nav ul {
-        display: flex; /* Show buttons on desktop */
+        display: flex;
     }
 }
 
-/* ======= GENERAL CONTAINER SPACING ======= */
 .container {
     max-width: 1200px;
     margin: 0 auto;

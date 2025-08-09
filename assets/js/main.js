@@ -1,13 +1,14 @@
 /* Changes:
-- Updated gallery logic to sync selected option with underline effect (adds selected attribute).
-- No changes to carousel or other logic, as they remain unaffected.
+- Modified hamburger menu logic to prevent .nav-overlay from intercepting link clicks.
+- Changed overlay event listener to use pointer-events: none in CSS when menu is active, ensuring it doesn't capture clicks over .nav-menu.
+- Kept setTimeout for menu closing to ensure navigation occurs first.
+- No changes to gallery, hero, or about carousel logic.
 */
 
 let isMainInitialized = false;
 
 document.addEventListener('includesLoaded', () => {
     if (isMainInitialized) {
-        console.log('main.js already initialized, skipping');
         return;
     }
     initializeMain();
@@ -16,7 +17,6 @@ document.addEventListener('includesLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (!isMainInitialized) {
-            console.warn('includesLoaded event not fired, triggering manually');
             initializeMain();
         }
     }, 1000);
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeMain() {
     isMainInitialized = true;
-    console.log('Includes loaded, initializing main.js');
 
     let galleryData = null;
     let heroImages = [];
@@ -58,43 +57,49 @@ function initializeMain() {
     body.appendChild(overlay);
 
     if (hamburger && nav) {
-        console.log('Hamburger and nav found, setting up menu');
+        // Toggle menu function
         const toggleMenu = () => {
-            console.log('Toggling menu, current active state:', nav.classList.contains('active'));
-            console.log('Nav styles:', nav.style.cssText);
             nav.classList.toggle('active');
             overlay.classList.toggle('active');
             hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
         };
 
-        // Toggle menu
-        hamburger.addEventListener("click", () => {
-            nav.classList.toggle("active");
+        // Hamburger click toggles menu
+        hamburger.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent outside click handler
+            toggleMenu();
         });
 
-        // Close menu when a link is clicked
-        document.querySelectorAll(".nav-menu a").forEach(link => {
-            link.addEventListener("click", () => {
-                nav.classList.remove("active");
+        // Link clicks close menu and allow navigation
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                // Delay menu closing to ensure navigation occurs
+                setTimeout(() => {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    hamburger.innerHTML = '☰';
+                }, 100);
             });
         });
 
-        // Close menu when clicking the overlay
-        overlay.addEventListener('click', () => {
-            console.log('Overlay clicked, closing menu');
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburger.innerHTML = '☰';
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
-                nav.classList.remove("active");
+        // Overlay click closes menu
+        overlay.addEventListener('click', (event) => {
+            // Only close if clicking the overlay itself, not its children
+            if (event.target === overlay) {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '☰';
             }
         });
-    } else {
-        console.error('Hamburger or nav not found:', { hamburger, nav });
+
+        // Outside click closes menu
+        document.addEventListener('click', (event) => {
+            if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            }
+        });
     }
 
     // =============================
@@ -124,14 +129,13 @@ function initializeMain() {
     };
 
     if (heroSlider) {
-        console.log('Hero slider found, loading carousel');
         fetch('assets/data/hero-carousel.json')
             .then(response => {
                 if (!response.ok) throw new Error('Failed to load hero-carousel.json');
                 return response.json();
             })
             .then(images => {
-                heroSlider.innerHTML = ''; // Clear any existing content
+                heroSlider.innerHTML = '';
                 heroImages = [];
 
                 images.forEach((image, index) => {
@@ -154,7 +158,6 @@ function initializeMain() {
                     heroSlider.appendChild(img);
                 });
 
-                // Lazy load and start carousel
                 lazyLoadImages();
                 startHeroCarousel();
             })
@@ -182,18 +185,17 @@ function initializeMain() {
 
     const startAboutCarousel = () => {
         if (aboutInterval) clearInterval(aboutInterval);
-        aboutInterval = setInterval(nextAboutSlide, 3000); // Slower interval
+        aboutInterval = setInterval(nextAboutSlide, 3000);
     };
 
     if (aboutCarousel) {
-        console.log('About carousel found, loading');
         fetch('assets/data/about-carousel.json')
             .then(response => {
                 if (!response.ok) throw new Error('Failed to load about-carousel.json');
                 return response.json();
             })
             .then(images => {
-                aboutCarousel.innerHTML = ''; // Clear
+                aboutCarousel.innerHTML = '';
                 aboutImages = [];
 
                 images.forEach((image, index) => {
@@ -201,7 +203,6 @@ function initializeMain() {
                     img.dataset.src = image.url;
                     img.alt = image.alt || '';
                     img.className = index === 0 ? 'active' : '';
-                    // Transition set in CSS (2s fade)
 
                     aboutImages.push(img);
                     aboutCarousel.appendChild(img);
@@ -219,7 +220,7 @@ function initializeMain() {
     const renderGallery = (category) => {
         const galleries = document.getElementById('galleries');
         if (galleries) {
-            galleries.innerHTML = ''; // Clear previous gallery
+            galleries.innerHTML = '';
 
             if (!galleryData || !galleryData[category]) return;
 
@@ -239,7 +240,7 @@ function initializeMain() {
                 a.setAttribute('data-title', image.description);
 
                 const img = document.createElement('img');
-                img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; // Transparent placeholder
+                img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
                 img.dataset.src = image.url;
                 img.alt = image.title || '';
                 img.className = image.width > image.height ? 'landscape' : 'portrait';
@@ -253,17 +254,15 @@ function initializeMain() {
     };
 
     const galleryLinks = document.getElementById('gallery-links');
-    const gallerySelect = document.createElement('select'); // Create select dynamically
+    const gallerySelect = document.createElement('select');
     gallerySelect.className = 'gallery-select';
     if (galleryLinks) {
-        galleryLinks.parentNode.insertBefore(gallerySelect, galleryLinks.nextSibling); // Insert after ul
+        galleryLinks.parentNode.insertBefore(gallerySelect, galleryLinks.nextSibling);
     }
 
     if (galleryLinks) {
-        console.log('Gallery links found, setting up navigation');
-        // Clear existing links to prevent duplicates
         galleryLinks.innerHTML = '';
-        gallerySelect.innerHTML = ''; // Clear select
+        gallerySelect.innerHTML = '';
         fetch('assets/data/images.json')
             .then(response => {
                 if (!response.ok) throw new Error('Failed to load images.json');
@@ -274,19 +273,16 @@ function initializeMain() {
                 const categories = Object.keys(data);
 
                 categories.forEach((category, index) => {
-                    // Desktop buttons
                     const li = document.createElement('li');
                     const button = document.createElement('button');
                     button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
                     button.dataset.category = category;
 
                     button.addEventListener('click', () => {
-                        console.log(`Gallery button clicked: ${category}`);
                         document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
                         renderGallery(category);
-                        gallerySelect.value = category; // Sync with select
-                        // Update selected attribute for underline
+                        gallerySelect.value = category;
                         gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
                         gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                     });
@@ -294,29 +290,24 @@ function initializeMain() {
                     li.appendChild(button);
                     galleryLinks.appendChild(li);
 
-                    // Mobile dropdown options
                     const option = document.createElement('option');
                     option.value = category;
                     option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
                     gallerySelect.appendChild(option);
                 });
 
-                // Set initial active
                 const firstCategory = categories[0];
                 document.querySelector(`#gallery-links button[data-category="${firstCategory}"]`).classList.add('active');
                 gallerySelect.value = firstCategory;
                 gallerySelect.querySelector(`option[value="${firstCategory}"]`).setAttribute('selected', 'selected');
                 renderGallery(firstCategory);
 
-                // Handle select change
                 gallerySelect.addEventListener('change', (e) => {
                     const category = e.target.value;
-                    console.log(`Gallery select changed: ${category}`);
                     document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
                     const activeButton = document.querySelector(`#gallery-links button[data-category="${category}"]`);
                     if (activeButton) activeButton.classList.add('active');
                     renderGallery(category);
-                    // Update selected attribute for underline
                     gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
                     gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                 });
