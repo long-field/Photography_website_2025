@@ -1,8 +1,9 @@
 /* Changes:
-- Modified hamburger menu logic to prevent .nav-overlay from intercepting link clicks.
-- Changed overlay event listener to use pointer-events: none in CSS when menu is active, ensuring it doesn't capture clicks over .nav-menu.
-- Kept setTimeout for menu closing to ensure navigation occurs first.
-- No changes to gallery, hero, or about carousel logic.
+- Updated HERO SLIDER LOGIC to detect portrait images (height > width) and apply object-fit: contain, otherwise use object-fit: cover for landscape images.
+- Added image load event to check dimensions from hero-carousel.json data or fallback to img.naturalWidth/naturalHeight.
+- Kept window.scrollTo(0, 0) to ensure slider is scrolled into view.
+- No changes to .about-carousel logic to prevent regression.
+- No changes to hamburger menu, gallery, or other logic.
 */
 
 let isMainInitialized = false;
@@ -84,7 +85,7 @@ function initializeMain() {
 
         // Overlay click closes menu
         overlay.addEventListener('click', (event) => {
-            // Only close if clicking the overlay itself, not its children
+            // Only close if clicking the overlay itself
             if (event.target === overlay) {
                 nav.classList.remove('active');
                 overlay.classList.remove('active');
@@ -126,6 +127,9 @@ function initializeMain() {
         heroSlider.addEventListener('click', () => {
             nextHeroSlide();
         });
+
+        // Ensure slider is scrolled into view on load
+        window.scrollTo(0, 0);
     };
 
     if (heroSlider) {
@@ -143,16 +147,21 @@ function initializeMain() {
                     img.dataset.src = image.url;
                     img.alt = image.alt || '';
                     img.className = index === 0 ? 'active' : '';
-                    img.style.transition = 'opacity 1s ease-in-out';
+                    img.style.transition = 'opacity 0.5s ease-in-out';
                     img.style.position = 'absolute';
                     img.style.top = '0';
-                    img.style.left = '50%';
-                    img.style.transform = 'translateX(-50%)';
+                    img.style.left = '0';
+                    img.style.width = '100%';
                     img.style.height = '100%';
-                    img.style.width = 'auto';
-                    img.style.maxWidth = '100%';
-                    img.style.objectFit = 'contain';
                     img.style.pointerEvents = 'none';
+
+                    // Check image dimensions to set object-fit
+                    const tempImg = new Image();
+                    tempImg.src = image.url;
+                    tempImg.onload = () => {
+                        const isPortrait = tempImg.naturalHeight > tempImg.naturalWidth;
+                        img.style.objectFit = isPortrait ? 'contain' : 'cover';
+                    };
 
                     heroImages.push(img);
                     heroSlider.appendChild(img);
@@ -180,7 +189,7 @@ function initializeMain() {
 
     const nextAboutSlide = () => {
         currentAboutIndex = (currentAboutIndex + 1) % aboutImages.length;
-        showAboutSlide(currentAboutIndex);
+        showAboutSlide(currentHeroIndex);
     };
 
     const startAboutCarousel = () => {

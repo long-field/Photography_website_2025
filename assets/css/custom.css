@@ -1,13 +1,20 @@
 /* Changes:
-- Added pointer-events: none to .nav-overlay.active to prevent it from capturing clicks over the .nav-menu.
-- Adjusted z-index of nav.nav-menu.active to ensure it stays above the overlay.
-- No changes to .portfolio-header or .gallery-select, as they are working fine.
+- Navbar Transparency:
+  - Reduced header background opacity to rgba(230, 235, 224, 0.3) for more transparency.
+  - Added header:hover to set opacity to rgba(230, 235, 224, 0.7) on hover.
+- Navbar Link Background Bug:
+  - Removed background from nav.nav-menu a:hover (desktop) and nav.nav-menu ul li a:hover (mobile) to ensure no background behind link text.
+  - Ensured nav.nav-menu and nav.nav-menu.active backgrounds remain consistent (rgba(230, 235, 224, 0.5) and 0.9).
+- Hero Slider Images:
+  - Kept .hero-slider img styles, as portrait/landscape handling is now in JS.
+- No changes to .about-carousel to prevent regression.
+- No changes to .portfolio-header, .gallery-select, or other unrelated styles.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
 main {
-    padding-top: 100px; /* Pushes content below navbar */
+    padding-top: 100px; /* Pushes content below navbar, except for .hero */
 }
 
 body {
@@ -30,13 +37,18 @@ header {
     left: 0;
     right: 0;
     height: 80px;
-    background: rgba(230, 235, 224, 0.5);
+    background: rgba(230, 235, 224, 0.3); /* More transparent */
     backdrop-filter: blur(10px);
     z-index: 1000;
     display: flex;
     align-items: center;
     padding: 0 1.5rem;
     box-sizing: border-box;
+    transition: background 0.3s ease; /* Smooth hover transition */
+}
+
+header:hover {
+    background: rgba(230, 235, 224, 0.7); /* Less transparent on hover */
 }
 
 /* Logo overlap effect */
@@ -46,7 +58,7 @@ header .logo {
     left: 1rem;
     height: 100px;
     object-fit: contain;
-    z-index: 1;
+    z-index: 1001; /* Above slider, below nav */
     pointer-events: none;
 }
 
@@ -72,6 +84,7 @@ header nav.nav-menu a {
 
 header nav.nav-menu a:hover {
     color: #a8c0c6;
+    background: none; /* Remove background on hover */
 }
 
 /* ======= HAMBURGER MENU ======= */
@@ -147,39 +160,31 @@ nav.nav-menu.active ul {
 
 /* ======= HERO SECTION ======= */
 .hero {
-    padding: 0 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 80px);
-    background: transparent;
+    padding: 0;
     position: relative;
     overflow: hidden;
-    margin-top: 2px;
 }
 
 .hero-slider {
-    position: relative;
-    width: 98vw;
-    aspect-ratio: 16 / 10;
-    max-height: 85vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Fullscreen, behind navbar */
     background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 999; /* Below navbar and logo */
 }
 
 .hero-slider img {
-    width: auto;
+    width: 100%;
     height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     transition: opacity 0.5s ease;
     opacity: 0;
 }
@@ -194,7 +199,7 @@ nav.nav-menu.active ul {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    z-index: 2;
+    z-index: 1002; /* Above slider and navbar */
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     font-size: 48px;
     text-align: center;
@@ -205,7 +210,7 @@ nav.nav-menu.active ul {
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 1002; /* Above slider and navbar */
 }
 
 /* ======= CTA BUTTON ======= */
@@ -525,11 +530,12 @@ footer .logo {
         font-size: 1.2rem;
         color: #333;
         text-decoration: none;
+        background: none; /* Ensure no background on mobile links */
     }
 
-    nav.nav-menu a:hover {
-        background: #d3d8cf;
-        color: #2c3e50;
+    nav.nav-menu ul li a:hover {
+        background: none; /* Remove background on hover */
+        color: #a8c0c6;
     }
 
     header .logo {
@@ -537,9 +543,8 @@ footer .logo {
         height: 100px;
     }
 
-    .hero,
-    main {
-        padding-top: 3rem;
+    .hero {
+        padding: 0;
     }
 
     .portfolio-header h1 {
@@ -571,25 +576,18 @@ footer .logo {
         margin-left: auto;
     }
 
-    .hero {
-        height: calc(100vh - 80px);
-        padding: 0;
-    }
-
     .hero-slider {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100vw;
-        height: 100%;
-        aspect-ratio: unset;
-        max-height: 60vh;
+        height: 100vh; /* Fullscreen, behind navbar */
+        z-index: 999; /* Below navbar and logo */
     }
 
     .hero-slider img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: center;
-        max-width: none;
-        transform: none;
         left: 0;
     }
 
