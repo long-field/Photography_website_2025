@@ -1,3 +1,11 @@
+/* Changes:
+- Added .gallery-grid a { text-decoration: none; color: inherit; } to remove blue underlines on links.
+- Added styles for mobile gallery dropdown (.gallery-select).
+- Added styles for about-carousel (smaller, full-width images with cover fit).
+- Updated media query for mobile to hide ul and show select in gallery-nav.
+- Minor tweaks to .gallery-nav for better centering and scrolling prevention.
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
 main {
@@ -236,6 +244,13 @@ div.nav-overlay.active {
     aspect-ratio: 2 / 3;
 }
 
+/* Added to remove blue underlines on gallery links */
+.gallery-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 /* ======= GALLERY NAV ======= */
 .gallery-nav ul {
     list-style: none;
@@ -326,6 +341,31 @@ div.nav-overlay.active {
 .about img {
     max-width: 300px;
     border-radius: 5px;
+}
+
+/* Added for about carousel */
+.about-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.about-carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
+}
+
+.about-carousel img.active {
+    opacity: 1;
 }
 
 /* ======= FOOTER ======= */
@@ -476,34 +516,30 @@ footer .logo {
 
     /* ======= GALLERY NAVIGATION MOBILE ======= */
     .gallery-nav ul {
-        flex-direction: row;              /* Keep items in one row */
-        flex-wrap: nowrap;                 /* Prevent wrapping */
-        overflow-x: auto;                  /* Enable horizontal scroll */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-        margin: 0;
-        list-style: none;
+        display: flex; /* Default for desktop */
     }
 
-    .gallery-nav li {
-        flex: 0 0 auto; /* Prevent items from shrinking */
+    .gallery-select {
+        display: none; /* Hidden on desktop */
     }
 
-    .gallery-nav button {
-        white-space: nowrap; /* Keep text on one line */
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        background: none;
-        border: none;
-        font-family: 'Playfair Display', serif;
-        border-bottom: 2px solid transparent;
-        cursor: pointer;
-        transition: border-color 0.3s ease;
-    }
+    /* Mobile: Hide ul, show select */
+    @media (max-width: 768px) {
+        .gallery-nav ul {
+            display: none;
+        }
 
-    .gallery-nav button.active {
-        border-bottom: 2px solid #2c3e50;
+        .gallery-select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            border: 1px solid #2c3e50;
+            background: white;
+            cursor: pointer;
+            margin: 20px 0;
+        }
     }
 
     /* ======= HERO CAROUSEL MOBILE ======= */
@@ -527,6 +563,12 @@ footer .logo {
         max-width: none;
         transform: none;
         left: 0;
+    }
+
+    /* Adjust about carousel for mobile */
+    .about-carousel {
+        max-width: 100%;
+        aspect-ratio: 4 / 3; /* Tighter for mobile */
     }
 }
 
