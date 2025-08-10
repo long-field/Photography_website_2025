@@ -4,10 +4,11 @@
     "subcategories": [
       {
         "title": "Jane & John's Wedding",
+        "date": "October 26, 2024",
         "heroImage": "assets/images/portraits/banwpregnancyportret.jpg",
         "description": "A beautiful summer wedding filled with laughter, tears, and unforgettable moments.",
         "images": [
-          { "url": "assets/carouselimages/webr-423.jpg", "title": "First Dance", "description": "The couple's emotional first dance." },
+          { "url": "assets/carouselimages/web-423.jpg", "title": "First Dance", "description": "The couple's emotional first dance." },
           { "url": "assets/carouselimages/web even more higher-25.jpg", "title": "Ceremony", "description": "Exchanging vows during the ceremony." },
           { "url": "assets/carouselimages/web even more higher-26.jpg", "title": "Bride's Portrait", "description": "A stunning portrait of the bride." }
         ]
@@ -15,6 +16,7 @@
       {
         "title": "Sarah & Michael's Wedding",
         "heroImage": "assets/images/portraits/novaly.jpg",
+        "date": "October 26, 2024",
         "description": "A timeless celebration in a historic chateau, capturing every detail.",
         "images": [
           { "url": "assets/carouselimages/web-427.jpg", "title": "Wedding Party", "description": "The full wedding party celebrating." },
