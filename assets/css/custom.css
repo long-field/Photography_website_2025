@@ -53,18 +53,34 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
+    align-items: flex-start;
+    padding: 1rem 1.5rem 1rem 0.5rem;
+    background-color: rgba(255, 255, 255, 0.6); /* More transparent initially */
     backdrop-filter: blur(5px);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: visible;
+    transition: background-color 0.3s ease; /* Smooth transition for hover/scroll */
+}
+/* Less transparent on hover */
+header:hover {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
+/* Less transparent when scrolled (class added via JS) */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.logo-container {
+    margin-left: -0.7rem; /* Pulls the logo slightly more left; adjust to -1rem if needed for even closer alignment */
+    margin-top: -1rem;
+}
 .logo-container .logo {
-    height: 40px;
+    height: 83px; /* Increased from 40px; this will make it exceed the header's 60px height */
     width: auto;
 }
 
@@ -114,17 +130,16 @@ header {
    ------------------- */
 .hero {
     position: relative;
-    height: 100vh;
+    height: calc(100vh ); /* Full viewport minus header height */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: var(--text-color-light);
-    background-color: #000;
+    background-color: transparent;
     z-index: 1;
 }
-
 .hero h1 {
     position: relative;
     z-index: 2;
@@ -140,11 +155,10 @@ header {
     width: 100%;
     height: 100%;
 }
-
 .hero-slider img {
     opacity: 0;
     transition: opacity 2s ease-in-out;
-    object-fit: cover;
+    object-fit: contain; /* Changed to contain to respect heights without cutting off; use cover if preferred for landscapes */
     background-attachment: fixed;
 }
 
@@ -438,7 +452,7 @@ footer {
 }
 
 footer .logo {
-    height: 30px;
+    height: 150px;
 }
 
 /* -------------------

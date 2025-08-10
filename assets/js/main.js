@@ -442,7 +442,15 @@ function initializeMain() {
             })
             .catch(error => console.error('Error loading images.json:', error));
     }
-
+// Scroll detection for header transparency
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
     // Call the dynamic text function after all includes are loaded
     updatePageText();
 }
