@@ -1,106 +1,29 @@
 {
-  "weddings": [
-    {
-      "url": "assets/images/weddings/weddings01.jpg",
-      "title": "Weddings 01",
-      "description": "Wedding moment captured in soft light.",
-      "width": 2686,
-      "height": 3760
-    },
-    {
-      "url": "assets/images/weddings/weddings02.jpg",
-      "title": "Weddings 02",
-      "description": "Wedding moment captured in soft light.",
-      "width": 2487,
-      "height": 3482
-    },
-    {
-      "url": "assets/images/weddings/weddings03.jpg",
-      "title": "Weddings 03",
-      "description": "Wedding moment captured in soft light.",
-      "width": 4765,
-      "height": 2978
-    },
-    {
-      "url": "assets/images/weddings/weddings04.jpg",
-      "title": "Weddings 04",
-      "description": "Wedding moment captured in soft light.",
-      "width": 3448,
-      "height": 5168
-    },
-    {
-      "url": "assets/images/weddings/weddingsigning.jpg",
-      "title": "Weddingsigning",
-      "description": "Wedding moment captured in soft light.",
-      "width": 4753,
-      "height": 2971
-    }
-  ],
-  "portraits": [
-    {
-      "url": "assets/images/portraits/girlportret.jpg",
-      "title": "Girl Portret",
-      "description": "Portrait with natural elegance.",
-      "width": 2607,
-      "height": 3907
-    },
-    {
-      "url": "assets/images/portraits/upclosefrontfaceyounggirl.jpg",
-      "title": "Upclose Front Face Young Girl",
-      "description": "Portrait with natural elegance.",
-      "width": 5065,
-      "height": 2849
-    },
-    {
-      "url": "assets/images/portraits/banwpregnancyportret.jpg",
-      "title": "Banw Pregnancy Portret",
-      "description": "Portrait with natural elegance.",
-      "width": 2847,
-      "height": 3986
-    },
-    {
-      "url": "assets/images/portraits/mywifeandchild.jpg",
-      "title": "My Wife And Child",
-      "description": "Portrait with natural elegance.",
-      "width": 1737,
-      "height": 2432
-    },
-    {
-      "url": "assets/images/portraits/novaly.jpg",
-      "title": "Novaly",
-      "description": "Portrait with natural elegance.",
-      "width": 15110,
-      "height": 3407
-    },
-    {
-      "url": "assets/images/portraits/me.jpg",
-      "title": "Me",
-      "description": "Portrait with natural elegance.",
-      "width": 2732,
-      "height": 4096
-    },
-    {
-      "url": "assets/images/portraits/modelbywindow.jpg",
-      "title": "Model By Window",
-      "description": "Portrait with natural elegance.",
-      "width": 1755,
-      "height": 2458
-    },
-    {
-      "url": "assets/images/portraits/modelinbathingsuitbyarchitecturalwindow.jpg",
-      "title": "Model In Bathing Suit By Architectural Window",
-      "description": "Portrait with natural elegance.",
-      "width": 5706,
-      "height": 4076
-    },
-    {
-      "url": "assets/images/portraits/girlinfrontofwater.jpg",
-      "title": "Girl In Front Of Water",
-      "description": "Portrait with natural elegance.",
-      "width": 2766,
-      "height": 4146
-    }
-  ],
+  "weddings": {
+    "title": "Wedding Photography",
+    "subcategories": [
+      {
+        "title": "Jane & John's Wedding",
+        "heroImage": "assets/images/portraits/banwpregnancyportret.jpg",
+        "description": "A beautiful summer wedding filled with laughter, tears, and unforgettable moments.",
+        "images": [
+          { "url": "assets/carouselimages/webr-423.jpg", "title": "First Dance", "description": "The couple's emotional first dance." },
+          { "url": "assets/carouselimages/web even more higher-25.jpg", "title": "Ceremony", "description": "Exchanging vows during the ceremony." },
+          { "url": "assets/carouselimages/web even more higher-26.jpg", "title": "Bride's Portrait", "description": "A stunning portrait of the bride." }
+        ]
+      },
+      {
+        "title": "Sarah & Michael's Wedding",
+        "heroImage": "assets/images/portraits/novaly.jpg",
+        "description": "A timeless celebration in a historic chateau, capturing every detail.",
+        "images": [
+          { "url": "assets/carouselimages/web-427.jpg", "title": "Wedding Party", "description": "The full wedding party celebrating." },
+          { "url": "assets/carouselimages/web-167.jpg", "title": "Cake Cutting", "description": "The joyful cake cutting moment." },
+          { "url": "assets/carouselimages/web-408.jpg", "title": "Groom's Portrait", "description": "A classic portrait of the groom." }
+        ]
+      }
+    ]
+  },
   "artistic": [
     {
       "url": "assets/images/artistic/artpicture.jpg",
@@ -260,5 +183,4 @@
       "height": 1365
     }
   ]
-
 }

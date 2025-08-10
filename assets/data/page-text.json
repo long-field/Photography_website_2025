@@ -1,0 +1,24 @@
+{
+  "home": {
+    "pageTitle": "Home | Dieter Vanlangenaker Photography",
+    "heroHeading": "Capturing Moments, Creating Legacies",
+    "galleryHeading": "A Glimpse of My Work",
+    "galleryIntro": "Every photograph tells a story. From the raw emotion of a wedding day to the quiet strength of a portrait, this is a curated selection of my passion and craft."
+  },
+  "portfolio": {
+    "pageTitle": "Portfolio | Dieter Vanlangenaker Photography",
+    "portfolioHeading": "My Galleries"
+  },
+  "about": {
+    "pageTitle": "About | Dieter Vanlangenaker Photography",
+    "aboutHeading": "The Man Behind the Lens",
+    "aboutParagraph1": "As a Belgian wedding photographer, I am driven by a passion for authentic storytelling. My goal is to capture the fleeting moments—soft glances, genuine laughter—with a modern, masculine elegance. I believe that the most powerful images are the ones that feel unposed and true to who you are.",
+    "aboutParagraph2": "Based in the heart of Belgium, I specialize in timeless wedding, portrait, and artistic photography. For me, photography is more than just a job; it's an opportunity to connect with people and document the most significant chapters of their lives. Let's create something beautiful together."
+  },
+  "contact": {
+    "pageTitle": "Contact | Dieter Vanlangenaker Photography",
+    "contactHeading": "Get in Touch",
+    "formHeading": "Send a Message",
+    "bookingHeading": "Schedule a Session"
+  }
+}

@@ -1,10 +1,14 @@
-/* Changes:
-- Updated HERO SLIDER LOGIC to detect portrait images (height > width) and apply object-fit: contain, otherwise use object-fit: cover for landscape images.
-- Added image load event to check dimensions from hero-carousel.json data or fallback to img.naturalWidth/naturalHeight.
-- Kept window.scrollTo(0, 0) to ensure slider is scrolled into view.
-- No changes to .about-carousel logic to prevent regression.
-- No changes to hamburger menu, gallery, or other logic.
-*/
+/*
+ * main.js
+ *
+ * This script handles all the dynamic functionality for the website,
+ * including the responsive hamburger menu, a dynamic hero image slider,
+ * an image carousel for the about page, and a dynamic portfolio gallery
+ * populated from JSON data. It also now fetches and injects page-specific
+ * text content from a separate JSON file, making the site easier to manage.
+ * The portfolio gallery logic has been updated to support subcategories.
+ *
+ */
 
 let isMainInitialized = false;
 
@@ -31,6 +35,11 @@ function initializeMain() {
     let currentHeroIndex = 0;
     let heroInterval = null;
 
+    let aboutImages = [];
+    let currentAboutIndex = 0;
+    let aboutInterval = null;
+
+    // A single IntersectionObserver for all lazy-loaded images
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -46,35 +55,83 @@ function initializeMain() {
     };
 
     // =============================
+    // DYNAMIC TEXT LOGIC
+    // =============================
+    // Fetches text content from a JSON file and populates the page.
+    const updatePageText = async () => {
+        try {
+            const response = await fetch('assets/data/page-text.json');
+            if (!response.ok) throw new Error('Failed to load page-text.json');
+            const data = await response.json();
+
+            // Set the document title for SEO
+            document.title = data[document.body.dataset.page].pageTitle || document.title;
+
+            // Check if the current page is the Home page
+            if (document.querySelector('.hero')) {
+                document.querySelector('.hero h1').textContent = data.home.heroHeading;
+                document.querySelector('.gallery-preview h2').textContent = data.home.galleryHeading;
+                const galleryIntroParagraph = document.createElement('p');
+                galleryIntroParagraph.textContent = data.home.galleryIntro;
+                const galleryGridElement = document.querySelector('.gallery-preview .gallery-grid');
+                if (galleryGridElement) {
+                    document.querySelector('.gallery-preview').insertBefore(galleryIntroParagraph, galleryGridElement);
+                }
+            }
+
+            // Check if the current page is the Portfolio page
+            if (document.querySelector('.portfolio')) {
+                document.querySelector('.portfolio-header h1').textContent = data.portfolio.portfolioHeading;
+            }
+
+            // Check if the current page is the About page
+            if (document.querySelector('.about')) {
+                document.querySelector('.about h1').textContent = data.about.aboutHeading;
+                const p1 = document.querySelector('.about p:first-of-type');
+                if (p1) {
+                    p1.textContent = data.about.aboutParagraph1;
+                    const p2 = document.createElement('p');
+                    p2.textContent = data.about.aboutParagraph2;
+                    p1.parentNode.insertBefore(p2, p1.nextSibling);
+                }
+            }
+
+            // Check if the current page is the Contact page
+            if (document.querySelector('.contact')) {
+                document.querySelector('.contact h1').textContent = data.contact.contactHeading;
+                document.querySelector('.contact-form h2').textContent = data.contact.formHeading;
+                document.querySelector('.booking h2').textContent = data.contact.bookingHeading;
+            }
+        } catch (error) {
+            console.error('Error fetching text data:', error);
+        }
+    };
+
+    // =============================
     // HAMBURGER MENU LOGIC
     // =============================
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav-menu');
     const body = document.body;
 
-    // Create overlay element
     const overlay = document.createElement('div');
     overlay.className = 'nav-overlay';
     body.appendChild(overlay);
 
     if (hamburger && nav) {
-        // Toggle menu function
         const toggleMenu = () => {
             nav.classList.toggle('active');
             overlay.classList.toggle('active');
             hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
         };
 
-        // Hamburger click toggles menu
         hamburger.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent outside click handler
+            event.stopPropagation();
             toggleMenu();
         });
 
-        // Link clicks close menu and allow navigation
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', (event) => {
-                // Delay menu closing to ensure navigation occurs
                 setTimeout(() => {
                     nav.classList.remove('active');
                     overlay.classList.remove('active');
@@ -83,9 +140,7 @@ function initializeMain() {
             });
         });
 
-        // Overlay click closes menu
         overlay.addEventListener('click', (event) => {
-            // Only close if clicking the overlay itself
             if (event.target === overlay) {
                 nav.classList.remove('active');
                 overlay.classList.remove('active');
@@ -93,7 +148,6 @@ function initializeMain() {
             }
         });
 
-        // Outside click closes menu
         document.addEventListener('click', (event) => {
             if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains('active')) {
                 nav.classList.remove('active');
@@ -123,12 +177,10 @@ function initializeMain() {
         if (heroInterval) clearInterval(heroInterval);
         heroInterval = setInterval(nextHeroSlide, 1500);
 
-        // Add click to skip
         heroSlider.addEventListener('click', () => {
             nextHeroSlide();
         });
 
-        // Ensure slider is scrolled into view on load
         window.scrollTo(0, 0);
     };
 
@@ -155,7 +207,6 @@ function initializeMain() {
                     img.style.height = '100%';
                     img.style.pointerEvents = 'none';
 
-                    // Check image dimensions to set object-fit
                     const tempImg = new Image();
                     tempImg.src = image.url;
                     tempImg.onload = () => {
@@ -177,9 +228,6 @@ function initializeMain() {
     // ABOUT CAROUSEL LOGIC
     // =============================
     const aboutCarousel = document.querySelector('.about-carousel');
-    let aboutImages = [];
-    let currentAboutIndex = 0;
-    let aboutInterval = null;
 
     const showAboutSlide = (index) => {
         aboutImages.forEach((img, i) => {
@@ -189,7 +237,7 @@ function initializeMain() {
 
     const nextAboutSlide = () => {
         currentAboutIndex = (currentAboutIndex + 1) % aboutImages.length;
-        showAboutSlide(currentHeroIndex);
+        showAboutSlide(currentAboutIndex);
     };
 
     const startAboutCarousel = () => {
@@ -224,25 +272,53 @@ function initializeMain() {
     }
 
     // =============================
-    // GALLERY LOGIC
+    // GALLERY LOGIC (UPDATED FOR SUBCATEGORIES)
     // =============================
+    const portfolioContainer = document.querySelector('.portfolio-content');
+    const backButton = document.querySelector('.back-button');
+
+    // Function to render the sub-gallery images
+    const renderSubGallery = (images) => {
+        portfolioContainer.innerHTML = '';
+        backButton.style.display = 'block';
+
+        const grid = document.createElement('div');
+        grid.className = 'gallery-grid';
+
+        images.forEach(image => {
+            const a = document.createElement('a');
+            a.href = image.url;
+            a.setAttribute('data-lightbox', 'sub-gallery');
+            a.setAttribute('data-title', image.description);
+
+            const img = document.createElement('img');
+            img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+            img.dataset.src = image.url;
+            img.alt = image.title || '';
+
+            a.appendChild(img);
+            grid.appendChild(a);
+        });
+
+        portfolioContainer.appendChild(grid);
+        lazyLoadImages();
+    };
+
+    // Main function to render the portfolio categories/subcategories
     const renderGallery = (category) => {
-        const galleries = document.getElementById('galleries');
-        if (galleries) {
-            galleries.innerHTML = '';
+        portfolioContainer.innerHTML = '';
+        backButton.style.display = 'none';
 
-            if (!galleryData || !galleryData[category]) return;
+        if (!galleryData || !galleryData[category]) return;
 
-            const section = document.createElement('section');
-            section.className = 'gallery-section';
-            section.innerHTML = `
-                 <div class="gallery-grid"></div>
-            `;
-            galleries.appendChild(section);
+        const categoryData = galleryData[category];
 
-            const grid = section.querySelector('.gallery-grid');
+        if (Array.isArray(categoryData)) {
+            // RENDER SIMPLE GALLERY (no subcategories)
+            const grid = document.createElement('div');
+            grid.className = 'gallery-grid';
 
-            galleryData[category].forEach(image => {
+            categoryData.forEach(image => {
                 const a = document.createElement('a');
                 a.href = image.url;
                 a.setAttribute('data-lightbox', category);
@@ -252,14 +328,40 @@ function initializeMain() {
                 img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
                 img.dataset.src = image.url;
                 img.alt = image.title || '';
-                img.className = image.width > image.height ? 'landscape' : 'portrait';
 
                 a.appendChild(img);
                 grid.appendChild(a);
             });
 
-            lazyLoadImages();
+            portfolioContainer.appendChild(grid);
+        } else if (categoryData.subcategories) {
+            // RENDER SUBCATEGORY VIEW
+            const subGrid = document.createElement('div');
+            subGrid.className = 'sub-gallery-grid';
+
+            categoryData.subcategories.forEach((sub, index) => {
+                const subCard = document.createElement('div');
+                subCard.className = 'sub-gallery-card';
+                subCard.style.backgroundImage = `url(${sub.heroImage})`;
+                subCard.innerHTML = `
+                    <div class="sub-gallery-overlay"></div>
+                    <div class="sub-gallery-text">
+                        <h3>${sub.title}</h3>
+                        <p>${sub.description}</p>
+                    </div>
+                `;
+
+                subCard.addEventListener('click', () => {
+                    renderSubGallery(sub.images);
+                });
+
+                subGrid.appendChild(subCard);
+            });
+
+            portfolioContainer.appendChild(subGrid);
         }
+
+        lazyLoadImages();
     };
 
     const galleryLinks = document.getElementById('gallery-links');
@@ -269,7 +371,7 @@ function initializeMain() {
         galleryLinks.parentNode.insertBefore(gallerySelect, galleryLinks.nextSibling);
     }
 
-    if (galleryLinks) {
+    if (galleryLinks && portfolioContainer) {
         galleryLinks.innerHTML = '';
         gallerySelect.innerHTML = '';
         fetch('assets/data/images.json')
@@ -281,10 +383,14 @@ function initializeMain() {
                 galleryData = data;
                 const categories = Object.keys(data);
 
-                categories.forEach((category, index) => {
+                categories.forEach((category) => {
+                    // Check if the data has a 'title' property, otherwise use the key
+                    const categoryData = data[category];
+                    const categoryTitle = categoryData.title || category.charAt(0).toUpperCase() + category.slice(1);
+
                     const li = document.createElement('li');
                     const button = document.createElement('button');
-                    button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    button.textContent = categoryTitle;
                     button.dataset.category = category;
 
                     button.addEventListener('click', () => {
@@ -301,14 +407,21 @@ function initializeMain() {
 
                     const option = document.createElement('option');
                     option.value = category;
-                    option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                    option.textContent = categoryTitle;
                     gallerySelect.appendChild(option);
                 });
 
+                // Set initial gallery view
                 const firstCategory = categories[0];
-                document.querySelector(`#gallery-links button[data-category="${firstCategory}"]`).classList.add('active');
-                gallerySelect.value = firstCategory;
-                gallerySelect.querySelector(`option[value="${firstCategory}"]`).setAttribute('selected', 'selected');
+                const firstButton = document.querySelector(`#gallery-links button[data-category="${firstCategory}"]`);
+                if(firstButton) firstButton.classList.add('active');
+
+                const firstOption = gallerySelect.querySelector(`option[value="${firstCategory}"]`);
+                if(firstOption) {
+                    gallerySelect.value = firstCategory;
+                    firstOption.setAttribute('selected', 'selected');
+                }
+
                 renderGallery(firstCategory);
 
                 gallerySelect.addEventListener('change', (e) => {
@@ -320,7 +433,16 @@ function initializeMain() {
                     gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
                     gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                 });
+
+                // Back button functionality
+                backButton.addEventListener('click', () => {
+                    const activeCategory = document.querySelector('.gallery-nav button.active').dataset.category;
+                    renderGallery(activeCategory);
+                });
             })
             .catch(error => console.error('Error loading images.json:', error));
     }
+
+    // Call the dynamic text function after all includes are loaded
+    updatePageText();
 }

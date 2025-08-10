@@ -12,24 +12,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
 </head>
-<body>
+<body data-page="portfolio">
 <div data-include="partials/header.html"></div>
 <main class="container">
     <section class="portfolio">
-        <!-- Wrapped h1 and nav in div for header layout -->
         <div class="portfolio-header">
-            <h1>Portfolio</h1>
+            <h1></h1>
             <nav class="gallery-nav">
                 <ul id="gallery-links"></ul>
-                <!-- Select is created dynamically in JS -->
             </nav>
+            <!-- A vertical divider for visual separation -->
+            <div class="divider vertical-divider"></div>
+            <!-- Back button for sub-galleries -->
+            <button class="back-button">← Back to Galleries</button>
         </div>
-        <div id="galleries"></div>
+        <!-- A horizontal divider to separate the nav from the gallery content -->
+        <div class="divider horizontal-divider"></div>
+        <!-- This is the container for all gallery and sub-gallery content -->
+        <div class="portfolio-content" id="galleries"></div>
     </section>
 </main>
 <div data-include="partials/footer.html"></div>
 <script src="assets/js/includes.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

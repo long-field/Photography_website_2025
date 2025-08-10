@@ -13,26 +13,26 @@
     <!-- Added jQuery (required for Lightbox2) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body data-page="home">
 <div data-include="partials/header.html"></div>
 <main class="container">
-
-
+    <!-- The hero section now includes an overlay for better text readability -->
     <section class="hero container">
         <div class="hero-slider">
+            <div class="hero-overlay"></div>
         </div>
         <h1></h1>
     </section>
+    <!-- A horizontal divider has been added between the hero and gallery sections -->
+    <div class="divider horizontal-divider"></div>
     <section class="gallery-preview">
-        <h2>Featured Work</h2>
+        <h2></h2>
         <div class="gallery-grid"></div>
     </section>
 </main>
 <div data-include="partials/footer.html"></div>
 <script src="assets/js/includes.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
 <script src="assets/js/main.js"></script>
-
 </body>
 </html>

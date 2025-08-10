@@ -11,5 +11,6 @@
     <orderEntry type="library" name="normalize" level="application" />
     <orderEntry type="library" name="api" level="application" />
     <orderEntry type="library" name="widget" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
