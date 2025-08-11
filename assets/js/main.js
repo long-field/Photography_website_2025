@@ -1,36 +1,17 @@
-/*
- * main.js
- *
- * This script handles all the dynamic functionality for the website,
- * including the responsive hamburger menu, a dynamic hero image slider,
- * an image carousel for the about page, and a dynamic portfolio gallery
- * populated from JSON data. It also now fetches and injects page-specific
- * text content from a separate JSON file, making the site easier to manage.
- * The portfolio gallery logic has been updated to support subcategories.
- *
- */
 
-let isMainInitialized = false;
-
-document.addEventListener('includesLoaded', () => {
+    let isMainInitialized = false;document.addEventListener('includesLoaded', () => {
     if (isMainInitialized) {
         return;
     }
     initializeMain();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+});document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (!isMainInitialized) {
             initializeMain();
         }
     }, 1000);
-});
-
-function initializeMain() {
-    isMainInitialized = true;
-
-    let galleryData = null;
+});function initializeMain() {
+    isMainInitialized = true;let galleryData = null;
     let heroImages = [];
     let currentHeroIndex = 0;
     let heroInterval = null;
@@ -39,7 +20,7 @@ function initializeMain() {
     let currentAboutIndex = 0;
     let aboutInterval = null;
 
-    // A single IntersectionObserver for all lazy-loaded images
+// A single IntersectionObserver for all lazy-loaded images
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -54,10 +35,10 @@ function initializeMain() {
         images.forEach(img => observer.observe(img));
     };
 
-    // =============================
-    // DYNAMIC TEXT LOGIC
-    // =============================
-    // Fetches text content from a JSON file and populates the page.
+// =============================
+// DYNAMIC TEXT LOGIC
+// =============================
+// Fetches text content from a JSON file and populates the page.
     const updatePageText = async () => {
         try {
             const response = await fetch('assets/data/page-text.json');
@@ -77,6 +58,35 @@ function initializeMain() {
                 if (galleryGridElement) {
                     document.querySelector('.gallery-preview').insertBefore(galleryIntroParagraph, galleryGridElement);
                 }
+
+                // Fetch and populate featured images for the gallery preview
+                fetch('assets/data/featured.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to load featured.json');
+                        return response.json();
+                    })
+                    .then(images => {
+                        const galleryGrid = document.querySelector('.gallery-preview .gallery-grid');
+                        galleryGrid.innerHTML = ''; // Clear any existing content
+
+                        images.forEach(image => {
+                            const a = document.createElement('a');
+                            a.href = image.url;
+                            a.setAttribute('data-lightbox', 'featured-gallery');
+                            a.setAttribute('data-title', image.description);
+
+                            const img = document.createElement('img');
+                            img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; // Placeholder
+                            img.dataset.src = image.url;
+                            img.alt = image.title || '';
+
+                            a.appendChild(img);
+                            galleryGrid.appendChild(a);
+                        });
+
+                        lazyLoadImages(); // Lazy load the new images
+                    })
+                    .catch(error => console.error('Error loading featured.json:', error));
             }
 
             // Check if the current page is the Portfolio page
@@ -107,9 +117,9 @@ function initializeMain() {
         }
     };
 
-    // =============================
-    // HAMBURGER MENU LOGIC
-    // =============================
+// =============================
+// HAMBURGER MENU LOGIC
+// =============================
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav-menu');
     const body = document.body;
@@ -157,9 +167,9 @@ function initializeMain() {
         });
     }
 
-    // =============================
-    // HERO SLIDER LOGIC
-    // =============================
+// =============================
+// HERO SLIDER LOGIC
+// =============================
     const heroSlider = document.querySelector('.hero-slider');
 
     const showHeroSlide = (index) => {
@@ -224,9 +234,9 @@ function initializeMain() {
             .catch(error => console.error('Error loading hero-carousel.json:', error));
     }
 
-    // =============================
-    // ABOUT CAROUSEL LOGIC
-    // =============================
+// =============================
+// ABOUT CAROUSEL LOGIC
+// =============================
     const aboutCarousel = document.querySelector('.about-carousel');
 
     const showAboutSlide = (index) => {
@@ -271,13 +281,13 @@ function initializeMain() {
             .catch(error => console.error('Error loading about-carousel.json:', error));
     }
 
-    // =============================
-    // GALLERY LOGIC (UPDATED FOR SUBCATEGORIES)
-    // =============================
+// =============================
+// GALLERY LOGIC (UPDATED FOR SUBCATEGORIES)
+// =============================
     const portfolioContainer = document.querySelector('.portfolio-content');
     const backButton = document.querySelector('.back-button');
 
-    // Function to render the sub-gallery images
+// Function to render the sub-gallery images
     const renderSubGallery = (images) => {
         portfolioContainer.innerHTML = '';
         backButton.style.display = 'block';
@@ -304,7 +314,7 @@ function initializeMain() {
         lazyLoadImages();
     };
 
-    // Main function to render the portfolio categories/subcategories
+// Main function to render the portfolio categories/subcategories
     const renderGallery = (category) => {
         portfolioContainer.innerHTML = '';
         backButton.style.display = 'none';
@@ -344,12 +354,12 @@ function initializeMain() {
                 subCard.className = 'sub-gallery-card';
                 subCard.style.backgroundImage = `url(${sub.heroImage})`;
                 subCard.innerHTML = `
-                    <div class="sub-gallery-overlay"></div>
-                    <div class="sub-gallery-text">
-                        <h3>${sub.title}</h3>
-                        <p>${sub.description}</p>
-                    </div>
-                `;
+                <div class="sub-gallery-overlay"></div>
+                <div class="sub-gallery-text">
+                    <h3>${sub.title}</h3>
+                    <p>${sub.description}</p>
+                </div>
+            `;
 
                 subCard.addEventListener('click', () => {
                     renderSubGallery(sub.images);
@@ -442,6 +452,10 @@ function initializeMain() {
             })
             .catch(error => console.error('Error loading images.json:', error));
     }
+
+// Call the dynamic text function after all includes are loaded
+    updatePageText();
+
 // Scroll detection for header transparency
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
@@ -450,7 +464,5 @@ function initializeMain() {
         } else {
             header.classList.remove('scrolled');
         }
-    });
-    // Call the dynamic text function after all includes are loaded
-    updatePageText();
-}
+    });}
+

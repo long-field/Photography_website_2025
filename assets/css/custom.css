@@ -1,7 +1,7 @@
 /* Base Styles */
 :root {
     --primary-font: 'Playfair Display', serif;
-    --secondary-font: 'Lato', sans-serif;
+    --secondary-font: 'Playfair Display', serif;
     --text-color-dark: #222;
     --text-color-light: #f5f5f5;
     --background-color: #fff;
