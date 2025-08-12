@@ -1,0 +1,107 @@
+[
+    {
+        "section": "Carolinebybrussels",
+        "photos": [
+            {
+                "url": "assets/images/featured/CarolineByBrussels.jpg",
+                "width": 1920,
+                "height": 1280
+            }
+        ]
+    },
+    {
+        "section": "Friends",
+        "photos": [
+            {
+                "url": "assets/images/featured/Friends.jpg",
+                "width": 1443,
+                "height": 960
+            }
+        ]
+    },
+    {
+        "section": "Icecreamcartb&Wnegativeleft",
+        "photos": [
+            {
+                "url": "assets/images/featured/IcecreamCartB&WNegativeLeft.jpeg",
+                "width": 1920,
+                "height": 1275
+            }
+        ]
+    },
+    {
+        "section": "Metro In Budapest",
+        "photos": [
+            {
+                "url": "assets/images/featured/Metro in Budapest.jpg",
+                "width": 1866,
+                "height": 1244
+            }
+        ]
+    },
+    {
+        "section": "Venitybrug",
+        "photos": [
+            {
+                "url": "assets/images/featured/VenityBrug.jpg",
+                "width": 1920,
+                "height": 1371
+            }
+        ]
+    },
+    {
+        "section": "Hero-Carousel",
+        "photos": [
+            {
+                "url": "assets/images/featured/hero-carousel/CarolineByBrussels.jpg",
+                "width": 1920,
+                "height": 1280
+            },
+            {
+                "url": "assets/images/featured/hero-carousel/VenityBrug.jpg",
+                "width": 1920,
+                "height": 1371
+            },
+            {
+                "url": "assets/images/featured/hero-carousel/web higher-119.jpg",
+                "width": 1920,
+                "height": 2687
+            },
+            {
+                "url": "assets/images/featured/hero-carousel/web-444.jpg",
+                "width": 1920,
+                "height": 1280
+            }
+        ]
+    },
+    {
+        "section": "Web Even More Higherderder-1-2",
+        "photos": [
+            {
+                "url": "assets/images/featured/web even more higherderder-1-2.jpg",
+                "width": 1639,
+                "height": 1093
+            }
+        ]
+    },
+    {
+        "section": "Web Higher-119",
+        "photos": [
+            {
+                "url": "assets/images/featured/web higher-119.jpg",
+                "width": 1920,
+                "height": 2687
+            }
+        ]
+    },
+    {
+        "section": "Web Higher-83",
+        "photos": [
+            {
+                "url": "assets/images/featured/web higher-83.jpg",
+                "width": 1340,
+                "height": 1876
+            }
+        ]
+    }
+]

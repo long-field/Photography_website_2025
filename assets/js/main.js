@@ -1,17 +1,20 @@
-
-    let isMainInitialized = false;document.addEventListener('includesLoaded', () => {
+let isMainInitialized = false;
+document.addEventListener('includesLoaded', () => {
     if (isMainInitialized) {
         return;
     }
     initializeMain();
-});document.addEventListener('DOMContentLoaded', () => {
+});
+document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (!isMainInitialized) {
             initializeMain();
         }
     }, 1000);
-});function initializeMain() {
-    isMainInitialized = true;let galleryData = null;
+});
+function initializeMain() {
+    isMainInitialized = true;
+    let galleryData = null;
     let heroImages = [];
     let currentHeroIndex = 0;
     let heroInterval = null;
@@ -142,19 +145,24 @@
     };
 
     if (heroSlider) {
-        fetch('assets/data/hero-carousel.json')
+        fetch('assets/data/featured.json')
             .then(response => {
-                if (!response.ok) throw new Error('Failed to load hero-carousel.json');
+                if (!response.ok) throw new Error('Failed to load featured.json');
                 return response.json();
             })
-            .then(images => {
+            .then(data => {
+                const heroCarouselData = data.find(section => section.section === 'Hero-Carousel');
+                if (!heroCarouselData || !heroCarouselData.photos) {
+                    throw new Error('Hero-Carousel section not found or is empty in featured.json');
+                }
+
                 heroSlider.innerHTML = '';
                 heroImages = [];
 
-                images.forEach((image, index) => {
+                heroCarouselData.photos.forEach((image, index) => {
                     const img = document.createElement('img');
                     img.dataset.src = image.url;
-                    img.alt = image.alt || '';
+                    img.alt = image.title || '';
                     img.className = index === 0 ? 'active' : '';
                     img.style.transition = 'opacity 0.5s ease-in-out';
                     img.style.position = 'absolute';
@@ -178,7 +186,7 @@
                 lazyLoadImages();
                 startHeroCarousel();
             })
-            .catch(error => console.error('Error loading hero-carousel.json:', error));
+            .catch(error => console.error('Error loading featured.json:', error));
     }
 
 // =============================
@@ -189,6 +197,11 @@
 
 // Function to render the sub-gallery images
     const renderSubGallery = (images) => {
+        if (!images || images.length === 0) {
+            portfolioContainer.innerHTML = '<p>Geen afbeeldingen gevonden in deze galerij.</p>';
+            return;
+        }
+
         portfolioContainer.innerHTML = '';
         backButton.style.display = 'block';
 
@@ -199,7 +212,7 @@
             const a = document.createElement('a');
             a.href = image.url;
             a.setAttribute('data-lightbox', 'sub-gallery');
-            a.setAttribute('data-title', image.description);
+            a.setAttribute('data-title', image.description || image.title);
 
             const img = document.createElement('img');
             img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
@@ -219,41 +232,29 @@
         portfolioContainer.innerHTML = '';
         backButton.style.display = 'none';
 
-        if (!galleryData || !galleryData[category]) return;
+        if (!galleryData || !galleryData[category]) {
+            portfolioContainer.innerHTML = '<p>Galerij niet gevonden.</p>';
+            return;
+        }
 
         const categoryData = galleryData[category];
 
-        if (Array.isArray(categoryData)) {
-            // RENDER SIMPLE GALLERY (no subcategories)
-            const grid = document.createElement('div');
-            grid.className = 'gallery-grid';
-
-            categoryData.forEach(image => {
-                const a = document.createElement('a');
-                a.href = image.url;
-                a.setAttribute('data-lightbox', category);
-                a.setAttribute('data-title', image.description);
-
-                const img = document.createElement('img');
-                img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-                img.dataset.src = image.url;
-                img.alt = image.title || '';
-
-                a.appendChild(img);
-                grid.appendChild(a);
-            });
-
-            portfolioContainer.appendChild(grid);
-        } else if (categoryData.subcategories) {
+        if (categoryData.subcategories && categoryData.subcategories.length > 0) {
             // RENDER SUBCATEGORY VIEW
             const subGrid = document.createElement('div');
             subGrid.className = 'sub-gallery-grid';
 
-            categoryData.subcategories.forEach((sub, index) => {
+            categoryData.subcategories.forEach((sub) => {
                 const subCard = document.createElement('div');
                 subCard.className = 'sub-gallery-card';
-                subCard.style.backgroundImage = `url(${sub.heroImage})`;
+
+                // De hero_image wordt nu direct als een <img>-tag toegevoegd
+                // We gebruiken een fallback om te voorkomen dat de app crasht als de URL mist
+                const imageUrl = sub.hero_image && sub.hero_image.url ? sub.hero_image.url : '';
+                const imageAlt = sub.title; // Gebruik de titel als alt-tekst voor toegankelijkheid
+
                 subCard.innerHTML = `
+                <img src="${imageUrl}" alt="${imageAlt}" class="sub-gallery-image">
                 <div class="sub-gallery-overlay"></div>
                 <div class="sub-gallery-text">
                     <h3>${sub.title}</h3>
@@ -269,6 +270,11 @@
             });
 
             portfolioContainer.appendChild(subGrid);
+        } else if (categoryData.images && categoryData.images.length > 0) {
+            // RENDER SIMPLE GALLERY (no subcategories)
+            renderSubGallery(categoryData.images);
+        } else {
+            portfolioContainer.innerHTML = '<p>Deze galerij bevat momenteel geen afbeeldingen.</p>';
         }
 
         lazyLoadImages();
@@ -284,9 +290,9 @@
     if (galleryLinks && portfolioContainer) {
         galleryLinks.innerHTML = '';
         gallerySelect.innerHTML = '';
-        fetch('assets/data/images.json')
+        fetch('assets/data/portfolio.json')
             .then(response => {
-                if (!response.ok) throw new Error('Failed to load images.json');
+                if (!response.ok) throw new Error('Failed to load portfolio.json');
                 return response.json();
             })
             .then(data => {
@@ -294,9 +300,8 @@
                 const categories = Object.keys(data);
 
                 categories.forEach((category) => {
-                    // Check if the data has a 'title' property, otherwise use the key
                     const categoryData = data[category];
-                    const categoryTitle = categoryData.title || category.charAt(0).toUpperCase() + category.slice(1);
+                    const categoryTitle = categoryData.title || category;
 
                     const li = document.createElement('li');
                     const button = document.createElement('button');
@@ -350,7 +355,7 @@
                     renderGallery(activeCategory);
                 });
             })
-            .catch(error => console.error('Error loading images.json:', error));
+            .catch(error => console.error('Error loading portfolio.json:', error));
     }
 
 // Call the dynamic text function after all includes are loaded
@@ -364,4 +369,5 @@
         } else {
             header.classList.remove('scrolled');
         }
-    });}
+    });
+}
