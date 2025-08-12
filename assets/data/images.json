@@ -1,55 +1,53 @@
 {
-  "weddings": {
-    "title": "Wedding Photography",
+  "huwelijk": {
+    "title": "Bruidsfotografie",
     "subcategories": [
       {
         "title": "Jane & John's Wedding",
         "date": "October 26, 2024",
-        "heroImage": "assets/images/portraits/banwpregnancyportret.jpg",
+        "heroImage": "assets/images/portfolio/portraits/banwpregnancyportret.jpg",
         "description": "A beautiful summer wedding filled with laughter, tears, and unforgettable moments.",
         "images": [
-          { "url": "assets/carouselimages/web-423.jpg", "title": "First Dance", "description": "The couple's emotional first dance." },
-          { "url": "assets/carouselimages/web even more higher-25.jpg", "title": "Ceremony", "description": "Exchanging vows during the ceremony." },
-          { "url": "assets/carouselimages/web even more higher-26.jpg", "title": "Bride's Portrait", "description": "A stunning portrait of the bride." }
+          { "url": "assets/images/portfolio/portraits/banwpregnancyportret.jpg", "title": "First Dance", "description": "The couple's emotional first dance." },
+          { "url": "assets/images/portfolio/portraits/novaly.jpg", "title": "Ceremony", "description": "Exchanging vows during the ceremony." }
         ]
       },
       {
         "title": "Sarah & Michael's Wedding",
-        "heroImage": "assets/images/portraits/novaly.jpg",
+        "heroImage": "assets/images/portfolio/portraits/novaly.jpg",
         "date": "October 26, 2024",
         "description": "A timeless celebration in a historic chateau, capturing every detail.",
         "images": [
-          { "url": "assets/carouselimages/web-427.jpg", "title": "Wedding Party", "description": "The full wedding party celebrating." },
-          { "url": "assets/carouselimages/web-167.jpg", "title": "Cake Cutting", "description": "The joyful cake cutting moment." },
-          { "url": "assets/carouselimages/web-408.jpg", "title": "Groom's Portrait", "description": "A classic portrait of the groom." }
+          { "url": "assets/images/portfolio/artistic/artpicture.jpg", "title": "Wedding Party", "description": "The full wedding party celebrating." },
+          { "url": "assets/images/portfolio/portraits/novaly.jpg", "title": "Cake Cutting", "description": "The joyful cake cutting moment." }
         ]
       }
     ]
   },
   "artistic": [
     {
-      "url": "assets/images/artistic/artpicture.jpg",
+      "url": "assets/images/portfolio/artistic/artpicture.jpg",
       "title": "Art Picture",
       "description": "Artistic composition with creative flair.",
       "width": 3303,
       "height": 4624
     },
     {
-      "url": "assets/images/artistic/artpicturestairsinbudapest.jpg",
+      "url": "assets/images/portfolio/artistic/artpicturestairsinbudapest.jpg",
       "title": "Art Picture Stairs In Budapest",
       "description": "Artistic composition with creative flair.",
       "width": 1866,
       "height": 1244
     },
     {
-      "url": "assets/images/artistic/artsydrummer.jpg",
+      "url": "assets/images/portfolio/artistic/artsydrummer.jpg",
       "title": "Artsy Drummer",
       "description": "Artistic composition with creative flair.",
       "width": 2732,
       "height": 4096
     },
     {
-      "url": "assets/images/artistic/artsymodel.jpg",
+      "url": "assets/images/portfolio/artistic/artsymodel.jpg",
       "title": "Artsy Model",
       "description": "Artistic composition with creative flair.",
       "width": 4096,
@@ -58,14 +56,14 @@
   ],
   "fashion": [
     {
-      "url": "assets/images/fashion/fashionoutdoorspanishcitystairs.jpg",
+      "url": "assets/images/portfolio/fashion/fashionoutdoorspanishcitystairs.jpg",
       "title": "Fashion Outdoor Spanish City Stairs",
       "description": "Stylish fashion shot in vibrant settings.",
       "width": 3166,
       "height": 3958
     },
     {
-      "url": "assets/images/fashion/girlfashionshotoutdoor.jpg",
+      "url": "assets/images/portfolio/fashion/girlfashionshotoutdoor.jpg",
       "title": "Girl Fashion Shot Outdoor",
       "description": "Stylish fashion shot in vibrant settings.",
       "width": 2015,
@@ -74,14 +72,14 @@
   ],
   "music": [
     {
-      "url": "assets/images/music/coolbassplayer.jpg",
+      "url": "assets/images/portfolio/music/coolbassplayer.jpg",
       "title": "Cool Bass Player",
       "description": "Dynamic music-themed photography.",
       "width": 4096,
       "height": 2303
     },
     {
-      "url": "assets/images/music/guitarplayerlive.jpg",
+      "url": "assets/images/portfolio/music/guitarplayerlive.jpg",
       "title": "Guitar Player Live",
       "description": "Dynamic music-themed photography.",
       "width": 1372,
@@ -90,14 +88,14 @@
   ],
   "family": [
     {
-      "url": "assets/images/family/kidsfamilyshootbandw.jpg",
+      "url": "assets/images/portfolio/family/kidsfamilyshootbandw.jpg",
       "title": "Kids Family Shoot Bandw",
       "description": "Heartwarming family moment.",
       "width": 3195,
       "height": 4472
     },
     {
-      "url": "assets/images/family/kiidshootoutdoorwithballoon.jpg",
+      "url": "assets/images/portfolio/family/kiidshootoutdoorwithballoon.jpg",
       "title": "Kiid Shoot Outdoor With Balloon",
       "description": "Heartwarming family moment.",
       "width": 5072,
@@ -106,14 +104,14 @@
   ],
   "ballet": [
     {
-      "url": "assets/images/ballet/ballletposebetweentrees.jpg",
+      "url": "assets/images/portfolio/ballet/ballletposebetweentrees.jpg",
       "title": "Balllet Pose Between Trees",
       "description": "Graceful ballet pose in serene settings.",
       "width": 2702,
       "height": 3782
     },
     {
-      "url": "assets/images/ballet/outdoorballetposesvenity.jpg",
+      "url": "assets/images/portfolio/ballet/outdoorballetposesvenity.jpg",
       "title": "Outdoor Ballet Pose Svenity",
       "description": "Graceful ballet pose in serene settings.",
       "width": 2504,
@@ -122,35 +120,35 @@
   ],
   "golden-hour": [
     {
-      "url": "assets/images/golden-hour/coolteenagegirlgoldenhourshoot.jpg",
+      "url": "assets/images/portfolio/golden-hour/coolteenagegirlgoldenhourshoot.jpg",
       "title": "Cool Teenage Girl Golden Hour Shoot",
       "description": "Golden hour glow in stunning light.",
       "width": 3963,
       "height": 2644
     },
     {
-      "url": "assets/images/golden-hour/goldenhourlightblonderedhair.jpg",
+      "url": "assets/images/portfolio/golden-hour/goldenhourlightblonderedhair.jpg",
       "title": "Golden Hour Light Blonde Red Hair",
       "description": "Golden hour glow in stunning light.",
       "width": 1340,
       "height": 1876
     },
     {
-      "url": "assets/images/golden-hour/girlshootgoldencolrs.jpg",
+      "url": "assets/images/portfolio/golden-hour/girlshootgoldencolrs.jpg",
       "title": "Girl Shoot Golden Colrs",
       "description": "Golden hour glow in stunning light.",
       "width": 4820,
       "height": 2711
     },
     {
-      "url": "assets/images/golden-hour/girlshoottree.jpg",
+      "url": "assets/images/portfolio/golden-hour/girlshoottree.jpg",
       "title": "Girl Shoot Tree",
       "description": "Golden hour glow in stunning light.",
       "width": 4217,
       "height": 2814
     },
     {
-      "url": "assets/images/golden-hour/mybestshoteverwithcarolineasmodel.jpg",
+      "url": "assets/images/portfolio/golden-hour/mybestshoteverwithcarolineasmodel.jpg",
       "title": "My Best Shot Ever With Caroline As Model",
       "description": "Golden hour glow in stunning light.",
       "width": 2048,

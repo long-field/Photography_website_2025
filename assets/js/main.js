@@ -48,62 +48,9 @@
             // Set the document title for SEO
             document.title = data[document.body.dataset.page].pageTitle || document.title;
 
-            // Check if the current page is the Home page
-            if (document.querySelector('.hero')) {
-                document.querySelector('.hero h1').textContent = data.home.heroHeading;
-                document.querySelector('.gallery-preview h2').textContent = data.home.galleryHeading;
-                const galleryIntroParagraph = document.createElement('p');
-                galleryIntroParagraph.textContent = data.home.galleryIntro;
-                const galleryGridElement = document.querySelector('.gallery-preview .gallery-grid');
-                if (galleryGridElement) {
-                    document.querySelector('.gallery-preview').insertBefore(galleryIntroParagraph, galleryGridElement);
-                }
-
-                // Fetch and populate featured images for the gallery preview
-                fetch('assets/data/featured.json')
-                    .then(response => {
-                        if (!response.ok) throw new Error('Failed to load featured.json');
-                        return response.json();
-                    })
-                    .then(images => {
-                        const galleryGrid = document.querySelector('.gallery-preview .gallery-grid');
-                        galleryGrid.innerHTML = ''; // Clear any existing content
-
-                        images.forEach(image => {
-                            const a = document.createElement('a');
-                            a.href = image.url;
-                            a.setAttribute('data-lightbox', 'featured-gallery');
-                            a.setAttribute('data-title', image.description);
-
-                            const img = document.createElement('img');
-                            img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; // Placeholder
-                            img.dataset.src = image.url;
-                            img.alt = image.title || '';
-
-                            a.appendChild(img);
-                            galleryGrid.appendChild(a);
-                        });
-
-                        lazyLoadImages(); // Lazy load the new images
-                    })
-                    .catch(error => console.error('Error loading featured.json:', error));
-            }
-
             // Check if the current page is the Portfolio page
             if (document.querySelector('.portfolio')) {
                 document.querySelector('.portfolio-header h1').textContent = data.portfolio.portfolioHeading;
-            }
-
-            // Check if the current page is the About page
-            if (document.querySelector('.about')) {
-                document.querySelector('.about h1').textContent = data.about.aboutHeading;
-                const p1 = document.querySelector('.about p:first-of-type');
-                if (p1) {
-                    p1.textContent = data.about.aboutParagraph1;
-                    const p2 = document.createElement('p');
-                    p2.textContent = data.about.aboutParagraph2;
-                    p1.parentNode.insertBefore(p2, p1.nextSibling);
-                }
             }
 
             // Check if the current page is the Contact page
@@ -235,54 +182,7 @@
     }
 
 // =============================
-// ABOUT CAROUSEL LOGIC
-// =============================
-    const aboutCarousel = document.querySelector('.about-carousel');
-
-    const showAboutSlide = (index) => {
-        aboutImages.forEach((img, i) => {
-            img.classList.toggle('active', i === index);
-        });
-    };
-
-    const nextAboutSlide = () => {
-        currentAboutIndex = (currentAboutIndex + 1) % aboutImages.length;
-        showAboutSlide(currentAboutIndex);
-    };
-
-    const startAboutCarousel = () => {
-        if (aboutInterval) clearInterval(aboutInterval);
-        aboutInterval = setInterval(nextAboutSlide, 3000);
-    };
-
-    if (aboutCarousel) {
-        fetch('assets/data/about-carousel.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to load about-carousel.json');
-                return response.json();
-            })
-            .then(images => {
-                aboutCarousel.innerHTML = '';
-                aboutImages = [];
-
-                images.forEach((image, index) => {
-                    const img = document.createElement('img');
-                    img.dataset.src = image.url;
-                    img.alt = image.alt || '';
-                    img.className = index === 0 ? 'active' : '';
-
-                    aboutImages.push(img);
-                    aboutCarousel.appendChild(img);
-                });
-
-                lazyLoadImages();
-                startAboutCarousel();
-            })
-            .catch(error => console.error('Error loading about-carousel.json:', error));
-    }
-
-// =============================
-// GALLERY LOGIC (UPDATED FOR SUBCATEGORIES)
+// GALLERY LOGIC
 // =============================
     const portfolioContainer = document.querySelector('.portfolio-content');
     const backButton = document.querySelector('.back-button');
