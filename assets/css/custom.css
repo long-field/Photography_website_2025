@@ -6,6 +6,7 @@
     --text-color-light: #f5f5f5;
     --background-color: #fff;
     --divider-color: #e0e0e0;
+    --accent-color: #7a5438;
 }
 
 /* Universal box-sizing fix to prevent layout issues */
@@ -125,31 +126,9 @@ header.scrolled {
     z-index: 900;
 }
 
-/* Added styles for the language switch */
+/* Added styles for the language switch - now hidden */
 .language-switch {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-right: 1rem;
-    position: absolute;
-    right: 5rem;
-    top: 1rem;
-}
-
-.language-switch button {
-    background: none;
-    border: 1px solid var(--text-color-dark);
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-    font-family: var(--secondary-font);
-    cursor: pointer;
-    color: var(--text-color-dark);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.language-switch button.active {
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
+    display: none; /* Deactivated as per user request */
 }
 
 
@@ -158,32 +137,60 @@ header.scrolled {
    ------------------- */
 .hero {
     position: relative;
-    height: calc(100vh ); /* Full viewport minus header height */
+    width: 100%;
+    height: 100vh; /* Set to full viewport height */
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     color: var(--text-color-light);
     background-color: transparent;
     z-index: 1;
 }
-.hero h1 {
-    position: relative;
+
+/* Nieuwe container voor de dynamisch gepositioneerde tekst */
+.hero-text-container {
+    position: absolute;
     z-index: 2;
-    font-size: 4rem;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px); /* Lichte animatie bij verschijnen */
+    transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+}
+
+/* Maak de tekstcontainer actief en zichtbaar */
+.hero-text-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tekststijlen binnen de container */
+.hero-text-container h1 {
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
     color: var(--text-color-light);
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
-.hero h2 {
-    position: relative;
-    z-index: 2;
-    font-size: 1.5rem;
+.hero-text-container h2 {
+    font-size: clamp(1rem, 2vw, 1.5rem); /* Responsive font size */
     color: var(--text-color-light);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-top: 1rem;
 }
+
+/* Extra stijl voor de 'boxed' look */
+.hero-text-container.text-box {
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparante witte achtergrond */
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 1.5rem;
+    color: var(--text-color-dark);
+}
+
+.hero-text-container.text-box h1,
+.hero-text-container.text-box h2 {
+    color: var(--text-color-dark);
+    text-shadow: none;
+}
+
+
 .hero-slider {
     position: absolute;
     top: 0;
@@ -192,10 +199,14 @@ header.scrolled {
     height: 100%;
 }
 .hero-slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
     transition: opacity 2s ease-in-out;
-    object-fit: contain; /* Changed to contain to respect heights without cutting off; use cover if preferred for landscapes */
-    background-attachment: fixed;
+    object-fit: cover; /* Changed to cover for full background effect */
 }
 
 .hero-slider img.active {
@@ -234,6 +245,16 @@ header.scrolled {
     border-bottom: none;
 }
 
+/* Nieuwe stijl voor de separator */
+.decorative-divider {
+    width: 100%;
+    max-width: 300px;
+    height: 3px;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, #222 50%, rgba(0,0,0,0) 100%);
+    margin: 5rem auto;
+    border: none;
+}
+
 /* -------------------
    NEW SECTIONS
    ------------------- */
@@ -251,22 +272,18 @@ header.scrolled {
     margin: 1.5rem auto;
 }
 
+/* Updated parallax styling for the quote section */
 .quote-section {
     padding: 5rem 0;
     text-align: center;
     position: relative;
     color: var(--text-color-light);
     overflow: hidden;
-}
-
-.quote-section img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+    background-image: url(''); /* Will be set dynamically by JS */
+    background-attachment: fixed; /* This is the key for parallax effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .quote-section .overlay {
@@ -276,7 +293,7 @@ header.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0; /* Changed from -1 to 0 to be on top of the background, but below the text */
 }
 
 .quote-section blockquote {
@@ -304,79 +321,74 @@ header.scrolled {
     text-align: center;
 }
 
+/* Updated styling for the client quotes section to be a slider */
 .client-quotes {
     padding: 5rem 0;
     text-align: center;
-}
-
-.client-quotes .quote-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.client-quotes .quote-card {
+    overflow: hidden;
     position: relative;
-    padding: 2rem;
     background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-    text-align: center;
-}
-.client-quotes .quote-card:hover {
-    transform: translateY(-5px);
-}
-.quote-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
 }
 
-.quote-card p {
-    font-style: italic;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+.quotes-slider-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
 }
-.quote-card cite {
+
+.quotes-slider {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.quote-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 2rem;
+}
+
+.quote-slide blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--text-color-dark);
+}
+
+.quote-slide cite {
     display: block;
+    margin-top: 1rem;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
 }
 
-.about-me-section {
-    padding: 5rem 0;
-    text-align: center;
-}
-
-.about-me-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 3rem;
-    text-align: left;
-}
-
-.about-me-text h2 {
-    text-align: left;
-    margin-top: 0;
-}
-
-.about-me-images {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.about-me-images img {
+.quotes-slider-nav {
+    position: absolute;
+    top: 50%;
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 1rem;
+}
+
+.quotes-slider-nav button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.quotes-slider-nav button:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
 }
 
 .booking-section {
@@ -399,6 +411,92 @@ header.scrolled {
 .booking-section a.button:hover {
     background-color: #444;
 }
+
+/* New styling for the multi-sectioned About Me page */
+.about-me-section {
+    padding: 5rem 0;
+    background-color: var(--background-color);
+}
+
+.about-me-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-bottom: 8rem;
+    position: relative;
+}
+
+.about-me-item:nth-child(even) {
+    direction: rtl; /* Flip the order for every second item */
+}
+
+.about-me-item:nth-child(even) .about-text {
+    direction: ltr; /* Reset text direction */
+}
+
+.about-me-text {
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.about-me-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.about-me-text p {
+    font-size: 1.1rem;
+}
+
+.about-me-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.about-me-item:nth-child(even) .about-me-text h3::after {
+    right: 0;
+    left: auto;
+}
+
+.about-me-image-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    z-index: 1;
+}
+
+.about-me-image-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-color);
+    z-index: -1;
+}
+
+.about-me-item:nth-child(even) .about-me-image-container::before {
+    left: auto;
+    right: -20px;
+}
+
+.about-me-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 /* -------------------
    GALLERY PREVIEW
    ------------------- */
@@ -663,6 +761,66 @@ footer .logo {
 /* -------------------
    MEDIA QUERIES
    ------------------- */
+@media (max-width: 1024px) {
+    .hero-text-container {
+        padding: 1rem;
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        top: auto !important;
+        bottom: 5% !important;
+        text-align: center !important;
+        transform: none !important;
+    }
+
+    .hero-text-container h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text-container h2 {
+        font-size: 1.25rem;
+    }
+
+    .about-me-item {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-me-item:nth-child(even) {
+        direction: ltr; /* Reset direction on mobile */
+    }
+
+    .about-me-image-container::before {
+        display: none; /* Hide border decoration on mobile */
+    }
+
+    .about-me-image-container img {
+        box-shadow: none; /* Remove shadow on mobile */
+    }
+
+    .about-me-text {
+        text-align: center;
+    }
+
+    .about-me-text h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .about-me-item:nth-child(even) .about-me-text h3::after {
+        right: auto;
+    }
+
+    .about-me-section .container {
+        padding: 0 1rem;
+    }
+
+    .quote-section {
+        background-attachment: scroll; /* Disable parallax on mobile for better performance */
+    }
+}
+
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
@@ -700,18 +858,6 @@ footer .logo {
         display: block;
     }
 
-    .about-me-content {
-        grid-template-columns: 1fr;
-    }
-
-    .about-me-text h2 {
-        text-align: center;
-    }
-
-    .about-me-images {
-        order: -1; /* Pushes images to the top on mobile */
-    }
-
     .gallery-nav ul {
         display: none;
     }
@@ -719,9 +865,4 @@ footer .logo {
     .gallery-select {
         display: block;
     }
-
-    .language-switch {
-        right: 3rem;
-    }
 }
-

@@ -50,31 +50,6 @@
         ]
     },
     {
-        "section": "Hero-Carousel",
-        "photos": [
-            {
-                "url": "assets/images/featured/hero-carousel/CarolineByBrussels.jpg",
-                "width": 1920,
-                "height": 1280
-            },
-            {
-                "url": "assets/images/featured/hero-carousel/VenityBrug.jpg",
-                "width": 1920,
-                "height": 1371
-            },
-            {
-                "url": "assets/images/featured/hero-carousel/web higher-119.jpg",
-                "width": 1920,
-                "height": 2687
-            },
-            {
-                "url": "assets/images/featured/hero-carousel/web-444.jpg",
-                "width": 1920,
-                "height": 1280
-            }
-        ]
-    },
-    {
         "section": "Web Even More Higherderder-1-2",
         "photos": [
             {

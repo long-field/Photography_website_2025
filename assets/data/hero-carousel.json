@@ -1,0 +1,113 @@
+{
+  "section": "Hero-Carousel",
+  "photos": [
+    {
+      "url": "assets/images/featured/hero-carousel/CarolineByBrussels.jpg",
+      "width": 1920,
+      "height": 1280,
+      "text_blocks": [
+        {
+          "title": "Het begin van een nieuw verhaal",
+          "text": "Tijdloze fotografie voor onvergetelijke momenten.",
+          "style": "default",
+          "position": {
+            "top": "auto",
+            "left": "5%",
+            "bottom": "15%",
+            "right": "auto"
+          },
+          "size": {
+            "width": "50%",
+            "height": "auto"
+          },
+          "alignment": "left"
+        }
+      ]
+    },
+    {
+      "url": "assets/images/featured/hero-carousel/VenityBrug.jpg",
+      "width": 1920,
+      "height": 1371,
+      "text_blocks": [
+        {
+          "title": "Jouw reis, vastgelegd",
+          "text": "Vang de schoonheid van het moment, overal ter wereld.",
+          "style": "boxed",
+          "position": {
+            "top": "auto",
+            "left": "5%",
+            "bottom": "10%",
+            "right": "auto"
+          },
+          "size": {
+            "width": "40%",
+            "height": "auto"
+          },
+          "alignment": "left"
+        },
+        {
+          "title": "De magie van de stad",
+          "text": "Een blik die meer zegt dan duizend woorden.",
+          "style": "default",
+          "position": {
+            "top": "20%",
+            "left": "auto",
+            "bottom": "auto",
+            "right": "5%"
+          },
+          "size": {
+            "width": "auto",
+            "height": "auto"
+          },
+          "alignment": "right"
+        }
+      ]
+    },
+    {
+      "url": "assets/images/featured/hero-carousel/web higher-119.jpg",
+      "width": 1920,
+      "height": 2687,
+      "text_blocks": [
+        {
+          "title": "Emotie in elk detail",
+          "text": "Vang de essentie van een moment.",
+          "style": "default",
+          "position": {
+            "top": "20%",
+            "left": "50%",
+            "bottom": "auto",
+            "right": "auto"
+          },
+          "size": {
+            "width": "50%",
+            "height": "auto"
+          },
+          "alignment": "center"
+        }
+      ]
+    },
+    {
+      "url": "assets/images/featured/hero-carousel/web-444.jpg",
+      "width": 1920,
+      "height": 1280,
+      "text_blocks": [
+        {
+          "title": "De kracht van eenvoud",
+          "text": "Speel met schaduw, vang het moment.",
+          "style": "boxed",
+          "position": {
+            "top": "15%",
+            "left": "auto",
+            "bottom": "auto",
+            "right": "10%"
+          },
+          "size": {
+            "width": "30%",
+            "height": "auto"
+          },
+          "alignment": "right"
+        }
+      ]
+    }
+  ]
+}

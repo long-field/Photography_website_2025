@@ -1,461 +1,353 @@
-let isMainInitialized = false;
-let currentLanguage = 'nl'; // Default language
+// main.js
 
-document.addEventListener('includesLoaded', () => {
-    if (isMainInitialized) {
-        return;
-    }
-    initializeMain();
-});
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
+$(document).ready(function() {
+    // Scroll event listener om de 'scrolled' class toe te voegen aan de header
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $('header').addClass('scrolled');
+        } else {
+            $('header').removeClass('scrolled');
+        }
+    });
+
+    const page = $('body').data('page');
+    const lang = $('body').data('lang');
+
+    let isMainInitialized = false;
+
+    // Gebruik een custom event om te garanderen dat alles geladen is
+    $(document).on('includesLoaded', function() {
         if (!isMainInitialized) {
             initializeMain();
         }
-    }, 1000);
-});
-function initializeMain() {
-    isMainInitialized = true;
-    let galleryData = null;
-    let featuredData = null;
-    let siteContent = null;
-    let heroImages = [];
-    let currentHeroIndex = 0;
-    let heroInterval = null;
-
-    let aboutImages = [];
-    let currentAboutIndex = 0;
-    let aboutInterval = null;
-
-// A single IntersectionObserver for all lazy-loaded images
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.src = entry.target.dataset.src;
-                observer.unobserve(entry.target);
-            }
-        });
     });
 
-    const lazyLoadImages = () => {
-        const images = document.querySelectorAll('img[data-src]');
-        images.forEach(img => observer.observe(img));
-    };
+    async function initializeMain() {
+        isMainInitialized = true;
+        console.log("Main script is gestart.");
 
-// =============================
-// DYNAMIC TEXT & LANGUAGE LOGIC
-// =============================
-    const switchLanguage = (lang) => {
-        if (siteContent) {
-            currentLanguage = lang;
-            document.body.dataset.lang = lang;
-            updatePageText();
-        }
-    };
-
-    const setupLanguageSwitcher = () => {
-        const langSwitch = document.querySelector('.language-switch');
-        if (langSwitch) {
-            const buttons = langSwitch.querySelectorAll('button');
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    switchLanguage(button.dataset.lang);
-                });
-            });
-            // Set initial active button
-            const initialButton = langSwitch.querySelector(`button[data-lang="${currentLanguage}"]`);
-            if (initialButton) {
-                initialButton.classList.add('active');
-            }
-        }
-    };
-
-    const updatePageText = async () => {
+        // Laad de content uit de JSON-bestanden
         try {
-            // First, load static text
-            const responseText = await fetch('assets/data/page-text.json');
-            if (!responseText.ok) throw new Error('Failed to load page-text.json');
-            const dataText = await responseText.json();
+            const siteContentResponse = await fetch('assets/data/site-content.json');
+            const siteContentData = await siteContentResponse.json();
+            const nlContent = siteContentData.languages.nl;
 
-            // Then, load dynamic content
-            const responseContent = await fetch('assets/data/site-content.json');
-            if (!responseContent.ok) throw new Error('Failed to load site-content.json');
-            siteContent = await responseContent.json();
+            const featuredPhotosResponse = await fetch('assets/data/featured.json');
+            const featuredPhotosData = await featuredPhotosResponse.json();
 
-            const currentContent = siteContent.languages[currentLanguage];
-            const page = document.body.dataset.page;
+            const heroCarouselResponse = await fetch('assets/data/hero-carousel.json');
+            const heroCarouselData = await heroCarouselResponse.json();
 
-            // Update document title and static headings
-            if (dataText[page] && dataText[page].pageTitle) {
-                document.title = dataText[page].pageTitle;
+            console.log("JSON-bestanden geladen.");
+
+            if (page === 'home' && lang === 'nl') {
+                initHomePage(nlContent.homePage, featuredPhotosData, heroCarouselData);
+            } else if (page === 'portfolio' && lang === 'nl') {
+                initPortfolioPage(nlContent.portfolioPage, featuredPhotosData);
             }
-
-            // Update home page specific content
-            if (page === 'home') {
-                const heroTitle = document.querySelector('.hero h1');
-                const heroSubtitle = document.querySelector('.hero h2');
-                if (heroTitle) heroTitle.textContent = currentContent.heroCarousel.title;
-                if (heroSubtitle) heroSubtitle.textContent = currentContent.heroCarousel.subtitle;
-
-                const quoteBlock = document.querySelector('.quote-section blockquote');
-                const quoteCite = document.querySelector('.quote-section cite');
-                const quoteImage = document.querySelector('.quote-section img');
-                if (quoteBlock) quoteBlock.textContent = currentContent.quoteSection.quote;
-                if (quoteCite) quoteCite.textContent = currentContent.quoteSection.attribution;
-                if (quoteImage) quoteImage.src = currentContent.quoteSection.image;
-                if (quoteImage) quoteImage.alt = currentContent.quoteSection.quote;
-
-                const photographyTitle = document.querySelector('.photography-paragraph h2');
-                const photographyText = document.querySelector('.photography-paragraph p');
-                if (photographyTitle) photographyTitle.textContent = currentContent.photographyParagraph.title;
-                if (photographyText) photographyText.textContent = currentContent.photographyParagraph.text;
-
-                const aboutMeTitle = document.querySelector('.about-me-section h2');
-                const aboutMeIntro = document.querySelector('#about-intro');
-                const aboutMeStory = document.querySelector('#about-story');
-                const aboutMeWhy = document.querySelector('#about-why');
-                if (aboutMeTitle) aboutMeTitle.textContent = currentContent.aboutMe.title;
-                if (aboutMeIntro) aboutMeIntro.textContent = currentContent.aboutMe.introduction;
-                if (aboutMeStory) aboutMeStory.textContent = currentContent.aboutMe.personalStory;
-                if (aboutMeWhy) aboutMeWhy.textContent = currentContent.aboutMe.whyChooseMe;
-
-                const bookingTitle = document.querySelector('.booking-section h2');
-                const bookingText = document.querySelector('.booking-section p');
-                const bookingButton = document.querySelector('.booking-section a.button');
-                if (bookingTitle) bookingTitle.textContent = currentContent.bookingProcess.title;
-                if (bookingText) bookingText.textContent = currentContent.bookingProcess.text;
-                if (bookingButton) bookingButton.textContent = currentContent.bookingProcess.title;
-
-                renderClientQuotes(currentContent.clientQuotes);
-            }
-
-            // Update contact page specific content
-            if (page === 'contact') {
-                const contactHeading = document.querySelector('.contact h1');
-                const contactFormTitle = document.querySelector('.contact-form h2');
-                const contactFormText = document.querySelector('.contact-form p');
-                if (contactHeading) contactHeading.textContent = dataText.contact.contactHeading;
-                if (contactFormTitle) contactFormTitle.textContent = currentContent.contactForm.title;
-                if (contactFormText) contactFormText.textContent = currentContent.contactForm.text;
-            }
-            lazyLoadImages();
-
         } catch (error) {
-            console.error('Error fetching text data:', error);
+            console.error('Fout bij het laden van de site-content, featured.json of hero-carousel.json:', error);
         }
-    };
+    }
 
-    const renderClientQuotes = (quotes) => {
-        const quoteGrid = document.querySelector('.client-quotes .quote-grid');
-        if (!quoteGrid) return;
-        quoteGrid.innerHTML = '';
-        quotes.forEach(q => {
-            const quoteCard = document.createElement('div');
-            quoteCard.className = 'quote-card';
-            quoteCard.innerHTML = `
-                <img src="${q.image}" alt="Client testimonial image">
-                <p>"${q.quote}"</p>
-                <cite>${q.client}</cite>
-            `;
-            quoteGrid.appendChild(quoteCard);
+    // Functie voor homepage-logica met dynamische content
+    function initHomePage(content, photosData, heroCarouselData) {
+        console.log("Start met het vullen van de homepage.");
+
+        // ---- SEO en Algemene Teksten ----
+        document.title = content.pageTitle;
+        $('meta[name="description"]').attr('content', 'Tijdloze fotografie voor onvergetelijke levensverhalen.');
+
+        // ---- HERO CAROUSEL ----
+        const heroCarouselSection = heroCarouselData; // Gebruik de nieuwe data
+        const heroSection = $('.hero');
+        const heroSlider = $('.hero-slider');
+
+        // Verwijder alle oude content, inclusief de text containers
+        heroSection.find('h1, h2, .hero-text-container').remove();
+        heroSlider.find('img').remove();
+
+        if (heroCarouselSection && heroCarouselSection.photos) {
+            heroCarouselSection.photos.forEach((photo, index) => {
+                const img = $('<img>');
+                img.attr('src', photo.url);
+                img.attr('alt', `Carousel image ${index + 1}`);
+                img.addClass('hero-slide-image');
+
+                // Voeg een unieke data-index toe aan elke afbeelding en tekstblok
+                img.attr('data-index', index);
+
+                // Creëer de tekstblokken
+                if (photo.text_blocks) {
+                    photo.text_blocks.forEach((block, blockIndex) => {
+                        const textContainer = $('<div>').addClass('hero-text-container').attr('data-index', index);
+
+                        // Voeg de 'boxed' stijl toe indien gespecificeerd
+                        if (block.style === 'boxed') {
+                            textContainer.addClass('text-box');
+                        }
+
+                        // Pas de inline CSS-stijlen toe
+                        const position = block.position;
+                        const size = block.size;
+                        const alignment = block.alignment;
+
+                        textContainer.css({
+                            'top': position.top,
+                            'left': position.left,
+                            'bottom': position.bottom,
+                            'right': position.right,
+                            'width': size.width,
+                            'height': size.height,
+                            'text-align': alignment
+                        });
+
+                        if (block.title) {
+                            textContainer.append($('<h1>').text(block.title));
+                        }
+                        if (block.text) {
+                            textContainer.append($('<h2>').text(block.text));
+                        }
+
+                        heroSection.append(textContainer);
+                    });
+                }
+
+                heroSlider.append(img);
+            });
+
+            // Plaats de overlay als laatste
+            heroSlider.append($('<div>').addClass('hero-overlay'));
+        }
+        console.log("Hero-carousel gevuld.");
+
+        // ---- QUOTE SECTION (Parallax) ----
+        $('.quote-section blockquote').text(content.quoteSection.quote);
+        $('.quote-section cite').text(content.quoteSection.attribution);
+
+        const parallaxPhotoSection = photosData.find(item => item.section === 'Metro In Budapest');
+        if (parallaxPhotoSection && parallaxPhotoSection.photos.length > 0) {
+            $('.quote-section').css('background-image', `url(${parallaxPhotoSection.photos[0].url})`);
+        }
+        console.log("Parallax-achtergrond ingesteld.");
+
+        // ---- PHOTOGRAPHY PARAGRAPH SECTION ----
+        $('.photography-paragraph h2').text(content.photographyParagraph.title);
+        $('.photography-paragraph p').text(content.photographyParagraph.text);
+
+        // ---- CLIENT QUOTES SECTION ----
+        const quotesSlider = $('.quotes-slider');
+        quotesSlider.empty();
+        $('.client-quotes h2').text(content.clientQuotes.title);
+
+        content.clientQuotes.quotes.forEach((quoteObj, index) => {
+            const quoteSlide = $('<div>').addClass('quote-slide').attr('data-index', index);
+            const blockquote = $('<blockquote>').text(`"${quoteObj.quote}"`);
+            const cite = $('<cite>').text(quoteObj.client);
+            quoteSlide.append(blockquote, cite);
+            quotesSlider.append(quoteSlide);
         });
-    };
+        console.log("Klantrecensies gevuld.");
 
-// =============================
-// HAMBURGER MENU LOGIC
-// =============================
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.nav-menu');
-    const body = document.body;
 
-    const overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    body.appendChild(overlay);
+        // ---- ABOUT ME SECTION ----
+        const aboutMeSection = $('#about-section');
+        aboutMeSection.find('.about-me-intro h2').text(content.aboutMe.title);
+        aboutMeSection.find('.about-me-intro p').text(content.aboutMe.introduction);
 
-    if (hamburger && nav) {
-        const toggleMenu = () => {
-            nav.classList.toggle('active');
-            overlay.classList.toggle('active');
-            hamburger.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+        aboutMeSection.find('.about-me-item').remove();
+
+        const aboutMeImages = {
+            'Mijn Verhaal': photosData.find(item => item.section === 'Web Higher-83')?.photos[0]?.url,
+            'Mijn Visie en Stijl': photosData.find(item => item.section === 'Web Even More Higherderder-1-2')?.photos[0]?.url,
+            'Mijn Passie': photosData.find(item => item.section === 'Web Higher-119')?.photos[0]?.url
         };
 
-        hamburger.addEventListener('click', (event) => {
-            event.stopPropagation();
-            toggleMenu();
-        });
+        content.aboutMe.items.forEach((item, index) => {
+            const aboutMeItem = $('<div>').addClass('about-me-item');
+            const aboutMeText = $('<div>').addClass('about-me-text');
+            const aboutMeImageContainer = $('<div>').addClass('about-me-image-container');
 
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', (event) => {
-                setTimeout(() => {
-                    nav.classList.remove('active');
-                    overlay.classList.remove('active');
-                    hamburger.innerHTML = '☰';
-                }, 100);
-            });
-        });
+            aboutMeText.append($('<h3>').text(item.title));
+            aboutMeText.append($('<p>').text(item.text));
 
-        overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-                hamburger.innerHTML = '☰';
+            const img = $('<img>').attr('src', aboutMeImages[item.title] || '').attr('alt', item.imageAlt || '');
+            aboutMeImageContainer.append(img);
+
+            if (index % 2 === 0) {
+                aboutMeItem.append(aboutMeText, aboutMeImageContainer);
+            } else {
+                aboutMeItem.append(aboutMeText, aboutMeImageContainer);
             }
+
+            aboutMeSection.append(aboutMeItem);
         });
-
-        document.addEventListener('click', (event) => {
-            if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-                hamburger.innerHTML = '☰';
-            }
-        });
-    }
-
-// =============================
-// HERO SLIDER LOGIC
-// =============================
-    const heroSlider = document.querySelector('.hero-slider');
-
-    const showHeroSlide = (index) => {
-        heroImages.forEach((img, i) => {
-            img.classList.toggle('active', i === index);
-        });
-    };
-
-    const nextHeroSlide = () => {
-        currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
-        showHeroSlide(currentHeroIndex);
-    };
-
-    const startHeroCarousel = () => {
-        if (heroInterval) clearInterval(heroInterval);
-        heroInterval = setInterval(nextHeroSlide, 5000); // Increased interval for better readability
-        window.scrollTo(0, 0);
-    };
-
-    if (heroSlider) {
-        fetch('assets/data/featured.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to load featured.json');
-                return response.json();
-            })
-            .then(data => {
-                featuredData = data;
-                const heroCarouselData = featuredData.find(section => section.section === 'Hero-Carousel');
-                if (!heroCarouselData || !heroCarouselData.photos) {
-                    throw new Error('Hero-Carousel section not found or is empty in featured.json');
-                }
-
-                heroSlider.innerHTML = '';
-                heroImages = [];
-
-                heroCarouselData.photos.forEach((image, index) => {
-                    const img = document.createElement('img');
-                    img.dataset.src = image.url;
-                    img.alt = image.title || '';
-                    img.className = index === 0 ? 'active' : '';
-                    img.style.transition = 'opacity 2s ease-in-out'; // Updated transition for smoother fade
-                    img.style.position = 'absolute';
-                    img.style.top = '0';
-                    img.style.left = '0';
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.pointerEvents = 'none';
-                    img.style.objectFit = 'cover'; // Use cover for hero images
-
-                    heroImages.push(img);
-                    heroSlider.appendChild(img);
-                });
-
-                lazyLoadImages();
-                startHeroCarousel();
-            })
-            .catch(error => console.error('Error loading featured.json:', error));
-    }
+        console.log("Over-mij-sectie gevuld.");
 
 
-// =============================
-// GALLERY LOGIC
-// =============================
-    const portfolioContainer = document.querySelector('.portfolio-content');
-    const backButton = document.querySelector('.back-button');
+        // ---- BOOKING SECTION ----
+        $('.booking-section h2').text(content.bookingProcess.title);
+        $('.booking-section p').text(content.bookingProcess.text);
+        $('.booking-section a.button').text(content.bookingProcess.buttonText);
+        console.log("Boekingssectie gevuld.");
 
-// Function to render the sub-gallery images
-    const renderSubGallery = (images) => {
-        if (!images || images.length === 0) {
-            portfolioContainer.innerHTML = '<p>Geen afbeeldingen gevonden in deze galerij.</p>';
-            return;
+
+        // ---- HERO SLIDER FUNCTIONALITY ----
+        let heroImageIndex = 0;
+        const heroImages = $('.hero-slider .hero-slide-image');
+        const heroTexts = $('.hero-text-container');
+        const totalSlides = heroImages.length;
+
+        // Initialiseer de eerste slide als actief
+        if (totalSlides > 0) {
+            heroImages.filter(`[data-index='0']`).addClass('active');
+            heroTexts.filter(`[data-index='0']`).addClass('active');
         }
 
-        portfolioContainer.innerHTML = '';
-        backButton.style.display = 'block';
-
-        const grid = document.createElement('div');
-        grid.className = 'gallery-grid';
-
-        images.forEach(image => {
-            const a = document.createElement('a');
-            a.href = image.url;
-            a.setAttribute('data-lightbox', 'sub-gallery');
-            a.setAttribute('data-title', image.description || image.title);
-
-            const img = document.createElement('img');
-            img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-            img.dataset.src = image.url;
-            img.alt = image.title || '';
-
-            a.appendChild(img);
-            grid.appendChild(a);
-        });
-
-        portfolioContainer.appendChild(grid);
-        lazyLoadImages();
-    };
-
-// Main function to render the portfolio categories/subcategories
-    const renderGallery = (category) => {
-        portfolioContainer.innerHTML = '';
-        backButton.style.display = 'none';
-
-        if (!galleryData || !galleryData[category]) {
-            portfolioContainer.innerHTML = '<p>Galerij niet gevonden.</p>';
-            return;
+        function showNextHeroSlide() {
+            heroImages.removeClass('active');
+            heroTexts.removeClass('active');
+            heroImageIndex = (heroImageIndex + 1) % totalSlides;
+            heroImages.filter(`[data-index='${heroImageIndex}']`).addClass('active');
+            heroTexts.filter(`[data-index='${heroImageIndex}']`).addClass('active');
         }
 
-        const categoryData = galleryData[category];
+        setInterval(showNextHeroSlide, 5000);
 
-        if (categoryData.subcategories && categoryData.subcategories.length > 0) {
-            // RENDER SUBCATEGORY VIEW
-            const subGrid = document.createElement('div');
-            subGrid.className = 'sub-gallery-grid';
+        // ---- QUOTES SLIDER FUNCTIONALITY ----
+        let currentQuoteIndex = 0;
+        const quotes = $('.quotes-slider .quote-slide');
+        const totalQuotes = quotes.length;
 
-            categoryData.subcategories.forEach((sub) => {
-                const subCard = document.createElement('div');
-                subCard.className = 'sub-gallery-card';
+        function showQuote(index) {
+            quotes.hide();
+            quotes.eq(index).show();
+        }
 
-                // De hero_image wordt nu direct als een <img>-tag toegevoegd
-                // We gebruiken een fallback om te voorkomen dat de app crasht als de URL mist
-                const imageUrl = sub.hero_image && sub.hero_image.url ? sub.hero_image.url : '';
-                const imageAlt = sub.title; // Gebruik de titel als alt-tekst voor toegankelijkheid
+        showQuote(currentQuoteIndex);
 
-                subCard.innerHTML = `
-                <img src="${imageUrl}" alt="${imageAlt}" class="sub-gallery-image">
-                <div class="sub-gallery-overlay"></div>
-                <div class="sub-gallery-text">
-                    <h3>${sub.title}</h3>
-                    <p>${sub.description}</p>
-                </div>
-            `;
+        $('.next-slide').on('click', function() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % totalQuotes;
+            showQuote(currentQuoteIndex);
+        });
 
-                subCard.addEventListener('click', () => {
-                    renderSubGallery(sub.images);
-                });
+        $('.prev-slide').on('click', function() {
+            currentQuoteIndex = (currentQuoteIndex - 1 + totalQuotes) % totalQuotes;
+            showQuote(currentQuoteIndex);
+        });
+        console.log("Sliders geïnitialiseerd.");
+    }
 
-                subGrid.appendChild(subCard);
+    // Functie voor portfolio-logica
+    function initPortfolioPage(content, photosData) {
+        console.log("Start met het vullen van de portfolio pagina.");
+        document.title = content.pageTitle;
+        $('.portfolio-header h1').text(content.portfolioHeading);
+
+        let galleryData = null;
+        const portfolioContainer = $('.portfolio-content');
+        const backButton = $('.back-button');
+        const galleryNavUl = $('#gallery-links');
+
+        const renderSubGallery = (images) => {
+            portfolioContainer.empty();
+            backButton.show();
+
+            const grid = $('<div>').addClass('gallery-grid');
+
+            images.forEach(image => {
+                const a = $('<a>').attr('href', image.url).attr('data-lightbox', 'sub-gallery').attr('data-title', image.description);
+                const img = $('<img>').addClass('sub-gallery-image').attr('src', image.url).attr('alt', image.title || '');
+                a.append(img);
+                grid.append(a);
             });
 
-            portfolioContainer.appendChild(subGrid);
-        } else if (categoryData.images && categoryData.images.length > 0) {
-            // RENDER SIMPLE GALLERY (no subcategories)
-            renderSubGallery(categoryData.images);
-        } else {
-            portfolioContainer.innerHTML = '<p>Deze galerij bevat momenteel geen afbeeldingen.</p>';
-        }
+            portfolioContainer.append(grid);
+        };
 
-        lazyLoadImages();
-    };
+        const renderGallery = (category) => {
+            portfolioContainer.empty();
+            backButton.hide();
 
-    const galleryLinks = document.getElementById('gallery-links');
-    const gallerySelect = document.createElement('select');
-    gallerySelect.className = 'gallery-select';
-    if (galleryLinks) {
-        galleryLinks.parentNode.insertBefore(gallerySelect, galleryLinks.nextSibling);
-    }
+            if (!galleryData || !galleryData[category]) return;
 
-    if (galleryLinks && portfolioContainer) {
-        galleryLinks.innerHTML = '';
-        gallerySelect.innerHTML = '';
-        fetch('assets/data/portfolio.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to load portfolio.json');
-                return response.json();
-            })
-            .then(data => {
-                galleryData = data;
-                const categories = Object.keys(data);
+            const categoryData = galleryData[category];
+            const portfolioHeader = $('.portfolio-header');
 
-                categories.forEach((category) => {
-                    const categoryData = data[category];
-                    const categoryTitle = categoryData.title || category;
+            portfolioHeader.find('h1').text(categoryData.title || category.charAt(0).toUpperCase() + category.slice(1));
 
-                    const li = document.createElement('li');
-                    const button = document.createElement('button');
-                    button.textContent = categoryTitle;
-                    button.dataset.category = category;
+            if (categoryData.images) {
+                const grid = $('<div>').addClass('gallery-grid');
 
-                    button.addEventListener('click', () => {
-                        document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        renderGallery(category);
-                        gallerySelect.value = category;
-                        gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
-                        gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
+                categoryData.images.forEach(image => {
+                    const a = $('<a>').attr('href', image.url).attr('data-lightbox', category).attr('data-title', image.description);
+                    const img = $('<img>').attr('src', image.url).attr('alt', image.title || '');
+                    a.append(img);
+                    grid.append(a);
+                });
+
+                portfolioContainer.append(grid);
+            } else if (categoryData.subcategories) {
+                const subGrid = $('<div>').addClass('sub-gallery-grid');
+
+                categoryData.subcategories.forEach((sub, index) => {
+                    const subCard = $('<div>').addClass('sub-gallery-card').css('background-image', `url(${sub.heroImage})`);
+                    const overlay = $('<div>').addClass('sub-gallery-overlay');
+                    const text = $('<div>').addClass('sub-gallery-text');
+                    const title = $('<h3>').text(sub.title);
+                    const description = $('<p>').text(sub.description);
+
+                    text.append(title, description);
+                    subCard.append(overlay, text);
+
+                    subCard.on('click', () => {
+                        renderSubGallery(sub.images);
                     });
 
-                    li.appendChild(button);
-                    galleryLinks.appendChild(li);
-
-                    const option = document.createElement('option');
-                    option.value = category;
-                    option.textContent = categoryTitle;
-                    gallerySelect.appendChild(option);
+                    subGrid.append(subCard);
                 });
 
-                // Set initial gallery view
-                const firstCategory = categories[0];
-                const firstButton = document.querySelector(`#gallery-links button[data-category="${firstCategory}"]`);
-                if(firstButton) firstButton.classList.add('active');
+                portfolioContainer.append(subGrid);
+            }
+            document.title = galleryData[category].title + ' | Dieter Vanlangenaker Photography';
+        };
 
-                const firstOption = gallerySelect.querySelector(`option[value="${firstCategory}"]`);
-                if(firstOption) {
-                    gallerySelect.value = firstCategory;
-                    firstOption.setAttribute('selected', 'selected');
-                }
+        $.getJSON('assets/data/portfolio.json', function(data) {
+            galleryData = data;
+            const categories = Object.keys(data);
 
-                renderGallery(firstCategory);
+            galleryNavUl.empty();
+            categories.forEach((category) => {
+                const categoryData = data[category];
+                const categoryTitle = categoryData.title || category.charAt(0).toUpperCase() + category.slice(1);
 
-                gallerySelect.addEventListener('change', (e) => {
-                    const category = e.target.value;
-                    document.querySelectorAll('#gallery-links button').forEach(btn => btn.classList.remove('active'));
-                    const activeButton = document.querySelector(`#gallery-links button[data-category="${category}"]`);
-                    if (activeButton) activeButton.classList.add('active');
+                const li = $('<li>');
+                const button = $('<button>').text(categoryTitle).attr('data-category', category);
+
+                button.on('click', function() {
+                    galleryNavUl.find('button').removeClass('active');
+                    $(this).addClass('active');
                     renderGallery(category);
-                    gallerySelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
-                    gallerySelect.querySelector(`option[value="${category}"]`).setAttribute('selected', 'selected');
                 });
 
-                // Back button functionality
-                backButton.addEventListener('click', () => {
-                    const activeCategory = document.querySelector('.gallery-nav button.active').dataset.category;
-                    renderGallery(activeCategory);
-                });
-            })
-            .catch(error => console.error('Error loading portfolio.json:', error));
+                li.append(button);
+                galleryNavUl.append(li);
+            });
+
+            backButton.on('click', () => {
+                const activeCategory = galleryNavUl.find('button.active').data('category');
+                renderGallery(activeCategory);
+                $('.portfolio-header h1').text(content.portfolioHeading);
+            });
+
+            const firstCategory = categories[0];
+            const firstButton = galleryNavUl.find(`button[data-category="${firstCategory}"]`);
+            if (firstButton.length) {
+                firstButton.addClass('active');
+                renderGallery(firstCategory);
+            }
+        }).fail(function() {
+            console.error('Fout bij het laden van portfolio.json');
+        });
     }
-
-// Call the dynamic text function after all includes are loaded
-    updatePageText();
-    setupLanguageSwitcher();
-
-// Scroll detection for header transparency
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-}
+});

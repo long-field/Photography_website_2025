@@ -1,33 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Dieter Vanlangenaker Photography</title>
-    <meta name="description" content="Explore wedding, portrait, and artistic photography by Dieter Vanlangenaker.">
+    <meta name="description" content="Bekijk het portfolio van Dieter Vanlangenaker, gespecialiseerd in bruiloften, families en portretten.">
+    <meta name="keywords" content="portfolio, fotografie, bruiloften, familie, portretten, België">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 </head>
-<body data-page="portfolio">
+<body data-page="portfolio" data-lang="nl">
 <div data-include="partials/header.html"></div>
-<main class="container">
-    <section class="portfolio">
+<main>
+    <section class="portfolio container">
         <div class="portfolio-header">
-            <h1></h1>
-            <nav class="gallery-nav">
-                <ul id="gallery-links"></ul>
-            </nav>
-            <button class="back-button">← Back to Galleries</button>
+            <h1>Mijn Portfolio</h1>
+            <p>Ontdek de verhalen die ik heb vastgelegd. Elk beeld vertelt een uniek moment, van intieme bruiloften tot levendige familieportretten.</p>
+            <div class="gallery-nav">
+                <ul>
+                    <!-- Navigatieknoppen worden hier dynamisch ingevoegd via main.js -->
+                </ul>
+                <select class="gallery-select">
+                    <option value="all">Alles</option>
+                    <!-- Opties worden hier dynamisch ingevoegd -->
+                </select>
+            </div>
         </div>
-        <div class="portfolio-content" id="galleries"></div>
+
+        <div class="portfolio-content">
+            <div class="gallery-grid">
+                <!-- Portfoliokaarten worden hier dynamisch geladen via main.js -->
+            </div>
+        </div>
     </section>
 </main>
 <div data-include="partials/footer.html"></div>
 <script src="assets/js/includes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
