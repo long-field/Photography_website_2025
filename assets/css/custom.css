@@ -125,6 +125,34 @@ header.scrolled {
     z-index: 900;
 }
 
+/* Added styles for the language switch */
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    position: absolute;
+    right: 5rem;
+    top: 1rem;
+}
+
+.language-switch button {
+    background: none;
+    border: 1px solid var(--text-color-dark);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-family: var(--secondary-font);
+    cursor: pointer;
+    color: var(--text-color-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-switch button.active {
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+}
+
+
 /* -------------------
    HERO SECTION
    ------------------- */
@@ -133,6 +161,7 @@ header.scrolled {
     height: calc(100vh ); /* Full viewport minus header height */
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -147,7 +176,14 @@ header.scrolled {
     color: var(--text-color-light);
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-
+.hero h2 {
+    position: relative;
+    z-index: 2;
+    font-size: 1.5rem;
+    color: var(--text-color-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 1rem;
+}
 .hero-slider {
     position: absolute;
     top: 0;
@@ -198,6 +234,171 @@ header.scrolled {
     border-bottom: none;
 }
 
+/* -------------------
+   NEW SECTIONS
+   ------------------- */
+.section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 1rem;
+}
+
+.section p {
+    max-width: 800px;
+    margin: 1.5rem auto;
+}
+
+.quote-section {
+    padding: 5rem 0;
+    text-align: center;
+    position: relative;
+    color: var(--text-color-light);
+    overflow: hidden;
+}
+
+.quote-section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.quote-section .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.quote-section blockquote {
+    font-size: 2rem;
+    font-style: italic;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-section cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 1;
+}
+
+.photography-paragraph {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.client-quotes {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.client-quotes .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.client-quotes .quote-card {
+    position: relative;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+.client-quotes .quote-card:hover {
+    transform: translateY(-5px);
+}
+.quote-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.quote-card p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.quote-card cite {
+    display: block;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.about-me-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.about-me-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.about-me-text h2 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.about-me-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-me-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.booking-section {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.booking-section a.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.booking-section a.button:hover {
+    background-color: #444;
+}
 /* -------------------
    GALLERY PREVIEW
    ------------------- */
@@ -499,6 +700,18 @@ footer .logo {
         display: block;
     }
 
+    .about-me-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-me-text h2 {
+        text-align: center;
+    }
+
+    .about-me-images {
+        order: -1; /* Pushes images to the top on mobile */
+    }
+
     .gallery-nav ul {
         display: none;
     }
@@ -506,4 +719,9 @@ footer .logo {
     .gallery-select {
         display: block;
     }
+
+    .language-switch {
+        right: 3rem;
+    }
 }
+

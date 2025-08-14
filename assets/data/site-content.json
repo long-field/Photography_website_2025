@@ -1,0 +1,116 @@
+{
+  "languages": {
+    "en": {
+      "heroCarousel": {
+        "title": "Capturing Moments That Last Forever",
+        "subtitle": "Timeless photography for life’s unforgettable stories."
+      },
+      "quoteSection": {
+        "quote": "The best thing about a picture is that it never changes, even when the people in it do.",
+        "attribution": "– Andy Warhol",
+        "image": "assets/images/featured/Metro in Budapest.jpg"
+      },
+      "photographyParagraph": {
+        "title": "Why Photography Matters",
+        "text": "Photography is more than a click of a shutter—it’s a way to freeze a moment, a feeling, a story. In a world where everything moves fast, a photograph is a pause button, letting you hold onto the beauty of now. My work is about finding the soul in every scene, whether it’s the quiet glance of a loved one or the chaos of a fleeting adventure. I blend the raw energy of alternative music, the depth of a Kubrick film, and the precision of my years as an aircraft inspector to create images that resonate, endure, and tell your unique story."
+      },
+      "clientQuotes": [
+        {
+          "quote": "Working with you felt like collaborating with an artist who truly sees people. The photos captured our family’s heart.",
+          "client": "– Sarah & James, 2024",
+          "image": "assets/images/featured/CarolineByBrussels.jpg"
+        },
+        {
+          "quote": "Your eye for detail is unreal. Every shot felt personal and meaningful. Thank you!",
+          "client": "– Emma L., 2023",
+          "image": "assets/images/featured/Friends.jpg"
+        },
+        {
+          "quote": "You made our wedding day unforgettable. The photos are pure magic!",
+          "client": "– Michael R., 2025",
+          "image": "assets/images/featured/VenityBrug.jpg"
+        },
+        {
+          "quote": "It’s like you knew exactly what we wanted before we did. Absolutely stunning work.",
+          "client": "– Clara & Tom, 2024",
+          "image": "assets/images/featured/IcecreamCartB&WNegativeLeft.jpeg"
+        }
+      ],
+      "aboutMe": {
+        "title": "Who Am I?",
+        "introduction": "I’m a storyteller with a camera, a father to a vibrant five-year-old girl, and a husband to my incredible wife, my partner in adventure since 2016. My life is a mix of analog synths, alternative music, and the cinematic worlds of Kubrick and Blade Runner. I spent a decade as an aircraft inspector, honing my eye for detail, before transitioning to programming, which gave me the freedom to pursue photography full-time.",
+        "personalStory": "Photography is deeply personal to me. I grew up cherishing an old black-and-white photo of my great-grandfather, taken just after World War II. Its faded edges hold a story no smartphone snapshot could ever capture. That’s why I’m passionate about creating real, intentional images that become heirlooms. Whether I’m jamming with my brothers-from-another-mother, Dimitri and Yves, by a pool table or capturing my family’s quiet moments, I know the value of a photograph that lasts. My background in music, tech, and life shapes how I see the world through my lens—raw, real, and full of soul.",
+        "whyChooseMe": "Why choose me? Because I don’t just take pictures—I see you. My love for music, film, and philosophy brings creativity and depth to every shoot. My technical past ensures precision, but my heart as a father and husband adds warmth to every frame. Let’s create something timeless together.",
+        "images": [
+          "assets/images/featured/web higher-83.jpg",
+          "assets/images/featured/Web even more higherderder-1-2.jpg",
+          "assets/images/featured/web higher-119.jpg"
+        ]
+      },
+      "bookingProcess": {
+        "title": "How to Book Me",
+        "text": "Booking me is simple and personal. Reach out through the contact form, and we’ll have a conversation about your vision. Once we’re aligned, I’ll bring my camera, my passion, and my eye for detail to capture moments that feel like poetry in motion. You’ll walk away with images that don’t just look good—they feel alive, eternal, and uniquely yours."
+      },
+      "contactForm": {
+        "title": "Let’s Create Something Beautiful",
+        "text": "Ready to capture your story? Fill out the form below, and I’ll get back to you within 24 hours to start planning your shoot. Let’s make moments that last a lifetime."
+      }
+    },
+    "nl": {
+      "heroCarousel": {
+        "title": "Momenten Vastleggen Die Voor Altijd Blijven",
+        "subtitle": "Tijdloze fotografie voor onvergetelijke levensverhalen."
+      },
+      "quoteSection": {
+        "quote": "Het mooiste aan een foto is dat ze nooit verandert, zelfs als de mensen erop dat wel doen.",
+        "attribution": "– Andy Warhol",
+        "image": "assets/images/featured/Metro in Budapest.jpg"
+      },
+      "photographyParagraph": {
+        "title": "Waarom Fotografie Ertoe Doet",
+        "text": "Fotografie is meer dan een klik op de knop – het is een manier om een moment, een gevoel, een verhaal te bevriezen. In een wereld waar alles snel gaat, is een foto een pauzeknop, waarmee je de schoonheid van het nu kunt vasthouden. Mijn werk draait om het vinden van de ziel in elke scène, of het nu gaat om de stille blik van een geliefde of de chaos van een vluchtig avontuur. Ik combineer de rauwe energie van alternatieve muziek, de diepgang van een Kubrick-film en de precisie van mijn jaren als vliegtuiginspecteur om beelden te creëren die resoneren, blijven hangen en jouw unieke verhaal vertellen."
+      },
+      "clientQuotes": [
+        {
+          "quote": "Samenwerken met jou voelde als werken met een kunstenaar die mensen echt ziet. De foto’s vangen het hart van onze familie.",
+          "client": "– Sarah & James, 2024",
+          "image": "assets/images/featured/CarolineByBrussels.jpg"
+        },
+        {
+          "quote": "Jouw oog voor detail is ongeëvenaard. Elke opname voelde persoonlijk en betekenisvol. Bedankt!",
+          "client": "– Emma L., 2023",
+          "image": "assets/images/featured/Friends.jpg"
+        },
+        {
+          "quote": "Je hebt onze huwelijksdag onvergetelijk gemaakt. De foto’s zijn pure magie!",
+          "client": "– Michael R., 2025",
+          "image": "assets/images/featured/VenityBrug.jpg"
+        },
+        {
+          "quote": "Het leek alsof je precies wist wat we wilden, nog voor we het zelf wisten. Schitterend werk.",
+          "client": "– Clara & Tom, 2024",
+          "image": "assets/images/featured/IcecreamCartB&WNegativeLeft.jpeg"
+        }
+      ],
+      "aboutMe": {
+        "title": "Wie Ben Ik?",
+        "introduction": "Ik ben een verhalenverteller met een camera, vader van een bruisende vijfjarige dochter en echtgenoot van mijn fantastische vrouw, mijn avontuurlijke partner sinds 2016. Mijn leven is een mix van analoge synthesizers, alternatieve muziek en de filmische werelden van Kubrick en Blade Runner. Ik werkte tien jaar als vliegtuiginspecteur, waar ik mijn oog voor detail aanscherpte, voordat ik overstapte naar programmeren, wat me de vrijheid gaf om fotografie fulltime na te jagen.",
+        "personalStory": "Fotografie is voor mij heel persoonlijk. Ik groeide op met het koesteren van een oude zwart-witfoto van mijn overgrootvader, genomen net na de Tweede Wereldoorlog. De vervaagde randen bewaren een verhaal dat geen smartphonesnapshot ooit zou kunnen vangen. Daarom ben ik gepassioneerd over het maken van echte, bewuste beelden die erfstukken worden. Of ik nu plezier maak met mijn boezemvrienden Dimitri en Yves aan een biljarttafel of de stille momenten van mijn familie vastleg, ik weet wat een foto die blijft waard is. Mijn achtergrond in muziek, technologie en het leven vormt hoe ik de wereld zie door mijn lens – rauw, echt en vol ziel.",
+        "whyChooseMe": "Waarom voor mij kiezen? Omdat ik niet zomaar foto’s maak – ik zie jou. Mijn liefde voor muziek, film en filosofie brengt creativiteit en diepgang in elke shoot. Mijn technische achtergrond garandeert precisie, maar mijn hart als vader en echtgenoot voegt warmte toe aan elk beeld. Laten we samen iets tijdloos creëren.",
+        "images": [
+          "assets/images/featured/web higher-83.jpg",
+          "assets/images/featured/Web even more higherderder-1-2.jpg",
+          "assets/images/featured/web higher-119.jpg"
+        ]
+      },
+      "bookingProcess": {
+        "title": "Hoe Boek Je Mij?",
+        "text": "Mij boeken is eenvoudig en persoonlijk. Neem contact op via het formulier, en we praten over jouw visie. Zodra we op één lijn zitten, breng ik mijn camera, mijn passie en mijn oog voor detail om momenten vast te leggen die voelen als poëzie in beweging. Je krijgt beelden die niet alleen mooi zijn, maar die leven, eeuwig zijn en helemaal van jou."
+      },
+      "contactForm": {
+        "title": "Laten We Iets Mooi Creëren",
+        "text": "Klaar om jouw verhaal vast te leggen? Vul het formulier hieronder in, en ik neem binnen 24 uur contact met je op om je shoot te plannen. Laten we momenten maken die een leven lang meegaan."
+      }
+    }
+  }
+}

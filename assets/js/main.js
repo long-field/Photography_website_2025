@@ -1,4 +1,6 @@
 let isMainInitialized = false;
+let currentLanguage = 'nl'; // Default language
+
 document.addEventListener('includesLoaded', () => {
     if (isMainInitialized) {
         return;
@@ -15,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeMain() {
     isMainInitialized = true;
     let galleryData = null;
+    let featuredData = null;
+    let siteContent = null;
     let heroImages = [];
     let currentHeroIndex = 0;
     let heroInterval = null;
@@ -39,32 +43,124 @@ function initializeMain() {
     };
 
 // =============================
-// DYNAMIC TEXT LOGIC
+// DYNAMIC TEXT & LANGUAGE LOGIC
 // =============================
-// Fetches text content from a JSON file and populates the page.
+    const switchLanguage = (lang) => {
+        if (siteContent) {
+            currentLanguage = lang;
+            document.body.dataset.lang = lang;
+            updatePageText();
+        }
+    };
+
+    const setupLanguageSwitcher = () => {
+        const langSwitch = document.querySelector('.language-switch');
+        if (langSwitch) {
+            const buttons = langSwitch.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    switchLanguage(button.dataset.lang);
+                });
+            });
+            // Set initial active button
+            const initialButton = langSwitch.querySelector(`button[data-lang="${currentLanguage}"]`);
+            if (initialButton) {
+                initialButton.classList.add('active');
+            }
+        }
+    };
+
     const updatePageText = async () => {
         try {
-            const response = await fetch('assets/data/page-text.json');
-            if (!response.ok) throw new Error('Failed to load page-text.json');
-            const data = await response.json();
+            // First, load static text
+            const responseText = await fetch('assets/data/page-text.json');
+            if (!responseText.ok) throw new Error('Failed to load page-text.json');
+            const dataText = await responseText.json();
 
-            // Set the document title for SEO
-            document.title = data[document.body.dataset.page].pageTitle || document.title;
+            // Then, load dynamic content
+            const responseContent = await fetch('assets/data/site-content.json');
+            if (!responseContent.ok) throw new Error('Failed to load site-content.json');
+            siteContent = await responseContent.json();
 
-            // Check if the current page is the Portfolio page
-            if (document.querySelector('.portfolio')) {
-                document.querySelector('.portfolio-header h1').textContent = data.portfolio.portfolioHeading;
+            const currentContent = siteContent.languages[currentLanguage];
+            const page = document.body.dataset.page;
+
+            // Update document title and static headings
+            if (dataText[page] && dataText[page].pageTitle) {
+                document.title = dataText[page].pageTitle;
             }
 
-            // Check if the current page is the Contact page
-            if (document.querySelector('.contact')) {
-                document.querySelector('.contact h1').textContent = data.contact.contactHeading;
-                document.querySelector('.contact-form h2').textContent = data.contact.formHeading;
-                document.querySelector('.booking h2').textContent = data.contact.bookingHeading;
+            // Update home page specific content
+            if (page === 'home') {
+                const heroTitle = document.querySelector('.hero h1');
+                const heroSubtitle = document.querySelector('.hero h2');
+                if (heroTitle) heroTitle.textContent = currentContent.heroCarousel.title;
+                if (heroSubtitle) heroSubtitle.textContent = currentContent.heroCarousel.subtitle;
+
+                const quoteBlock = document.querySelector('.quote-section blockquote');
+                const quoteCite = document.querySelector('.quote-section cite');
+                const quoteImage = document.querySelector('.quote-section img');
+                if (quoteBlock) quoteBlock.textContent = currentContent.quoteSection.quote;
+                if (quoteCite) quoteCite.textContent = currentContent.quoteSection.attribution;
+                if (quoteImage) quoteImage.src = currentContent.quoteSection.image;
+                if (quoteImage) quoteImage.alt = currentContent.quoteSection.quote;
+
+                const photographyTitle = document.querySelector('.photography-paragraph h2');
+                const photographyText = document.querySelector('.photography-paragraph p');
+                if (photographyTitle) photographyTitle.textContent = currentContent.photographyParagraph.title;
+                if (photographyText) photographyText.textContent = currentContent.photographyParagraph.text;
+
+                const aboutMeTitle = document.querySelector('.about-me-section h2');
+                const aboutMeIntro = document.querySelector('#about-intro');
+                const aboutMeStory = document.querySelector('#about-story');
+                const aboutMeWhy = document.querySelector('#about-why');
+                if (aboutMeTitle) aboutMeTitle.textContent = currentContent.aboutMe.title;
+                if (aboutMeIntro) aboutMeIntro.textContent = currentContent.aboutMe.introduction;
+                if (aboutMeStory) aboutMeStory.textContent = currentContent.aboutMe.personalStory;
+                if (aboutMeWhy) aboutMeWhy.textContent = currentContent.aboutMe.whyChooseMe;
+
+                const bookingTitle = document.querySelector('.booking-section h2');
+                const bookingText = document.querySelector('.booking-section p');
+                const bookingButton = document.querySelector('.booking-section a.button');
+                if (bookingTitle) bookingTitle.textContent = currentContent.bookingProcess.title;
+                if (bookingText) bookingText.textContent = currentContent.bookingProcess.text;
+                if (bookingButton) bookingButton.textContent = currentContent.bookingProcess.title;
+
+                renderClientQuotes(currentContent.clientQuotes);
             }
+
+            // Update contact page specific content
+            if (page === 'contact') {
+                const contactHeading = document.querySelector('.contact h1');
+                const contactFormTitle = document.querySelector('.contact-form h2');
+                const contactFormText = document.querySelector('.contact-form p');
+                if (contactHeading) contactHeading.textContent = dataText.contact.contactHeading;
+                if (contactFormTitle) contactFormTitle.textContent = currentContent.contactForm.title;
+                if (contactFormText) contactFormText.textContent = currentContent.contactForm.text;
+            }
+            lazyLoadImages();
+
         } catch (error) {
             console.error('Error fetching text data:', error);
         }
+    };
+
+    const renderClientQuotes = (quotes) => {
+        const quoteGrid = document.querySelector('.client-quotes .quote-grid');
+        if (!quoteGrid) return;
+        quoteGrid.innerHTML = '';
+        quotes.forEach(q => {
+            const quoteCard = document.createElement('div');
+            quoteCard.className = 'quote-card';
+            quoteCard.innerHTML = `
+                <img src="${q.image}" alt="Client testimonial image">
+                <p>"${q.quote}"</p>
+                <cite>${q.client}</cite>
+            `;
+            quoteGrid.appendChild(quoteCard);
+        });
     };
 
 // =============================
@@ -135,12 +231,7 @@ function initializeMain() {
 
     const startHeroCarousel = () => {
         if (heroInterval) clearInterval(heroInterval);
-        heroInterval = setInterval(nextHeroSlide, 1500);
-
-        heroSlider.addEventListener('click', () => {
-            nextHeroSlide();
-        });
-
+        heroInterval = setInterval(nextHeroSlide, 5000); // Increased interval for better readability
         window.scrollTo(0, 0);
     };
 
@@ -151,7 +242,8 @@ function initializeMain() {
                 return response.json();
             })
             .then(data => {
-                const heroCarouselData = data.find(section => section.section === 'Hero-Carousel');
+                featuredData = data;
+                const heroCarouselData = featuredData.find(section => section.section === 'Hero-Carousel');
                 if (!heroCarouselData || !heroCarouselData.photos) {
                     throw new Error('Hero-Carousel section not found or is empty in featured.json');
                 }
@@ -164,20 +256,14 @@ function initializeMain() {
                     img.dataset.src = image.url;
                     img.alt = image.title || '';
                     img.className = index === 0 ? 'active' : '';
-                    img.style.transition = 'opacity 0.5s ease-in-out';
+                    img.style.transition = 'opacity 2s ease-in-out'; // Updated transition for smoother fade
                     img.style.position = 'absolute';
                     img.style.top = '0';
                     img.style.left = '0';
                     img.style.width = '100%';
                     img.style.height = '100%';
                     img.style.pointerEvents = 'none';
-
-                    const tempImg = new Image();
-                    tempImg.src = image.url;
-                    tempImg.onload = () => {
-                        const isPortrait = tempImg.naturalHeight > tempImg.naturalWidth;
-                        img.style.objectFit = isPortrait ? 'contain' : 'cover';
-                    };
+                    img.style.objectFit = 'cover'; // Use cover for hero images
 
                     heroImages.push(img);
                     heroSlider.appendChild(img);
@@ -188,6 +274,7 @@ function initializeMain() {
             })
             .catch(error => console.error('Error loading featured.json:', error));
     }
+
 
 // =============================
 // GALLERY LOGIC
@@ -360,6 +447,7 @@ function initializeMain() {
 
 // Call the dynamic text function after all includes are loaded
     updatePageText();
+    setupLanguageSwitcher();
 
 // Scroll detection for header transparency
     const header = document.querySelector('header');

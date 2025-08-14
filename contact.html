@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +13,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-<body data-page="contact">
+<body data-page="contact" data-lang="nl">
 <div data-include="partials/header.html"></div>
 <main class="container">
     <section class="contact">
-        <h1></h1>
+        <h1 data-key="contactHeading"></h1>
         <div class="contact-form">
-            <h2></h2>
+            <h2 data-key="contactForm.title"></h2>
+            <p data-key="contactForm.text"></p>
             <form action="https://formspree.io/f/xzzvyyby" method="POST">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
