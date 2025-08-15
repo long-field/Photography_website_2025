@@ -32,16 +32,18 @@ $(document).ready(function() {
             const siteData = await siteDataResponse.json();
             const nlContent = siteData.languages.nl;
 
-            const heroCarouselResponse = await fetch('assets/data/hero-carousel.json');
-            const heroCarouselData = await heroCarouselResponse.json();
-
             console.log("JSON-bestanden geladen.");
 
             if (page === 'home' && lang === 'nl') {
+                const heroCarouselResponse = await fetch('assets/data/hero-carousel.json');
+                const heroCarouselData = await heroCarouselResponse.json();
                 initHomePage(nlContent.homePage, heroCarouselData);
+            } else if (page === 'portfolio' && lang === 'nl') {
+                // Call de nieuwe portfolio initialisatie functie
+                initPortfolioPage(nlContent.portfolioPage);
             }
         } catch (error) {
-            console.error('Fout bij het laden van site-data.json of hero-carousel.json:', error);
+            console.error('Fout bij het laden van JSON-bestanden:', error);
         }
     }
 
@@ -104,12 +106,10 @@ $(document).ready(function() {
                         if (block.text) {
                             textContainer.append($('<h2>').text(block.text));
                         }
-
                         heroSection.append(textContainer);
                     });
                 }
             });
-
             // Plaats de overlay als laatste
             heroSlider.append($('<div>').addClass('hero-overlay'));
         }
@@ -118,29 +118,19 @@ $(document).ready(function() {
         // ---- QUOTE SECTION (Parallax) ----
         $('.quote-section blockquote').text(content.quoteSection.quote);
         $('.quote-section cite').text(content.quoteSection.attribution);
-
         // EXTRA DEBUG: Log de URL en controleer of de afbeelding bestaat
         const parallaxImageUrl = content.quoteSection.image;
         console.log("Parallax achtergrond URL: " + parallaxImageUrl);
+        const parallaxSection = $('.quote-section');
+        parallaxSection.css('background-image', `url(${parallaxImageUrl})`);
+        console.log("Quote section gevuld.");
 
-        const img = new Image();
-        img.onload = function() {
-            $('.quote-section').css('background-image', `url(${parallaxImageUrl})`);
-            console.log("Parallax-achtergrond ingesteld.");
-            console.log("Parallax-afbeelding is succesvol geladen.");
-        };
-        img.onerror = function() {
-            console.error("Fout: Kon de parallax-afbeelding niet laden. Controleer het pad: " + parallaxImageUrl);
-        };
-        img.src = parallaxImageUrl;
 
-        console.log("Parallax-achtergrond-instelling in gang gezet.");
-
-        // ---- PHOTOGRAPHY PARAGRAPH SECTION ----
+        // ---- PHOTOGRAPHY PARAGRAPH ----
         $('.photography-paragraph h2').text(content.photographyParagraph.title);
         $('.photography-paragraph p').text(content.photographyParagraph.text);
 
-        // ---- CLIENT QUOTES SECTION ----
+        // ---- CLIENT QUOTES ----
         const quotesSlider = $('.quotes-slider');
         quotesSlider.empty();
         $('.client-quotes h2').text(content.clientQuotes.title);
@@ -201,6 +191,8 @@ $(document).ready(function() {
         function showSlide(imageIndex, textIndex) {
             // Verberg alle elementen
             heroImages.removeClass('active');
+            heroImages.eq(imageIndex).addClass('active');
+
             heroTexts.removeClass('active');
 
             // Toon de juiste afbeelding
