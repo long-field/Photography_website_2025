@@ -28,12 +28,9 @@ $(document).ready(function() {
 
         // Laad de content uit de JSON-bestanden
         try {
-            const siteContentResponse = await fetch('assets/data/site-content.json');
-            const siteContentData = await siteContentResponse.json();
-            const nlContent = siteContentData.languages.nl;
-
-            const featuredPhotosResponse = await fetch('assets/data/featured.json');
-            const featuredPhotosData = await featuredPhotosResponse.json();
+            const siteDataResponse = await fetch('assets/data/site-data.json');
+            const siteData = await siteDataResponse.json();
+            const nlContent = siteData.languages.nl;
 
             const heroCarouselResponse = await fetch('assets/data/hero-carousel.json');
             const heroCarouselData = await heroCarouselResponse.json();
@@ -41,17 +38,17 @@ $(document).ready(function() {
             console.log("JSON-bestanden geladen.");
 
             if (page === 'home' && lang === 'nl') {
-                initHomePage(nlContent.homePage, featuredPhotosData, heroCarouselData);
+                initHomePage(nlContent.homePage, heroCarouselData);
             } else if (page === 'portfolio' && lang === 'nl') {
-                initPortfolioPage(nlContent.portfolioPage, featuredPhotosData);
+                initPortfolioPage(nlContent.portfolioPage);
             }
         } catch (error) {
-            console.error('Fout bij het laden van de site-content, featured.json of hero-carousel.json:', error);
+            console.error('Fout bij het laden van site-data.json of hero-carousel.json:', error);
         }
     }
 
     // Functie voor homepage-logica met dynamische content
-    function initHomePage(content, photosData, heroCarouselData) {
+    function initHomePage(content, heroCarouselData) {
         console.log("Start met het vullen van de homepage.");
 
         // ---- SEO en Algemene Teksten ----
@@ -73,19 +70,20 @@ $(document).ready(function() {
                 img.attr('src', photo.url);
                 img.attr('alt', `Carousel image ${index + 1}`);
                 img.addClass('hero-slide-image');
-
-                // Voeg een unieke data-index toe aan elke afbeelding en tekstblok
                 img.attr('data-index', index);
+                heroSlider.append(img);
 
                 // Creëer de tekstblokken
                 if (photo.text_blocks) {
                     photo.text_blocks.forEach((block, blockIndex) => {
-                        const textContainer = $('<div>').addClass('hero-text-container').attr('data-index', index);
+                        const textContainer = $('<div>').addClass('hero-text-container');
+                        textContainer.attr('data-image-index', index);
+                        textContainer.attr('data-text-index', blockIndex);
 
-                        // Voeg de 'boxed' stijl toe indien gespecificeerd
-                        if (block.style === 'boxed') {
-                            textContainer.addClass('text-box');
-                        }
+                        // PAS OP: DEZE CODE IS UITGESCHAKELD OM DE 'BOXED' STIJL TE VERWIJDEREN
+                        // if (block.style === 'boxed') {
+                        //     textContainer.addClass('text-box');
+                        // }
 
                         // Pas de inline CSS-stijlen toe
                         const position = block.position;
@@ -112,8 +110,6 @@ $(document).ready(function() {
                         heroSection.append(textContainer);
                     });
                 }
-
-                heroSlider.append(img);
             });
 
             // Plaats de overlay als laatste
@@ -125,11 +121,22 @@ $(document).ready(function() {
         $('.quote-section blockquote').text(content.quoteSection.quote);
         $('.quote-section cite').text(content.quoteSection.attribution);
 
-        const parallaxPhotoSection = photosData.find(item => item.section === 'Metro In Budapest');
-        if (parallaxPhotoSection && parallaxPhotoSection.photos.length > 0) {
-            $('.quote-section').css('background-image', `url(${parallaxPhotoSection.photos[0].url})`);
-        }
-        console.log("Parallax-achtergrond ingesteld.");
+        // EXTRA DEBUG: Log de URL en controleer of de afbeelding bestaat
+        const parallaxImageUrl = content.quoteSection.image;
+        console.log("Parallax achtergrond URL: " + parallaxImageUrl);
+
+        const img = new Image();
+        img.onload = function() {
+            $('.quote-section').css('background-image', `url(${parallaxImageUrl})`);
+            console.log("Parallax-achtergrond ingesteld.");
+            console.log("Parallax-afbeelding is succesvol geladen.");
+        };
+        img.onerror = function() {
+            console.error("Fout: Kon de parallax-afbeelding niet laden. Controleer het pad: " + parallaxImageUrl);
+        };
+        img.src = parallaxImageUrl;
+
+        console.log("Parallax-achtergrond-instelling in gang gezet.");
 
         // ---- PHOTOGRAPHY PARAGRAPH SECTION ----
         $('.photography-paragraph h2').text(content.photographyParagraph.title);
@@ -149,19 +156,12 @@ $(document).ready(function() {
         });
         console.log("Klantrecensies gevuld.");
 
-
         // ---- ABOUT ME SECTION ----
         const aboutMeSection = $('#about-section');
         aboutMeSection.find('.about-me-intro h2').text(content.aboutMe.title);
         aboutMeSection.find('.about-me-intro p').text(content.aboutMe.introduction);
 
         aboutMeSection.find('.about-me-item').remove();
-
-        const aboutMeImages = {
-            'Mijn Verhaal': photosData.find(item => item.section === 'Web Higher-83')?.photos[0]?.url,
-            'Mijn Visie en Stijl': photosData.find(item => item.section === 'Web Even More Higherderder-1-2')?.photos[0]?.url,
-            'Mijn Passie': photosData.find(item => item.section === 'Web Higher-119')?.photos[0]?.url
-        };
 
         content.aboutMe.items.forEach((item, index) => {
             const aboutMeItem = $('<div>').addClass('about-me-item');
@@ -171,7 +171,7 @@ $(document).ready(function() {
             aboutMeText.append($('<h3>').text(item.title));
             aboutMeText.append($('<p>').text(item.text));
 
-            const img = $('<img>').attr('src', aboutMeImages[item.title] || '').attr('alt', item.imageAlt || '');
+            const img = $('<img>').attr('src', item.image).attr('alt', item.title || '');
             aboutMeImageContainer.append(img);
 
             if (index % 2 === 0) {
@@ -194,25 +194,55 @@ $(document).ready(function() {
 
         // ---- HERO SLIDER FUNCTIONALITY ----
         let heroImageIndex = 0;
+        let heroTextIndex = 0;
         const heroImages = $('.hero-slider .hero-slide-image');
         const heroTexts = $('.hero-text-container');
-        const totalSlides = heroImages.length;
+        const totalImages = heroImages.length;
+        const slideDuration = heroCarouselData.settings.slideDuration || 5000; // Gebruik instelling uit JSON, of 5000 als fallback
 
-        // Initialiseer de eerste slide als actief
-        if (totalSlides > 0) {
-            heroImages.filter(`[data-index='0']`).addClass('active');
-            heroTexts.filter(`[data-index='0']`).addClass('active');
-        }
-
-        function showNextHeroSlide() {
+        function showSlide(imageIndex, textIndex) {
+            // Verberg alle elementen
             heroImages.removeClass('active');
             heroTexts.removeClass('active');
-            heroImageIndex = (heroImageIndex + 1) % totalSlides;
-            heroImages.filter(`[data-index='${heroImageIndex}']`).addClass('active');
-            heroTexts.filter(`[data-index='${heroImageIndex}']`).addClass('active');
+
+            // Toon de juiste afbeelding
+            heroImages.filter(`[data-index='${imageIndex}']`).addClass('active');
+
+            // Toon het juiste tekstblok
+            heroTexts.filter(`[data-image-index='${imageIndex}'][data-text-index='${textIndex}']`).addClass('active');
         }
 
-        setInterval(showNextHeroSlide, 5000);
+        function showNextSlide() {
+            const currentImageTexts = heroTexts.filter(`[data-image-index='${heroImageIndex}']`);
+            const totalTexts = currentImageTexts.length;
+
+            heroTextIndex++;
+
+            if (heroTextIndex < totalTexts) {
+                showSlide(heroImageIndex, heroTextIndex);
+            } else {
+                heroImageIndex = (heroImageIndex + 1) % totalImages;
+                heroTextIndex = 0;
+                showSlide(heroImageIndex, heroTextIndex);
+            }
+
+            updateInterval();
+        }
+
+        showSlide(heroImageIndex, heroTextIndex);
+
+        function updateInterval() {
+            const currentImageTexts = heroTexts.filter(`[data-image-index='${heroImageIndex}']`);
+            const totalTexts = currentImageTexts.length;
+            const newInterval = totalTexts > 1 ? slideDuration / totalTexts : slideDuration;
+
+            clearInterval(heroInterval);
+            heroInterval = setInterval(showNextSlide, newInterval);
+        }
+
+        let heroInterval = setInterval(showNextSlide, slideDuration);
+
+        updateInterval();
 
         // ---- QUOTES SLIDER FUNCTIONALITY ----
         let currentQuoteIndex = 0;
@@ -239,7 +269,7 @@ $(document).ready(function() {
     }
 
     // Functie voor portfolio-logica
-    function initPortfolioPage(content, photosData) {
+    function initPortfolioPage(content) {
         console.log("Start met het vullen van de portfolio pagina.");
         document.title = content.pageTitle;
         $('.portfolio-header h1').text(content.portfolioHeading);

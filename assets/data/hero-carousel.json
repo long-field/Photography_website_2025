@@ -1,111 +1,65 @@
 {
-  "section": "Hero-Carousel",
+  "settings": {
+    "slideDuration": 5000,
+    "transitionEffect": "fade"
+  },
   "photos": [
     {
-      "url": "assets/images/featured/hero-carousel/CarolineByBrussels.jpg",
-      "width": 1920,
-      "height": 1280,
+      "url": "assets/images/slider/CarolineByBrussels.jpg",
       "text_blocks": [
         {
-          "title": "Het begin van een nieuw verhaal",
-          "text": "Tijdloze fotografie voor onvergetelijke momenten.",
           "style": "default",
-          "position": {
-            "top": "auto",
-            "left": "5%",
-            "bottom": "15%",
-            "right": "auto"
-          },
-          "size": {
-            "width": "50%",
-            "height": "auto"
-          },
-          "alignment": "left"
-        }
-      ]
-    },
-    {
-      "url": "assets/images/featured/hero-carousel/VenityBrug.jpg",
-      "width": 1920,
-      "height": 1371,
-      "text_blocks": [
-        {
-          "title": "Jouw reis, vastgelegd",
-          "text": "Vang de schoonheid van het moment, overal ter wereld.",
-          "style": "boxed",
-          "position": {
-            "top": "auto",
-            "left": "5%",
-            "bottom": "10%",
-            "right": "auto"
-          },
-          "size": {
-            "width": "40%",
-            "height": "auto"
-          },
-          "alignment": "left"
+          "position": { "top": "20%", "left": "10%" },
+          "size": { "width": "250px", "height": "auto" },
+          "alignment": "left",
+          "title": "Jouw verhaal, mijn lens",
+          "text": "Ik vang de momenten die ertoe doen, met een persoonlijke en authentieke stijl."
         },
         {
-          "title": "De magie van de stad",
-          "text": "Een blik die meer zegt dan duizend woorden.",
-          "style": "default",
-          "position": {
-            "top": "20%",
-            "left": "auto",
-            "bottom": "auto",
-            "right": "5%"
-          },
-          "size": {
-            "width": "auto",
-            "height": "auto"
-          },
-          "alignment": "right"
+          "style": "none",
+          "position": { "top": "60%", "left": "60%" },
+          "size": { "width": "300px", "height": "auto" },
+          "alignment": "center",
+          "title": "Onvergetelijke herinneringen",
+          "text": "Elke foto is een venster naar het verleden."
         }
       ]
     },
     {
-      "url": "assets/images/featured/hero-carousel/web higher-119.jpg",
-      "width": 1920,
-      "height": 2687,
+      "url": "assets/images/slider/VenityBrug.jpg",
       "text_blocks": [
         {
-          "title": "Emotie in elk detail",
-          "text": "Vang de essentie van een moment.",
           "style": "default",
-          "position": {
-            "top": "20%",
-            "left": "50%",
-            "bottom": "auto",
-            "right": "auto"
-          },
-          "size": {
-            "width": "50%",
-            "height": "auto"
-          },
-          "alignment": "center"
+          "position": { "top": "50%", "left": "50%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "center",
+          "title": "De magie van het moment",
+          "text": "Vastgelegd voor altijd."
         }
       ]
     },
     {
-      "url": "assets/images/featured/hero-carousel/web-444.jpg",
-      "width": 1920,
-      "height": 1280,
+      "url": "assets/images/slider/web-higher-119.jpg",
       "text_blocks": [
         {
-          "title": "De kracht van eenvoud",
-          "text": "Speel met schaduw, vang het moment.",
-          "style": "boxed",
-          "position": {
-            "top": "15%",
-            "left": "auto",
-            "bottom": "auto",
-            "right": "10%"
-          },
-          "size": {
-            "width": "30%",
-            "height": "auto"
-          },
-          "alignment": "right"
+          "style": "none",
+          "position": { "top": "30%", "left": "50%" },
+          "size": { "width": "400px", "height": "auto" },
+          "alignment": "right",
+          "title": "Creativiteit in elk beeld",
+          "text": "Ik zie de wereld door een unieke lens."
+        }
+      ]
+    },    {
+      "url": "assets/images/slider/web-444.jpg",
+      "text_blocks": [
+        {
+          "style": "none",
+          "position": { "top": "60%", "left": "10%" },
+          "size": { "width": "100px", "height": "auto" },
+          "alignment": "left",
+          "title": "Creativiteit in elk beeld",
+          "text": "Ik zie de wereld door een unieke lens."
         }
       ]
     }

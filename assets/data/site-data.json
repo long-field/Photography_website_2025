@@ -1,0 +1,65 @@
+{
+  "languages": {
+    "nl": {
+      "pageTitle": "Dieter Vanlangenaker Photography",
+      "homePage": {
+        "quoteSection": {
+          "quote": "Fotografie is de kunst om het leven vast te leggen. Het gaat niet alleen om wat je ziet, maar ook om wat je voelt.",
+          "attribution": "Dieter Vanlangenaker",
+          "image": "assets/images/featured/web-higher-119.jpg"
+        },
+        "photographyParagraph": {
+          "title": "Tijdloze fotografie voor onvergetelijke levensverhalen.",
+          "text": "Mijn werk is een viering van de alledaagse schoonheid en de bijzondere momenten die ons leven vormgeven. Van de serene stilte van een landschap tot de bruisende energie van een stad, ik ben constant op zoek naar verhalen die het verdienen om verteld te worden. Met een passie voor detail en emotie, streef ik ernaar om beelden te creëren die niet alleen visueel aantrekkelijk zijn, maar ook een diepe verbinding teweegbrengen. Elk project is een unieke reis, en ik vind het een eer om deel uit te maken van jouw verhaal."
+        },
+        "clientQuotes": {
+          "title": "Wat klanten zeggen",
+          "quotes": [
+            {
+              "quote": "Dieter heeft onze verwachtingen overtroffen. Hij wist de essentie van ons bedrijf vast te leggen in prachtige, authentieke beelden.",
+              "client": "Marie-Claire, eigenaresse van 'De Oude Bakkerij'"
+            },
+            {
+              "quote": "De fotosessie was een geweldige ervaring! Dieter zorgde ervoor dat we ons meteen op ons gemak voelden en het resultaat is adembenemend.",
+              "client": "Tom en Sarah, Bruidspaar"
+            },
+            {
+              "quote": "Elk beeld van Dieter vertelt een verhaal. Hij is een meester in zijn vak.",
+              "client": "Jan, Art Director"
+            }
+          ]
+        },
+        "aboutMe": {
+          "title": "Over mij",
+          "introduction": "Ik ben Dieter, een fotograaf met een onstilbare nieuwsgierigheid naar de wereld om me heen. Mijn camera is mijn oog op de wereld, en ik gebruik hem om verhalen te vangen die anders misschien verloren zouden gaan. Hieronder ontdek je meer over mijn drijfveren en de filosofie achter mijn werk.",
+          "items": [
+            {
+              "title": "Mijn Verhaal",
+              "text": "Ik ben begonnen met fotograferen om de wereld te verkennen en te begrijpen. Van de kleinste details in de natuur tot de complexe emoties van mensen, elk onderwerp vertelt een verhaal dat ik graag wil documenteren. Mijn reis als fotograaf heeft me geleerd om te luisteren, te observeren en te wachten op het perfecte moment.",
+              "image": "assets/images/featured/web higher-83.jpg"
+            },
+            {
+              "title": "Mijn Visie en Stijl",
+              "text": "Mijn stijl is minimalistisch en authentiek. Ik geloof dat de mooiste beelden voortkomen uit de ware momenten van het leven. Ik vermijd overbodige bewerkingen en laat de natuurlijke schoonheid van mijn onderwerpen spreken. Ik werk graag met natuurlijk licht om de sfeer van elk moment te versterken.",
+              "image": "assets/images/featured/web even more higherderder-1-2.jpg"
+            },
+            {
+              "title": "Mijn Passie",
+              "text": "Mijn passie voor fotografie is diep geworteld in mijn geloof dat elk moment uniek en waardevol is. Ik ben het meest geïnspireerd door de verbinding tussen mensen en hun omgeving. Het is mijn doel om beelden te creëren die je terugbrengen naar die ene emotie, die ene geur, dat ene moment in de tijd.",
+              "image": "assets/images/featured/Metro in Budapest.jpg"
+            }
+          ]
+        },
+        "bookingProcess": {
+          "title": "Laten we jouw verhaal vertellen",
+          "text": "Ben je klaar om onvergetelijke momenten vast te leggen? Ik kijk ernaar uit om van je te horen en samen een unieke visuele reis te beginnen. Neem contact met me op voor een vrijblijvend gesprek.",
+          "buttonText": "Neem contact op"
+        }
+      },
+      "portfolioPage": {
+        "pageTitle": "Portfolio | Dieter Vanlangenaker Photography",
+        "portfolioHeading": "Portfolio"
+      }
+    }
+  }
+}
