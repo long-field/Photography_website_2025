@@ -1,6 +1,6 @@
 {
   "settings": {
-    "slideDuration": 5000,
+    "slideDuration": 3900,
     "transitionEffect": "fade"
   },
   "photos": [
@@ -9,19 +9,19 @@
       "text_blocks": [
         {
           "style": "default",
-          "position": { "top": "20%", "left": "10%" },
-          "size": { "width": "250px", "height": "auto" },
+          "position": { "top": "37%", "left": "5%" },
+          "size": { "width": "auto", "height": "auto" },
           "alignment": "left",
-          "title": "Jouw verhaal, mijn lens",
-          "text": "Ik vang de momenten die ertoe doen, met een persoonlijke en authentieke stijl."
+          "title": "Elke foto...",
+          "text": ""
         },
         {
-          "style": "none",
-          "position": { "top": "60%", "left": "60%" },
-          "size": { "width": "300px", "height": "auto" },
-          "alignment": "center",
-          "title": "Onvergetelijke herinneringen",
-          "text": "Elke foto is een venster naar het verleden."
+          "style": "default",
+          "position": { "top": "60%", "left": "5%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "left",
+          "title": "     ...is een venster naar het verleden.",
+          "text": ""
         }
       ]
     },
@@ -30,11 +30,19 @@
       "text_blocks": [
         {
           "style": "default",
-          "position": { "top": "50%", "left": "50%" },
+          "position": { "top": "50%", "left": "5%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "center",
-          "title": "De magie van het moment",
-          "text": "Vastgelegd voor altijd."
+          "title": "De magie...",
+          "text": ""
+        },
+        {
+          "style": "default",
+          "position": { "top": "50%", "left": "65%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "center",
+          "title": "...van het moment.",
+          "text": ""
         }
       ]
     },
@@ -42,24 +50,32 @@
       "url": "assets/images/slider/web-higher-119.jpg",
       "text_blocks": [
         {
-          "style": "none",
-          "position": { "top": "30%", "left": "50%" },
-          "size": { "width": "400px", "height": "auto" },
-          "alignment": "right",
-          "title": "Creativiteit in elk beeld",
-          "text": "Ik zie de wereld door een unieke lens."
+          "style": "default",
+          "position": { "top": "50%", "left": "33%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "center",
+          "title": "Vastgelegd voor altijd.",
+          "text": ""
         }
       ]
     },    {
       "url": "assets/images/slider/web-444.jpg",
       "text_blocks": [
         {
-          "style": "none",
-          "position": { "top": "60%", "left": "10%" },
-          "size": { "width": "100px", "height": "auto" },
+          "style": "default",
+          "position": { "top": "45%", "left": "1%" },
+          "size": { "width": "auto", "height": "auto" },
           "alignment": "left",
-          "title": "Creativiteit in elk beeld",
-          "text": "Ik zie de wereld door een unieke lens."
+          "title": "Jouw verhaal...",
+          "text": ""
+        },
+        {
+          "style": "default",
+          "position": { "top": "60%", "left": "65%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "right",
+          "title": "                 ...mijn lens",
+          "text": ""
         }
       ]
     }
