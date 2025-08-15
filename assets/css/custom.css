@@ -432,7 +432,7 @@ header.scrolled {
     direction: rtl; /* Flip the order for every second item */
 }
 
-.about-me-item:nth-child(even) .about-text {
+.about-me-item:nth-child(even) .about-me-text {
     direction: ltr; /* Reset text direction */
 }
 
@@ -656,6 +656,25 @@ header.scrolled {
     display: none; /* Initially hidden */
 }
 
+/* Style for images inside a sub-gallery */
+.gallery-grid a {
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-grid a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.05);
+}
+
 /* -------------------
    CONTACT PAGE
    ------------------- */
@@ -800,7 +819,7 @@ footer .logo {
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
-        z-index: 1000;
+        z-index: 1001;
     }
 
     .nav-menu.active {

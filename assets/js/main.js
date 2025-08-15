@@ -39,8 +39,6 @@ $(document).ready(function() {
 
             if (page === 'home' && lang === 'nl') {
                 initHomePage(nlContent.homePage, heroCarouselData);
-            } else if (page === 'portfolio' && lang === 'nl') {
-                initPortfolioPage(nlContent.portfolioPage);
             }
         } catch (error) {
             console.error('Fout bij het laden van site-data.json of hero-carousel.json:', error);
@@ -266,118 +264,5 @@ $(document).ready(function() {
             showQuote(currentQuoteIndex);
         });
         console.log("Sliders geïnitialiseerd.");
-    }
-
-    // Functie voor portfolio-logica
-    function initPortfolioPage(content) {
-        console.log("Start met het vullen van de portfolio pagina.");
-        document.title = content.pageTitle;
-        $('.portfolio-header h1').text(content.portfolioHeading);
-
-        let galleryData = null;
-        const portfolioContainer = $('.portfolio-content');
-        const backButton = $('.back-button');
-        const galleryNavUl = $('#gallery-links');
-
-        const renderSubGallery = (images) => {
-            portfolioContainer.empty();
-            backButton.show();
-
-            const grid = $('<div>').addClass('gallery-grid');
-
-            images.forEach(image => {
-                const a = $('<a>').attr('href', image.url).attr('data-lightbox', 'sub-gallery').attr('data-title', image.description);
-                const img = $('<img>').addClass('sub-gallery-image').attr('src', image.url).attr('alt', image.title || '');
-                a.append(img);
-                grid.append(a);
-            });
-
-            portfolioContainer.append(grid);
-        };
-
-        const renderGallery = (category) => {
-            portfolioContainer.empty();
-            backButton.hide();
-
-            if (!galleryData || !galleryData[category]) return;
-
-            const categoryData = galleryData[category];
-            const portfolioHeader = $('.portfolio-header');
-
-            portfolioHeader.find('h1').text(categoryData.title || category.charAt(0).toUpperCase() + category.slice(1));
-
-            if (categoryData.images) {
-                const grid = $('<div>').addClass('gallery-grid');
-
-                categoryData.images.forEach(image => {
-                    const a = $('<a>').attr('href', image.url).attr('data-lightbox', category).attr('data-title', image.description);
-                    const img = $('<img>').attr('src', image.url).attr('alt', image.title || '');
-                    a.append(img);
-                    grid.append(a);
-                });
-
-                portfolioContainer.append(grid);
-            } else if (categoryData.subcategories) {
-                const subGrid = $('<div>').addClass('sub-gallery-grid');
-
-                categoryData.subcategories.forEach((sub, index) => {
-                    const subCard = $('<div>').addClass('sub-gallery-card').css('background-image', `url(${sub.heroImage})`);
-                    const overlay = $('<div>').addClass('sub-gallery-overlay');
-                    const text = $('<div>').addClass('sub-gallery-text');
-                    const title = $('<h3>').text(sub.title);
-                    const description = $('<p>').text(sub.description);
-
-                    text.append(title, description);
-                    subCard.append(overlay, text);
-
-                    subCard.on('click', () => {
-                        renderSubGallery(sub.images);
-                    });
-
-                    subGrid.append(subCard);
-                });
-
-                portfolioContainer.append(subGrid);
-            }
-            document.title = galleryData[category].title + ' | Dieter Vanlangenaker Photography';
-        };
-
-        $.getJSON('assets/data/portfolio.json', function(data) {
-            galleryData = data;
-            const categories = Object.keys(data);
-
-            galleryNavUl.empty();
-            categories.forEach((category) => {
-                const categoryData = data[category];
-                const categoryTitle = categoryData.title || category.charAt(0).toUpperCase() + category.slice(1);
-
-                const li = $('<li>');
-                const button = $('<button>').text(categoryTitle).attr('data-category', category);
-
-                button.on('click', function() {
-                    galleryNavUl.find('button').removeClass('active');
-                    $(this).addClass('active');
-                    renderGallery(category);
-                });
-
-                li.append(button);
-                galleryNavUl.append(li);
-            });
-
-            backButton.on('click', () => {
-                const activeCategory = galleryNavUl.find('button.active').data('category');
-                renderGallery(activeCategory);
-                $('.portfolio-header h1').text(content.portfolioHeading);
-            });
-
-            const firstCategory = categories[0];
-            const firstButton = galleryNavUl.find(`button[data-category="${firstCategory}"]`);
-            if (firstButton.length) {
-                firstButton.addClass('active');
-                renderGallery(firstCategory);
-            }
-        }).fail(function() {
-            console.error('Fout bij het laden van portfolio.json');
-        });
     }
 });
