@@ -1,0 +1,390 @@
+{
+  "gallery": {
+    "title": "Portfoliogalerij",
+    "description": "Een overzicht van mijn werk, ingedeeld per categorie.",
+    "categories": [
+      {
+        "id": "huwelijk",
+        "name": "Huwelijk",
+        "description": "Momenten van liefde en viering."
+      },
+      {
+        "id": "familie",
+        "name": "Familie & Lifestyle",
+        "description": "Authentieke en spontane beelden van gezinnen en het dagelijks leven."
+      },
+      {
+        "id": "newborn",
+        "name": "Newborn",
+        "description": "De eerste, kostbare momenten van het nieuwe leven."
+      },
+      {
+        "id": "fashion",
+        "name": "Fashion & Portretten",
+        "description": "Stijlvolle en artistieke portretten en modereportages."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "photo-gallery",
+      "id": "huwelijk-sarah-tommy",
+      "category": "huwelijk",
+      "title": "Huwelijk Sarah & Tommy",
+      "description": "Een prachtige dag vol emotie, vastgelegd in een reeks onvergetelijke beelden.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Sarah & Tommy/S&T_Color_033.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sarah & Tommy/S&T_Color_033.jpg",
+          "alt": "Trouwfoto van Sarah en Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sarah & Tommy/S&T_Color_035.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sarah & Tommy/S&T_Color_035.jpg",
+          "alt": "Trouwfoto van Sarah en Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sarah & Tommy/S&T_Color_118.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sarah & Tommy/S&T_Color_118.jpg",
+          "alt": "Trouwfoto van Sarah en Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sarah & Tommy/S&T_Color_122.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sarah & Tommy/S&T_Color_122.jpg",
+          "alt": "Trouwfoto van Sarah en Tommy",
+          "isHighlight": true
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "newborn-sofie-jo",
+      "category": "newborn",
+      "title": "Newborn Sofie & Jo",
+      "description": "De tederheid en onschuld van een pasgeboren baby, vastgelegd in beelden voor het leven.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn001.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn001.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn002.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn002.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn003.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn003.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn004.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn004.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn011.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn011.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn012.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn012.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn013.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn013.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn014.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn014.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn015.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn015.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn016.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn016.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn039.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn039.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn041.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn041.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn042.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn042.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn043.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn043.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Sofie & Jo/newborn063.jpg",
+          "thumbnailPath": "assets/images/portfolio/Sofie & Jo/newborn063.jpg",
+          "alt": "Newborn fotoshoot",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "familie-amelie",
+      "category": "familie",
+      "title": "Communie Amélie",
+      "description": "Een vrolijke communiereportage vol zonneschijn en kinderpret.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Communie Amélie/_DVL0401-2 20.55.04.jpg",
+          "thumbnailPath": "assets/images/portfolio/Communie Amélie/_DVL0401-2 20.55.04.jpg",
+          "alt": "Communie foto van Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Communie Amélie/_DVL0454 20.55.04.jpg",
+          "thumbnailPath": "assets/images/portfolio/Communie Amélie/_DVL0454 20.55.04.jpg",
+          "alt": "Communie foto van Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Communie Amélie/_DVL0655 20.55.04.jpg",
+          "thumbnailPath": "assets/images/portfolio/Communie Amélie/_DVL0655 20.55.04.jpg",
+          "alt": "Communie foto van Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Communie Amélie/_DVL0814 20.55.04.jpg",
+          "thumbnailPath": "assets/images/portfolio/Communie Amélie/_DVL0814 20.55.04.jpg",
+          "alt": "Communie foto van Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Communie Amélie/_DVL0889-2 20.55.04.jpg",
+          "thumbnailPath": "assets/images/portfolio/Communie Amélie/_DVL0889-2 20.55.04.jpg",
+          "alt": "Communie foto van Amélie",
+          "isHighlight": true
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "fashion-kim",
+      "category": "fashion",
+      "title": "Fotoshoot Kim",
+      "description": "Een stijlvolle en dynamische fotoshoot, waarbij de focus ligt op mode en portret.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Kim/Kim-1.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-1.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-2.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-28.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-28.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-29.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-29.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-30.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-30.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-31.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-31.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-32.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-32.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-33.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-33.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-34.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-34.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-35.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-35.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/Kim/Kim-36.jpg",
+          "thumbnailPath": "assets/images/portfolio/Kim/Kim-36.jpg",
+          "alt": "Fotoshoot met Kim",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "fashion-novaly",
+      "category": "fashion",
+      "title": "Fotoshoot Novaly",
+      "description": "Een creatieve fotoshoot met de nadruk op portretten en expressie.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-1.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-1.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-48.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-48.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-49.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-49.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-CANON-3.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-3.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-CANON-4.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-4.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-CANON-5.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-5.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-CANON-6.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-6.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novaly/NOVA-CANON-62.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-62.jpg",
+          "alt": "Fotoshoot met Novaly",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "fashion-venity",
+      "category": "fashion",
+      "title": "Fotoshoot Venity",
+      "description": "Artistieke beelden van een creatief project met Venity.",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Venity/VenityBrug.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/VenityBrug.jpg",
+          "alt": "Fotoshoot met Venity",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Venity/web higher-119.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/web higher-119.jpg",
+          "alt": "Fotoshoot met Venity",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Venity/web-246.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/web-246.jpg",
+          "alt": "Fotoshoot met Venity",
+          "isHighlight": true
+        }
+      ]
+    }
+  ]
+}

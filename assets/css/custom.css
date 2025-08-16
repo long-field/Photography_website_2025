@@ -542,10 +542,54 @@ header.scrolled {
     text-align: center;
 }
 
+.sub-nav-container {
+    margin-top: 0;
+}
+/* Styling voor de categorie navigatiebalk */
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0;
+    flex-wrap: wrap; /* Zorgt ervoor dat knoppen op kleinere schermen in een nieuwe rij komen */
+}
+
+.category-nav .category-button {
+    background: none;
+    border: 1px solid var(--divider-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-nav .category-button:hover,
+.category-nav .category-button.active {
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+}
+
+/* Styling voor de highlight sectie */
+#highlight-section {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.highlight-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 .portfolio-header {
     margin-bottom: 2rem;
 }
-
+.portfolio-galleries {
+    padding-top: 0 !important;
+}
 .gallery-nav {
     display: flex;
     justify-content: center;
