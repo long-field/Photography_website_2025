@@ -5,6 +5,12 @@
   },
   "photos": [
     {
+      "url": "assets/images/slider/mainlogoimagewhitefontblackbackgroundfullscreen.png",
+      "text_blocks": [
+
+      ]
+    },
+    {
       "url": "assets/images/slider/CarolineByBrussels.jpg",
       "text_blocks": [
         {
@@ -12,7 +18,7 @@
           "position": { "top": "37%", "left": "5%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "left",
-          "title": "Elke foto...",
+          "title": "Elke foto is...",
           "text": ""
         },
         {
@@ -20,7 +26,7 @@
           "position": { "top": "60%", "left": "5%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "left",
-          "title": "     ...is een venster naar het verleden.",
+          "title": "     ...een moment",
           "text": ""
         }
       ]
@@ -33,7 +39,7 @@
           "position": { "top": "50%", "left": "5%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "center",
-          "title": "De magie...",
+          "title": "... om nooit meer te verliezen.",
           "text": ""
         },
         {
@@ -41,7 +47,7 @@
           "position": { "top": "50%", "left": "65%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "center",
-          "title": "...van het moment.",
+          "title": "Een venster naar...",
           "text": ""
         }
       ]
@@ -54,7 +60,7 @@
           "position": { "top": "50%", "left": "33%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "center",
-          "title": "Vastgelegd voor altijd.",
+          "title": "...andere tijden",
           "text": ""
         }
       ]
@@ -66,7 +72,7 @@
           "position": { "top": "45%", "left": "1%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "left",
-          "title": "Jouw verhaal...",
+          "title": "Bevroren...",
           "text": ""
         },
         {
@@ -74,7 +80,7 @@
           "position": { "top": "60%", "left": "65%" },
           "size": { "width": "auto", "height": "auto" },
           "alignment": "right",
-          "title": "                 ...mijn lens",
+          "title": "                 ...in de tijd",
           "text": ""
         }
       ]
