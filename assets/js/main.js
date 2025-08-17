@@ -152,8 +152,9 @@ $(document).ready(function() {
         aboutMeSection.find('.about-me-item').remove();
 
         content.aboutMe.items.forEach((item, index) => {
-            const aboutMeItem = $('<div>').addClass('about-me-item');
-            const aboutMeText = $('<div>').addClass('about-me-text');
+            const itemId = `about-me-item-${index}`;
+            const aboutMeItem = $('<div>').addClass('about-me-item').attr('id', itemId);
+            const aboutMeText = $('<div>').addClass('about-me-text').attr('id', itemId);
             const aboutMeImageContainer = $('<div>').addClass('about-me-image-container');
 
             aboutMeText.append($('<h3>').text(item.title));
@@ -169,6 +170,8 @@ $(document).ready(function() {
             }
 
             aboutMeSection.append(aboutMeItem);
+            applyScrollEffect(aboutMeItem,aboutMeText);
+            applyScrollEffect(aboutMeItem,aboutMeImageContainer);
         });
         console.log("Over-mij-sectie gevuld.");
 
@@ -256,5 +259,72 @@ $(document).ready(function() {
             showQuote(currentQuoteIndex);
         });
         console.log("Sliders geïnitialiseerd.");
+
+
+        // ---- HERBRUIKBARE SCROLL-ANIMATIE FUNCTIE ----
+        /**
+         * Past een scroll-animatie toe op een element.
+         * Het geanimeerde kindelement (animatie-doel) zal geleidelijk verschijnen.
+         *
+         * @param {jQuery} element De container die de scroll-animatie triggert.
+         * @param {jQuery} animatedChild Het kindelement waarop de animatie wordt toegepast.
+         */
+        function applyScrollEffect(element, animatedChild) {
+            $(window).on('scroll', function() {
+                const windowHeight = $(window).height();
+                const scrollTop = $(window).scrollTop();
+                const elementTop = element.offset().top;
+
+                // Bepaal de scroll-positie ten opzichte van het midden van het element.
+                const elementCenter = elementTop + (element.height() / 2);
+                const viewportCenter = scrollTop
+
+                // De animatie begint wanneer het element de onderkant van de viewport ingaat
+                const startScroll = elementTop - windowHeight*1.5;
+                // De animatie eindigt wanneer het midden van het element het midden van de viewport bereikt
+                const endScroll = elementCenter - (windowHeight / 1.5);
+
+                let progress = (viewportCenter - startScroll) / (endScroll - startScroll);
+
+                // Zorg ervoor dat de progress tussen 0 en 1 blijft
+                progress = Math.min(1, Math.max(0, progress));
+
+                // Bereken de gewenste opacity
+                const opacity = progress;
+
+                // Bereken de translateY voor een subtiele beweging
+                const translateY = 20 - (progress * 20);
+
+                // Pas de stijlen toe
+                animatedChild.css({
+                    'opacity': opacity,
+                    'transform': `translateY(${translateY}px)`
+                });
+            });
+        }
+
+        // Gebruik de nieuwe functie om het effect toe te passen op de quote-sectie
+        const quoteSection = $('.quote-section');
+        const quoteText = quoteSection.find('blockquote, cite');
+        applyScrollEffect(quoteSection, quoteText);
+
+        // Je kunt deze functie nu gebruiken voor elk willekeurig element door er de juiste klassen aan te geven
+        // Voorbeeld:
+        //plaats hier een for each dat onderrstaande doet voor ieder about-item id
+        const anotherSection = $('.about-me-item');
+        const anotherChild = anotherSection.find('.about-me-text');
+        applyScrollEffect(anotherSection, anotherChild);
+
+        const aboutintroSection = $('.about-me-intro');
+        const aboutintroChildH2 = aboutintroSection.find('h2')
+        const aboutintroChildP = aboutintroSection.find('p')
+        applyScrollEffect(aboutintroSection,aboutintroChildH2);
+        applyScrollEffect(aboutintroSection,aboutintroChildP);
+        const photographySection = $('.photography-paragraph');
+        const paragraphH2 = photographySection.find('h2');
+        const paragraphP = photographySection.find('p');
+        applyScrollEffect(photographySection,paragraphH2);
+        applyScrollEffect(photographySection,paragraphP);
+
     }
 });

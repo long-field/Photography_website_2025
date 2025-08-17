@@ -1,4 +1,8 @@
-/* Base Styles */
+/*====================================================================
+  GLOBAL STYLES AND UTILITIES
+====================================================================*/
+
+/* Root variables for consistent theming */
 :root {
     --primary-font: 'Playfair Display', serif;
     --secondary-font: 'Playfair Display', serif;
@@ -6,7 +10,7 @@
     --text-color-light: #f5f5f5;
     --background-color: #fff;
     --divider-color: #e0e0e0;
-    --accent-color: #7a5438;
+    --accent-color: #d1cebd;
 }
 
 /* Universal box-sizing fix to prevent layout issues */
@@ -16,10 +20,12 @@
     box-sizing: border-box;
 }
 
+/* Smooth scroll behavior for anchor links */
 html {
     scroll-behavior: smooth;
 }
 
+/* Body styles for font, color, and layout */
 body {
     font-family: var(--secondary-font);
     color: var(--text-color-dark);
@@ -27,15 +33,17 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    overflow-x: hidden; /* FIX: Prevents horizontal scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
+/* Reusable container for content alignment */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
 
+/* Typography for headings */
 h1, h2, h3 {
     font-family: var(--primary-font);
     font-weight: 700;
@@ -46,9 +54,42 @@ h1, h2, h3 {
 h1 { font-size: 3rem; }
 h2 { font-size: 2.5rem; }
 
-/* -------------------
-   HEADER & NAVIGATION
-   ------------------- */
+/* Styles for the decorative divider element */
+.decorative-divider {
+    width: 100%;
+    max-width: 800px;
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: 4rem auto;
+    /* This is to ensure that on small screens there is no overflow and unwanted horizontal scroll */
+    min-width: 300px;
+}
+
+/* General button styles */
+.button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color-light);
+    background-color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--background-color);
+    color: var(--accent-color);
+}
+
+/*====================================================================
+  HEADER AND NAVIGATION
+====================================================================*/
+
+/* Fixed header for navigation */
 header {
     position: fixed;
     top: 0;
@@ -59,32 +100,44 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     padding: 1rem 1.5rem 1rem 0.5rem;
-    background-color: rgba(255, 255, 255, 0.6); /* More transparent initially */
-    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(1px);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     overflow: visible;
-    transition: background-color 0.3s ease; /* Smooth transition for hover/scroll */
-}
-/* Less transparent on hover */
-header:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
 }
 
-/* Less transparent when scrolled (class added via JS) */
+/* Header transparency on hover and when scrolled */
+header:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+}
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+/* Logo container and image adjustments */
 .logo-container {
-    margin-left: -0.7rem; /* Pulls the logo slightly more left; adjust to -1rem if needed for even closer alignment */
+    margin-left: -0.7rem;
     margin-top: -1rem;
 }
+
 .logo-container .logo {
-    height: 83px; /* Increased from 40px; this will make it exceed the header's 60px height */
+    height: 83px;
     width: auto;
+    filter: invert(1); /* Invert logo color */
+    transition: filter 0.3s ease;
 }
 
+/* Reset logo color when the header is scrolled or hovered */
+header.scrolled .logo-container .logo,
+header:hover .logo-container .logo {
+    filter: invert(0);
+}
+
+
+/* Navigation menu styling */
 .nav-menu ul {
     list-style: none;
     margin: 0;
@@ -96,16 +149,30 @@ header.scrolled {
 
 .nav-menu a {
     text-decoration: none;
-    color: var(--text-color-dark);
+    color: var(--text-color-light); /* Invert color for contrast with hero */
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
-    color: #888;
+    color: #ddd; /* Subtle hover effect for the light text */
 }
 
+/* Set link and logo colors back to normal on hover or scroll */
+header:hover .nav-menu a,
+header.scrolled .nav-menu a {
+    color: var(--text-color-dark);
+}
+
+header:hover .nav-menu a:hover,
+header.scrolled .nav-menu a:hover {
+    color: #888;
+}
+header:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+/* Hamburger menu icon (mobile) */
 .hamburger {
     display: none;
     font-size: 2rem;
@@ -115,6 +182,7 @@ header.scrolled {
     color: var(--text-color-dark);
 }
 
+/* Navigation overlay for mobile */
 .nav-overlay {
     display: none;
     position: fixed;
@@ -126,26 +194,58 @@ header.scrolled {
     z-index: 900;
 }
 
-/* Added styles for the language switch - now hidden */
+/* Language switch styles */
 .language-switch {
     display: none; /* Deactivated as per user request */
 }
 
+/*====================================================================
+  HERO SECTION
+====================================================================*/
 
-/* -------------------
-   HERO SECTION
-   ------------------- */
+/* Main hero section container */
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* Set to full viewport height */
+    height: 100vh;
     overflow: hidden;
     color: var(--text-color-light);
     background-color: transparent;
     z-index: 1;
 }
 
-/* Nieuwe container voor de dynamisch gepositioneerde tekst */
+/* Hero slider and background image */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1; /* Show active slide */
+}
+
+/* Hero overlay for better text readability */
+.hero-overlay {
+
+}
+
+/* Container for dynamically positioned hero text */
 .hero-text-container {
     position: absolute;
     z-index: 2;
@@ -155,37 +255,37 @@ header.scrolled {
     transition: opacity 2s ease-in-out, transform 2s ease-in-out;
 }
 
-/* Maak de tekstcontainer actief en zichtbaar */
+/* Active state for the hero text container */
 .hero-text-container.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Tekststijlen binnen de container */
+/* Hero text styles */
 .hero-text-container h1 {
-    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
+    font-size: clamp(2rem, 5vw, 4rem);
     color: var(--text-color-light);
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin: 0;
 }
+
 .hero-text-container h2 {
-    font-size: clamp(1rem, 2vw, 1.5rem); /* Responsive font size */
+    font-size: clamp(1rem, 2vw, 1.5rem);
     color: var(--text-color-light);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-top: 1rem;
 }
 
-/* Extra stijl voor de 'boxed' look */
+/* Styles for a 'boxed' hero text look */
 .hero-text-container.text-box {
-    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparante witte achtergrond */
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
     border-radius: 8px;
     padding: 1.5rem;
     color: var(--text-color-dark);
 }
 
-.hero-text-container.text-box h1,
-.hero-text-container.text-box h2 {
+.hero-text-container.text-box h1, .hero-text-container.text-box h2 {
     color: var(--text-color-dark);
     text-shadow: none;
 }
@@ -214,612 +314,330 @@ header.scrolled {
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+
 }
 
-/* -------------------
-   DESIGN ELEMENTS
-   ------------------- */
-.divider {
-    width: 100%;
-    max-width: 800px;
-    margin: 4rem auto;
-    border-bottom: 1px solid var(--divider-color);
-}
-
-.divider.horizontal-divider {
-    height: 1px;
-}
-
-.divider.vertical-divider {
-    width: 1px;
-    height: 50px;
-    margin: 2rem auto;
-    border-right: 1px solid var(--divider-color);
-    border-bottom: none;
-}
-
-/* Nieuwe stijl voor de separator */
-.decorative-divider {
-    width: 100%;
-    max-width: 300px;
-    height: 3px;
-    background: linear-gradient(to right, rgba(0,0,0,0) 0%, #222 50%, rgba(0,0,0,0) 100%);
-    margin: 5rem auto;
-    border: none;
-}
-
-/* -------------------
-   NEW SECTIONS
-   ------------------- */
+/* Base section padding */
 .section {
-    padding: 5rem 0;
+    padding: 4rem 0;
+}
+
+/* Main content paragraph sections */
+.photography-paragraph {
     text-align: center;
+
 }
 
-.section h2 {
-    margin-bottom: 1rem;
-}
+.paragraph-h2 {
 
-.section p {
-    max-width: 800px;
-    margin: 1.5rem auto;
 }
-
-/* Updated parallax styling for the quote section */
+/* Quote section with parallax effect */
 .quote-section {
-    padding: 5rem 0;
-    text-align: center;
-    position: relative;
-    color: var(--text-color-light);
-    overflow: hidden;
-    background-image: url(''); /* Will be set dynamically by JS */
-    background-attachment: fixed; /* This is the key for parallax effect */
+    background-image: url('../images/divider-1.webp');
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 50vh; /* TOEGEVOEGD: Zorgt dat de sectie altijd een minimale hoogte heeft. */
+    color: var(--text-color-light);
+    text-align: center;
+    padding: 20rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Quote section overlay for text readability */
 .quote-section .overlay {
-    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Changed from -1 to 0 to be on top of the background, but below the text */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
 }
-
-.quote-section blockquote {
-    font-size: 2rem;
-    font-style: italic;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem;
+/* Quote and citation styling */
+.quote-section blockquote, .quote-section cite {
     position: relative;
     z-index: 1;
-}
-
-.quote-section cite {
-    display: block;
-    margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    position: relative;
-    z-index: 1;
-}
-
-.photography-paragraph {
-    padding: 5rem 0;
-    text-align: center;
-}
-
-/* Updated styling for the client quotes section to be a slider */
-.client-quotes {
-    padding: 5rem 0;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-    background-color: #f9f9f9;
-}
-
-.quotes-slider-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.quotes-slider {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.quote-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 0 2rem;
-}
-
-.quote-slide blockquote {
     font-style: italic;
     font-size: 1.5rem;
-    margin: 0;
-    line-height: 1.4;
-    color: var(--text-color-dark);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.quote-slide cite {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #555;
-}
 
-.quotes-slider-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 1rem;
-}
-
-.quotes-slider-nav button {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    color: var(--text-color-dark);
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.quotes-slider-nav button:hover {
+/* Booking section styles */
+.booking-section {
     background-color: var(--accent-color);
     color: var(--text-color-light);
-}
-
-.booking-section {
-    padding: 5rem 0;
     text-align: center;
-    background-color: #f5f5f5;
 }
 
-.booking-section a.button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin-top: 2rem;
-    background-color: var(--text-color-dark);
+.booking-section p {
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.booking-section .button {
+    background-color: var(--text-color-light);
+    color: var(--accent-color);
+}
+
+.booking-section .button:hover {
+    background-color: transparent;
     color: var(--text-color-light);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-.booking-section a.button:hover {
-    background-color: #444;
+/*====================================================================
+  ABOUT ME SECTION
+====================================================================*/
+
+/* Introduction to the about me section */
+.about-me-intro {
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
-/* New styling for the multi-sectioned About Me page */
-.about-me-section {
-    padding: 5rem 0;
-    background-color: var(--background-color);
+/* Main container for the alternating about me items */
+.about-me-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
+/* Individual about me item */
 .about-me-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    display: flex;
     align-items: center;
-    margin-bottom: 8rem;
-    position: relative;
+    gap: 7rem;
 }
 
+/* Reverse the order of elements for even items */
 .about-me-item:nth-child(even) {
-    direction: rtl; /* Flip the order for every second item */
+    flex-direction: row-reverse;
 }
 
-.about-me-item:nth-child(even) .about-me-text {
-    direction: ltr; /* Reset text direction */
+/* Image container and image styling */
+.about-me-image-container {
+    flex: 1;
+    text-align: center;
 }
 
+.about-me-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Text container for about me content */
 .about-me-text {
-    text-align: left;
+    flex: 1;
     position: relative;
-    z-index: 2;
+
+
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/* Heading with a decorative line */
 .about-me-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
     position: relative;
-}
-
-.about-me-text p {
-    font-size: 1.1rem;
 }
 
 .about-me-text h3::after {
     content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 80px;
+    display: block;
+    width: 60px;
     height: 2px;
     background-color: var(--accent-color);
+    margin-top: 0.5rem;
 }
 
+/* Position the decorative line for even items */
 .about-me-item:nth-child(even) .about-me-text h3::after {
-    right: 0;
-    left: auto;
+    margin-left: auto;
+    margin-right: 0;
 }
 
-.about-me-image-container {
+/*====================================================================
+  CLIENT QUOTES SLIDER
+====================================================================*/
+
+/* Slider container and navigation */
+.quotes-slider-container {
     position: relative;
-    width: 100%;
-    height: 450px;
-    z-index: 1;
-}
-
-.about-me-image-container::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--accent-color);
-    z-index: -1;
-}
-
-.about-me-item:nth-child(even) .about-me-image-container::before {
-    left: auto;
-    right: -20px;
-}
-
-.about-me-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* -------------------
-   GALLERY PREVIEW
-   ------------------- */
-.gallery-preview {
-    margin: 5rem 0;
-    text-align: center;
-}
-
-.gallery-preview h2 {
-    margin-bottom: 1rem;
-}
-
-.gallery-preview p {
-    font-size: 1.25rem;
     max-width: 800px;
-    margin: 1.5rem auto 3rem;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.03);
-}
-
-/* -------------------
-   PORTFOLIO PAGE
-   ------------------- */
-.portfolio {
-    padding-top: 80px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.sub-nav-container {
-    margin-top: 0;
+.quotes-slider .quote-slide {
+    display: none;
+    font-size: 1.2rem;
+    font-style: italic;
+    min-height: 150px;
 }
-/* Styling voor de categorie navigatiebalk */
+
+.quotes-slider .quote-slide:first-child {
+    display: block; /* Show the first slide by default */
+}
+
+/* Slider navigation buttons */
+.quotes-slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.quotes-slider-nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--accent-color);
+    padding: 0;
+    outline: none;
+}
+
+/*====================================================================
+  PORTFOLIO PAGE
+====================================================================*/
+
+/* Page heading styles */
+.page-heading {
+    text-align: center;
+    padding-top: 8rem; /* Space from fixed header */
+}
+
+/* Category navigation for portfolio */
 .category-nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 0;
-    flex-wrap: wrap; /* Zorgt ervoor dat knoppen op kleinere schermen in een nieuwe rij komen */
-}
-
-.category-nav .category-button {
-    background: none;
-    border: 1px solid var(--divider-color);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.category-nav .category-button:hover,
-.category-nav .category-button.active {
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
-}
-
-/* Styling voor de highlight sectie */
-#highlight-section {
-    max-width: 1200px;
-    margin: 0 auto 3rem;
-}
-
-.highlight-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.portfolio-header {
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
-.portfolio-galleries {
-    padding-top: 0 !important;
-}
-.gallery-nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
 
-.gallery-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding: 0;
-}
-
-.gallery-nav button {
-    background: none;
+/* Individual category buttons */
+.category-button {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
     border: none;
-    color: var(--text-color-dark);
-    font-family: var(--secondary-font);
-    font-size: 1rem;
-    text-transform: capitalize;
+    padding: 0.7rem 1.5rem;
     cursor: pointer;
-    padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.gallery-nav button:hover,
-.gallery-nav button.active {
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
+.category-button:hover {
+    background-color: #5d3e2d;
 }
 
-.gallery-select {
-    display: none;
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 1rem;
+.category-button.active {
+    background-color: #5d3e2d;
 }
 
-.portfolio-content {
-    margin-top: 2rem;
-}
-
-.sub-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-.sub-gallery-card {
-    position: relative; /* Dit is cruciaal voor de positionering van de overlay en de afbeelding */
-    overflow: hidden; /* Zorgt ervoor dat delen van de afbeelding die buiten de kaart vallen, worden afgesneden */
-    height: 300px; /* Stel een vaste hoogte in, of gebruik een andere waarde */
-    border-radius: 8px; /* Optioneel: voor afgeronde hoeken */
-}
-.sub-gallery-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Zorgt ervoor dat de afbeelding de kaart vult zonder te vervormen */
-    transition: transform 0.3s ease; /* Optioneel: animatie bij hover */
-}
-.sub-gallery-card:hover {
-    transform: translateY(-10px);
-}
-.sub-gallery-card:hover .sub-gallery-image {
-    transform: scale(1.1); /* Optioneel: animatie bij hover */
-}
-.sub-gallery-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-}
-
-.sub-gallery-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem;
-    color: var(--text-color-light);
-    text-align: left;
-}
-
-.sub-gallery-text h3 {
-    color: var(--text-color-light);
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.sub-gallery-text p {
-    margin: 0.5rem 0 0;
-    font-size: 0.9rem;
-}
-
-.back-button {
-    background: none;
-    border: none;
-    color: var(--text-color-dark);
-    font-size: 1rem;
-    font-family: var(--secondary-font);
-    cursor: pointer;
+/* Container for sub-navigation */
+.sub-nav-container {
+    text-align: center;
     margin-bottom: 2rem;
-    display: none; /* Initially hidden */
 }
 
-/* Style for images inside a sub-gallery */
-.gallery-grid a {
-    display: block;
+.sub-nav-container button {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
     text-decoration: none;
+    color: #333;
+}
+
+.sub-nav-container button:hover,
+.sub-nav-container button.active {
+    text-decoration: underline;
+}
+
+/* Gallery grid and items */
+.gallery-section{
+    text-align: center;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
     overflow: hidden;
     border-radius: 8px;
 }
 
-.gallery-grid a img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.3s ease;
 }
 
-.gallery-grid a:hover img {
+.gallery-item img:hover {
     transform: scale(1.05);
 }
 
-/* -------------------
-   CONTACT PAGE
-   ------------------- */
-.contact {
-    padding-top: 80px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-form,
-.booking {
-    margin-top: 2rem;
-    padding: 2rem;
-    border: 1px solid var(--divider-color);
-    border-radius: 8px;
-}
-
-.contact-form h2,
-.booking h2 {
-    margin-top: 0;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--divider-color);
-    border-radius: 4px;
+/* Styles for lightbox (from external library) */
+.lightbox .lb-dataContainer {
     font-family: var(--secondary-font);
 }
 
-.contact-form button {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.lightbox .lb-number {
+    font-size: 0.8rem;
 }
 
-.contact-form button:hover {
-    background-color: #444;
+.lightbox .lb-details {
+    font-size: 1rem;
 }
 
-/* -------------------
-   FOOTER
-   ------------------- */
+/*====================================================================
+  FOOTER
+====================================================================*/
+
+/* Footer container */
 footer {
-    text-align: center;
+    background-color: var(--text-color-light);
+    color: var(--text-color-dark);
     padding: 2rem 0;
-    margin-top: 5rem;
-    border-top: 1px solid var(--divider-color);
+    text-align: center;
 }
 
 footer .logo {
     height: 150px;
 }
 
-/* -------------------
-   MEDIA QUERIES
-   ------------------- */
-@media (max-width: 1024px) {
-    .hero-text-container {
-        padding: 1rem;
-        left: 5% !important;
-        right: 5% !important;
-        width: 90% !important;
-        top: auto !important;
-        bottom: 5% !important;
-        text-align: center !important;
-        transform: none !important;
-    }
+.social-icons a:hover {
+    color: var(--accent-color);
+}
 
-    .hero-text-container h1 {
-        font-size: 2rem;
-    }
+/*====================================================================
+  RESPONSIVE DESIGN (MEDIA QUERIES)
+====================================================================*/
 
-    .hero-text-container h2 {
-        font-size: 1.25rem;
-    }
-
+/* Smaller screens (tablets and mobile) */
+@media (max-width: 992px) {
     .about-me-item {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        flex-direction: column;
         text-align: center;
     }
 
     .about-me-item:nth-child(even) {
-        direction: ltr; /* Reset direction on mobile */
-    }
-
-    .about-me-image-container::before {
-        display: none; /* Hide border decoration on mobile */
+        flex-direction: column; /* Reset the row-reverse for even items */
     }
 
     .about-me-image-container img {
@@ -845,14 +663,16 @@ footer .logo {
 
     .quote-section {
         background-attachment: scroll; /* Disable parallax on mobile for better performance */
-        min-height: 50vh; /* TOEGEVOEGD: Zorgt dat de sectie altijd een minimale hoogte heeft op mobiel. */
+        min-height: 50vh;
     }
 }
 
+/* Mobile-specific styles */
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
 
+    /* Mobile navigation menu */
     .nav-menu {
         position: fixed;
         top: 0;
@@ -863,7 +683,8 @@ footer .logo {
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
-        z-index: 1001;
+        z-index: 1000;
+        padding-top: 5rem;
     }
 
     .nav-menu.active {
@@ -872,25 +693,30 @@ footer .logo {
 
     .nav-menu ul {
         flex-direction: column;
-        text-align: left;
-        padding: 5rem 1.5rem 1.5rem;
-        gap: 1rem;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
     }
 
     .hamburger {
         display: block;
-        z-index: 1001;
     }
 
-    .nav-overlay.active {
-        display: block;
+    header {
+        align-items: center;
+        padding: 0.5rem 1.5rem;
+        height: 80px;
     }
 
-    .gallery-nav ul {
-        display: none;
+    .logo-container .logo {
+        height: 60px;
+        margin-top: 0.5rem;
     }
 
-    .gallery-select {
-        display: block;
+    .hero-text-container {
+        padding: 1rem;
     }
 }
