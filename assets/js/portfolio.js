@@ -1,113 +1,169 @@
 async function initPortfolioPage(content) {
     console.log("Start met het vullen van de portfolio-pagina.");
 
-    // Laad de galerijdata
+    // Load gallery data
     const galleriesDataResponse = await fetch('assets/data/galleries.json');
     const galleriesData = await galleriesDataResponse.json();
 
-    // Stel de SEO- en algemene teksten in
+    // Set SEO and general texts
     document.title = content.pageTitle;
     $('.page-heading h1').text(content.portfolioHeading);
 
     const galleriesContainer = $('#galleries-container');
-    const categoryNavContainer = $('#category-nav');
+    const categoryList = $('.portfolio-category-list');
+    const galleryList = $('.portfolio-gallery-list');
+    const highlightImage = $('.portfolio-highlight-image');
+    const highlightTitle = $('.portfolio-highlight-title');
+    const highlightDescription = $('.portfolio-highlight-description');
 
-    // Functie om de navigatiebalk te renderen
-    function renderCategoryNav(categories, sections) {
-        // Leeg de navigatiecontainer eerst
-        categoryNavContainer.empty();
-
-        // Voeg categorieknoppen toe op basis van de JSON-data
-        categories.forEach(category => {
-            const button = $('<button>').addClass('category-button').text(category.name).data('category', category.id);
-            categoryNavContainer.append(button);
+    // Render category selector
+    function renderCategorySelector(categories, sections) {
+        categoryList.empty();
+        categories.forEach((category, index) => {
+            const item = $('<div>')
+                .addClass('portfolio-category-item')
+                .text(category.name)
+                .data('category', category.id)
+                .data('index', index);
+            categoryList.append(item);
         });
 
-        // Voeg de klik-events toe aan de categorieknoppen
-        $('.category-button').on('click', function() {
-            $('.category-button').removeClass('active');
+        // Set initial active category
+        const initialCategory = categories[0].id;
+        const initialIndex = 0;
+        $(`.portfolio-category-item[data-category="${initialCategory}"]`).addClass('active');
+        updateCategoryCarousel(initialIndex);
+        renderGallerySelector(initialCategory, sections);
+        updateHighlightSection(sections.find(s => s.category === initialCategory));
+
+        // Category click event
+        $('.portfolio-category-item').on('click', function() {
+            $('.portfolio-category-item').removeClass('active');
             $(this).addClass('active');
             const selectedCategory = $(this).data('category');
-
-            // Toon de subnavigatie voor de geselecteerde categorie
-            renderSubNav(selectedCategory, sections);
-
-            // Verberg alle galerijen om te beginnen
-            $('.gallery-section').hide();
+            const index = $(this).data('index');
+            updateCategoryCarousel(index);
+            renderGallerySelector(selectedCategory, sections);
+            updateHighlightSection(sections.find(s => s.category === selectedCategory));
         });
 
-        // Roep de subnavigatie aan voor de initiële selectie van de eerste categorie
-        const initialCategory = categories[0].id;
-        $(`.category-button[data-category="${initialCategory}"]`).addClass('active');
-        renderSubNav(initialCategory, sections);
+        // Arrow navigation for categories
+        $('.portfolio-category-prev').on('click', function() {
+            const current = $('.portfolio-category-item.active');
+            const prev = current.prev('.portfolio-category-item');
+            if (prev.length) {
+                $('.portfolio-category-item').removeClass('active');
+                prev.addClass('active');
+                const selectedCategory = prev.data('category');
+                const index = prev.data('index');
+                updateCategoryCarousel(index);
+                renderGallerySelector(selectedCategory, sections);
+                updateHighlightSection(sections.find(s => s.category === selectedCategory));
+            }
+        });
+
+        $('.portfolio-category-next').on('click', function() {
+            const current = $('.portfolio-category-item.active');
+            const next = current.next('.portfolio-category-item');
+            if (next.length) {
+                $('.portfolio-category-item').removeClass('active');
+                next.addClass('active');
+                const selectedCategory = next.data('category');
+                const index = next.data('index');
+                updateCategoryCarousel(index);
+                renderGallerySelector(selectedCategory, sections);
+                updateHighlightSection(sections.find(s => s.category === selectedCategory));
+            }
+        });
     }
 
-    // Nieuwe functie om de subnavigatie te renderen
-    function renderSubNav(selectedCategory, sections) {
-        // Verwijder de oude subnavigatie, als die er is
-        $('.sub-nav-container').remove();
+    // Update category carousel position
+    function updateCategoryCarousel(activeIndex) {
+        const itemWidth = $('.portfolio-category-item').outerWidth();
+        const totalItems = $('.portfolio-category-item').length;
+        const offset = -itemWidth * (activeIndex - 1); // Center the active item
+        categoryList.css('transform', `translateX(${offset}px)`);
+    }
 
-        const subNavContainer = $('<div>').addClass('sub-nav-container');
+    // Render gallery selector
+    function renderGallerySelector(selectedCategory, sections) {
+        galleryList.empty();
         const filteredSections = sections.filter(section => section.category === selectedCategory);
 
-        // Voeg de CSS-stijl toe om de knoppen te centreren
-        subNavContainer.css({
-            'text-align': 'center',
-            'margin-top': '1rem'
-        });
-
         filteredSections.forEach((section, index) => {
-            const subButton = $('<button>').addClass('sub-button').text(section.title).data('section-id', section.id);
-            subNavContainer.append(subButton);
+            const item = $('<div>')
+                .addClass('portfolio-gallery-item')
+                .text(section.title)
+                .data('section-id', section.id)
+                .data('index', index);
+            galleryList.append(item);
         });
 
-        // Voeg de subnavigatie toe na de hoofdcategorieën
-        categoryNavContainer.after(subNavContainer);
-
-        // Debug: Check of de ge-filterde secties correct zijn
-        console.log("DEBUG: Number of filtered sections for category '" + selectedCategory + "':", filteredSections.length);
-
-        // Selecteer en render de eerste galerij standaard
+        // Set initial active gallery
         if (filteredSections.length > 0) {
-            console.log("DEBUG: Condition 'filteredSections.length > 0' is true. Attempting to render first gallery.");
-
-            // Dit is de correcte manier om de eerste subknop in de nieuwe container te vinden
-            const firstSubButton = subNavContainer.find('.sub-button').first();
-            const firstGalleryId = firstSubButton.data('section-id');
-
-            console.log("DEBUG: First sub-button found:", firstSubButton);
-            console.log("DEBUG: ID of first gallery to load:", firstGalleryId);
-
-            // Zoek de volledige sectie en laad deze
-            const sectionToRender = sections.find(s => s.id === firstGalleryId);
-
-            console.log("DEBUG: Section object to render:", sectionToRender);
-
-            if (sectionToRender) {
-                firstSubButton.addClass('active');
-                renderGalleries([sectionToRender]);
-                console.log("DEBUG: Gallery successfully rendered.");
-            } else {
-                console.log("DEBUG: Section object not found. Cannot render gallery.");
-            }
+            const firstGalleryId = filteredSections[0].id;
+            $(`.portfolio-gallery-item[data-section-id="${firstGalleryId}"]`).addClass('active');
+            updateGalleryCarousel(0);
+            renderGallery([sections.find(s => s.id === firstGalleryId)]);
+            updateHighlightSection(sections.find(s => s.id === firstGalleryId));
+        } else {
+            galleryList.empty();
+            galleriesContainer.empty();
+            updateHighlightSection(null);
         }
 
-        // Voeg de klik-events toe aan de subknoppen
-        $('.sub-button').on('click', function() {
-            $('.sub-button').removeClass('active');
+        // Gallery click event
+        $('.portfolio-gallery-item').on('click', function() {
+            $('.portfolio-gallery-item').removeClass('active');
             $(this).addClass('active');
             const selectedGalleryId = $(this).data('section-id');
+            const index = $(this).data('index');
+            updateGalleryCarousel(index);
+            renderGallery([sections.find(s => s.id === selectedGalleryId)]);
+            updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
+        });
 
-            // Render alleen de geselecteerde galerij
-            renderGalleries([sections.find(s => s.id === selectedGalleryId)]);
+        // Arrow navigation for galleries
+        $('.portfolio-gallery-prev').on('click', function() {
+            const current = $('.portfolio-gallery-item.active');
+            const prev = current.prev('.portfolio-gallery-item');
+            if (prev.length) {
+                $('.portfolio-gallery-item').removeClass('active');
+                prev.addClass('active');
+                const selectedGalleryId = prev.data('section-id');
+                const index = prev.data('index');
+                updateGalleryCarousel(index);
+                renderGallery([sections.find(s => s.id === selectedGalleryId)]);
+                updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
+            }
+        });
+
+        $('.portfolio-gallery-next').on('click', function() {
+            const current = $('.portfolio-gallery-item.active');
+            const next = current.next('.portfolio-gallery-item');
+            if (next.length) {
+                $('.portfolio-gallery-item').removeClass('active');
+                next.addClass('active');
+                const selectedGalleryId = next.data('section-id');
+                const index = next.data('index');
+                updateGalleryCarousel(index);
+                renderGallery([sections.find(s => s.id === selectedGalleryId)]);
+                updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
+            }
         });
     }
 
-    // Genereer de galerijen op basis van de JSON-data
-    function renderGalleries(sections) {
-        // Leeg de container voordat we nieuwe galerijen toevoegen
-        galleriesContainer.empty();
+    // Update gallery carousel position
+    function updateGalleryCarousel(activeIndex) {
+        const itemWidth = $('.portfolio-gallery-item').outerWidth();
+        const totalItems = $('.portfolio-gallery-item').length;
+        const offset = -itemWidth * (activeIndex - 1); // Center the active item
+        galleryList.css('transform', `translateX(${offset}px)`);
+    }
 
+    // Render galleries
+    function renderGallery(sections) {
+        galleriesContainer.empty();
         sections.forEach(section => {
             if (section.type === 'photo-gallery') {
                 const gallerySection = $('<section>').addClass('gallery-section').attr({
@@ -118,8 +174,7 @@ async function initPortfolioPage(content) {
                 const title = $('<h2>').text(section.title);
                 const description = $('<p>').text(section.description);
 
-                gallerySection.append(title);
-                gallerySection.append(description);
+                gallerySection.append(title, description);
 
                 const grid = $('<div>').addClass('gallery-grid');
                 grid.css({
@@ -161,28 +216,35 @@ async function initPortfolioPage(content) {
         console.log("Portfolio-galerijen zijn geladen.");
     }
 
-    // Start de renderfuncties
-    renderCategoryNav(galleriesData.gallery.categories, galleriesData.sections);
+    // Update highlighted image section
+    function updateHighlightSection(section) {
+        if (section && section.images) {
+            const highlightImageData = section.images.find(img => img.isHighlight) || section.images[0];
+            highlightImage.removeClass('active');
+            highlightImage.css('background-image', `url(${highlightImageData.path})`);
+            highlightImage.addClass('active');
+            highlightTitle.text(section.title);
+            highlightDescription.text(section.description);
+        } else {
+            highlightImage.removeClass('active');
+            highlightImage.css('background-image', 'none');
+            highlightTitle.text('');
+            highlightDescription.text('');
+        }
+    }
 
-    // Voeg CSS toe voor de knopstijlen
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .sub-button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            color: #333;
-            text-decoration: none;
+    // Initialize
+    renderCategorySelector(galleriesData.gallery.categories, galleriesData.sections);
+
+    // Update carousel positions on window resize
+    $(window).on('resize', function() {
+        const activeCategory = $('.portfolio-category-item.active');
+        const activeGallery = $('.portfolio-gallery-item.active');
+        if (activeCategory.length) {
+            updateCategoryCarousel(activeCategory.data('index'));
         }
-        .sub-button:hover {
-            text-decoration: underline;
+        if (activeGallery.length) {
+            updateGalleryCarousel(activeGallery.data('index'));
         }
-        .sub-button.active {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-    `;
-    document.head.appendChild(style);
+    });
 }

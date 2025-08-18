@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- De titel wordt dynamisch ingesteld door JavaScript -->
     <title></title>
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -14,38 +13,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body data-page="portfolio" data-lang="nl">
-
 <div data-include="partials/header.html"></div>
-
 <main>
     <section class="page-heading section">
         <div class="container">
-            <!-- De titel wordt hier dynamisch ingevoegd -->
             <h1></h1>
         </div>
     </section>
 
-    <!-- Nieuwe navigatie voor categorieën -->
-    <div class="container">
-        <div class="category-nav" id="category-nav">
-            <!-- De categorieknoppen worden hier geladen door portfolio.js -->
+    <!-- Portfolio Navigation -->
+    <div class="portfolio-selector-wrapper">
+        <div class="container">
+            <!-- Category Selector -->
+            <div class="portfolio-category-selector">
+                <button class="portfolio-category-prev">&larr;</button>
+                <div class="portfolio-category-carousel">
+                    <div class="portfolio-category-list">
+                        <!-- Categories Loaded Dynamically -->
+                    </div>
+                </div>
+                <button class="portfolio-category-next">&rarr;</button>
+            </div>
+            <!-- Gallery Selector -->
+            <div class="portfolio-gallery-selector">
+                <button class="portfolio-gallery-prev">&larr;</button>
+                <div class="portfolio-gallery-carousel">
+                    <div class="portfolio-gallery-list">
+                        <!-- Galleries Loaded Dynamically -->
+                    </div>
+                </div>
+                <button class="portfolio-gallery-next">&rarr;</button>
+            </div>
         </div>
     </div>
 
-
-    <section class="portfolio-galleries section">
-        <div class="container" id="galleries-container">
+    <!-- Highlighted Image Section -->
+    <section class="portfolio-highlight-section">
+        <div class="portfolio-highlight-image"></div>
+        <div class="portfolio-highlight-text">
+            <h2 class="portfolio-highlight-title"></h2>
+            <p class="portfolio-highlight-description"></p>
         </div>
     </section>
-    ...
+
+    <!-- Gallery Display -->
+    <section class="portfolio-galleries section">
+        <div class="container" id="galleries-container">
+            <!-- Galleries rendered dynamically -->
+        </div>
+    </section>
     <div class="decorative-divider"></div>
-
-
-
 </main>
-
 <div data-include="partials/footer.html"></div>
-
 <script src="assets/js/includes.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script src="assets/js/portfolio.js"></script>
