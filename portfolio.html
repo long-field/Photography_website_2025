@@ -15,44 +15,30 @@
 <body data-page="portfolio" data-lang="nl">
 <div data-include="partials/header.html"></div>
 <main>
-    <section class="page-heading section">
-        <div class="container">
-            <h1></h1>
-        </div>
-    </section>
-
-    <!-- Portfolio Navigation -->
-    <div class="portfolio-selector-wrapper">
-        <div class="container">
-            <!-- Category Selector -->
-            <div class="portfolio-category-selector">
-                <button class="portfolio-category-prev">&larr;</button>
-                <div class="portfolio-category-carousel">
-                    <div class="portfolio-category-list">
-                        <!-- Categories Loaded Dynamically -->
-                    </div>
-                </div>
-                <button class="portfolio-category-next">&rarr;</button>
-            </div>
-            <!-- Gallery Selector -->
-            <div class="portfolio-gallery-selector">
-                <button class="portfolio-gallery-prev">&larr;</button>
-                <div class="portfolio-gallery-carousel">
-                    <div class="portfolio-gallery-list">
-                        <!-- Galleries Loaded Dynamically -->
-                    </div>
-                </div>
-                <button class="portfolio-gallery-next">&rarr;</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Highlighted Image Section -->
+    <!-- Portfolio Highlight and Navigation -->
     <section class="portfolio-highlight-section">
         <div class="portfolio-highlight-image"></div>
         <div class="portfolio-highlight-text">
-            <h2 class="portfolio-highlight-title"></h2>
+            <div class="gallery-nav">
+                <button class="gallery-prev">&larr;</button>
+                <h2 class="portfolio-highlight-title"></h2>
+                <button class="gallery-next">&rarr;</button>
+            </div>
             <p class="portfolio-highlight-description"></p>
+        </div>
+        <!-- Fixed Category Navigation -->
+        <div class="portfolio-selector-fixed">
+            <div class="container">
+                <div class="portfolio-category-selector">
+                    <button class="portfolio-category-prev">&larr;</button>
+                    <div class="portfolio-category-carousel">
+                        <div class="portfolio-category-list">
+                            <!-- Categories Loaded Dynamically -->
+                        </div>
+                    </div>
+                    <button class="portfolio-category-next">&rarr;</button>
+                </div>
+            </div>
         </div>
     </section>
 

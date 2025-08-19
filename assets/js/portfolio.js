@@ -11,10 +11,12 @@ async function initPortfolioPage(content) {
 
     const galleriesContainer = $('#galleries-container');
     const categoryList = $('.portfolio-category-list');
-    const galleryList = $('.portfolio-gallery-list');
     const highlightImage = $('.portfolio-highlight-image');
     const highlightTitle = $('.portfolio-highlight-title');
     const highlightDescription = $('.portfolio-highlight-description');
+
+    // Store the current gallery index for navigation
+    let currentGalleryIndex = 0;
 
     // Render category selector
     function renderCategorySelector(categories, sections) {
@@ -33,8 +35,10 @@ async function initPortfolioPage(content) {
         const initialIndex = 0;
         $(`.portfolio-category-item[data-category="${initialCategory}"]`).addClass('active');
         updateCategoryCarousel(initialIndex);
-        renderGallerySelector(initialCategory, sections);
-        updateHighlightSection(sections.find(s => s.category === initialCategory));
+        const filteredSections = sections.filter(section => section.category === initialCategory);
+        currentGalleryIndex = 0;
+        renderGallery([filteredSections[0]]);
+        updateHighlightSection(filteredSections[0]);
 
         // Category click event
         $('.portfolio-category-item').on('click', function() {
@@ -43,8 +47,10 @@ async function initPortfolioPage(content) {
             const selectedCategory = $(this).data('category');
             const index = $(this).data('index');
             updateCategoryCarousel(index);
-            renderGallerySelector(selectedCategory, sections);
-            updateHighlightSection(sections.find(s => s.category === selectedCategory));
+            const filteredSections = sections.filter(section => section.category === selectedCategory);
+            currentGalleryIndex = 0;
+            renderGallery([filteredSections[0]]);
+            updateHighlightSection(filteredSections[0]);
         });
 
         // Arrow navigation for categories
@@ -57,8 +63,10 @@ async function initPortfolioPage(content) {
                 const selectedCategory = prev.data('category');
                 const index = prev.data('index');
                 updateCategoryCarousel(index);
-                renderGallerySelector(selectedCategory, sections);
-                updateHighlightSection(sections.find(s => s.category === selectedCategory));
+                const filteredSections = sections.filter(section => section.category === selectedCategory);
+                currentGalleryIndex = 0;
+                renderGallery([filteredSections[0]]);
+                updateHighlightSection(filteredSections[0]);
             }
         });
 
@@ -71,8 +79,31 @@ async function initPortfolioPage(content) {
                 const selectedCategory = next.data('category');
                 const index = next.data('index');
                 updateCategoryCarousel(index);
-                renderGallerySelector(selectedCategory, sections);
-                updateHighlightSection(sections.find(s => s.category === selectedCategory));
+                const filteredSections = sections.filter(section => section.category === selectedCategory);
+                currentGalleryIndex = 0;
+                renderGallery([filteredSections[0]]);
+                updateHighlightSection(filteredSections[0]);
+            }
+        });
+
+        // Gallery navigation with arrows
+        $('.gallery-prev').on('click', function() {
+            const selectedCategory = $('.portfolio-category-item.active').data('category');
+            const filteredSections = sections.filter(section => section.category === selectedCategory);
+            if (currentGalleryIndex > 0) {
+                currentGalleryIndex--;
+                renderGallery([filteredSections[currentGalleryIndex]]);
+                updateHighlightSection(filteredSections[currentGalleryIndex]);
+            }
+        });
+
+        $('.gallery-next').on('click', function() {
+            const selectedCategory = $('.portfolio-category-item.active').data('category');
+            const filteredSections = sections.filter(section => section.category === selectedCategory);
+            if (currentGalleryIndex < filteredSections.length - 1) {
+                currentGalleryIndex++;
+                renderGallery([filteredSections[currentGalleryIndex]]);
+                updateHighlightSection(filteredSections[currentGalleryIndex]);
             }
         });
     }
@@ -80,85 +111,8 @@ async function initPortfolioPage(content) {
     // Update category carousel position
     function updateCategoryCarousel(activeIndex) {
         const itemWidth = $('.portfolio-category-item').outerWidth();
-        const totalItems = $('.portfolio-category-item').length;
-        const offset = -itemWidth * (activeIndex - 1); // Center the active item
+        const offset = -itemWidth * (activeIndex - 1);
         categoryList.css('transform', `translateX(${offset}px)`);
-    }
-
-    // Render gallery selector
-    function renderGallerySelector(selectedCategory, sections) {
-        galleryList.empty();
-        const filteredSections = sections.filter(section => section.category === selectedCategory);
-
-        filteredSections.forEach((section, index) => {
-            const item = $('<div>')
-                .addClass('portfolio-gallery-item')
-                .text(section.title)
-                .data('section-id', section.id)
-                .data('index', index);
-            galleryList.append(item);
-        });
-
-        // Set initial active gallery
-        if (filteredSections.length > 0) {
-            const firstGalleryId = filteredSections[0].id;
-            $(`.portfolio-gallery-item[data-section-id="${firstGalleryId}"]`).addClass('active');
-            updateGalleryCarousel(0);
-            renderGallery([sections.find(s => s.id === firstGalleryId)]);
-            updateHighlightSection(sections.find(s => s.id === firstGalleryId));
-        } else {
-            galleryList.empty();
-            galleriesContainer.empty();
-            updateHighlightSection(null);
-        }
-
-        // Gallery click event
-        $('.portfolio-gallery-item').on('click', function() {
-            $('.portfolio-gallery-item').removeClass('active');
-            $(this).addClass('active');
-            const selectedGalleryId = $(this).data('section-id');
-            const index = $(this).data('index');
-            updateGalleryCarousel(index);
-            renderGallery([sections.find(s => s.id === selectedGalleryId)]);
-            updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
-        });
-
-        // Arrow navigation for galleries
-        $('.portfolio-gallery-prev').on('click', function() {
-            const current = $('.portfolio-gallery-item.active');
-            const prev = current.prev('.portfolio-gallery-item');
-            if (prev.length) {
-                $('.portfolio-gallery-item').removeClass('active');
-                prev.addClass('active');
-                const selectedGalleryId = prev.data('section-id');
-                const index = prev.data('index');
-                updateGalleryCarousel(index);
-                renderGallery([sections.find(s => s.id === selectedGalleryId)]);
-                updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
-            }
-        });
-
-        $('.portfolio-gallery-next').on('click', function() {
-            const current = $('.portfolio-gallery-item.active');
-            const next = current.next('.portfolio-gallery-item');
-            if (next.length) {
-                $('.portfolio-gallery-item').removeClass('active');
-                next.addClass('active');
-                const selectedGalleryId = next.data('section-id');
-                const index = next.data('index');
-                updateGalleryCarousel(index);
-                renderGallery([sections.find(s => s.id === selectedGalleryId)]);
-                updateHighlightSection(sections.find(s => s.id === selectedGalleryId));
-            }
-        });
-    }
-
-    // Update gallery carousel position
-    function updateGalleryCarousel(activeIndex) {
-        const itemWidth = $('.portfolio-gallery-item').outerWidth();
-        const totalItems = $('.portfolio-gallery-item').length;
-        const offset = -itemWidth * (activeIndex - 1); // Center the active item
-        galleryList.css('transform', `translateX(${offset}px)`);
     }
 
     // Render galleries
@@ -171,11 +125,6 @@ async function initPortfolioPage(content) {
                     'data-category': section.category
                 });
 
-                const title = $('<h2>').text(section.title);
-                const description = $('<p>').text(section.description);
-
-                gallerySection.append(title, description);
-
                 const grid = $('<div>').addClass('gallery-grid');
                 grid.css({
                     'display': 'grid',
@@ -183,7 +132,6 @@ async function initPortfolioPage(content) {
                     'gap': section.displaySettings.gap
                 });
 
-                // Mobile view settings
                 const style = document.createElement('style');
                 style.innerHTML = `@media (max-width: 768px) {
                     #${section.id} .gallery-grid {
@@ -221,7 +169,9 @@ async function initPortfolioPage(content) {
         if (section && section.images) {
             const highlightImageData = section.images.find(img => img.isHighlight) || section.images[0];
             highlightImage.removeClass('active');
-            highlightImage.css('background-image', `url(${highlightImageData.path})`);
+            highlightImage.css({
+                'background-image': `url(${highlightImageData.path})`
+            });
             highlightImage.addClass('active');
             highlightTitle.text(section.title);
             highlightDescription.text(section.description);
@@ -239,12 +189,8 @@ async function initPortfolioPage(content) {
     // Update carousel positions on window resize
     $(window).on('resize', function() {
         const activeCategory = $('.portfolio-category-item.active');
-        const activeGallery = $('.portfolio-gallery-item.active');
         if (activeCategory.length) {
             updateCategoryCarousel(activeCategory.data('index'));
-        }
-        if (activeGallery.length) {
-            updateGalleryCarousel(activeGallery.data('index'));
         }
     });
 }

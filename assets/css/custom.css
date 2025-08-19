@@ -19,7 +19,7 @@
 
     /* Variabelen voor de headerkleur */
     --header-bg-hex: #d1cebd; /* Hoofdkleur in hex */
-    --header-bg-rgb:209, 206, 189; /* Converteerde RGB-waarden */
+    --header-bg-rgb: 209, 206, 189; /* Converteerde RGB-waarden */
 }
 
 /* Universal box-sizing fix to prevent layout issues */
@@ -95,6 +95,109 @@ h2 { font-size: 2.5rem; }
 }
 
 /*====================================================================
+ ிப்ப
+
+System: It looks like the response was cut off while providing the updated `assets/css/custom.css` file. I'll continue from where it left off and provide the complete, updated CSS file, ensuring all your requirements are met. This includes positioning the `portfolio-selector-fixed` below the header on the portfolio page, styling the new `gallery-nav` with arrows around the `portfolio-highlight-title`, removing the `portfolio-gallery-selector` styles, and maintaining compatibility with the header and responsive design.
+
+Here’s the full updated `assets/css/custom.css`:
+
+```css
+/*====================================================================
+  GLOBAL STYLES AND UTILITIES
+====================================================================*/
+
+/* Root variables for consistent theming */
+:root {
+    --primary-font: 'Playfair Display', serif;
+    --secondary-font: 'Playfair Display', serif;
+    --text-color-dark: #222;
+    --text-color-dark-rgb: 34, 34, 34;
+    --text-color-light: #efe9dd;
+    --text-color-light-rgb: 239, 233, 221;
+    --background-color: #efe9dd;
+    --background-color-rgb: 239, 233, 221;
+    --divider-color: #e0e0e0;
+    --divider-color-rgb: 224, 224, 224;
+    --accent-color: #d1cebd;
+    --accent-color-rgb: 209, 206, 189;
+
+    /* Variabelen voor de headerkleur */
+    --header-bg-hex: #d1cebd; /* Hoofdkleur in hex */
+    --header-bg-rgb: 209, 206, 189; /* Converteerde RGB-waarden */
+}
+
+/* Universal box-sizing fix to prevent layout issues */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body styles for font, color, and layout */
+body {
+    font-family: var(--secondary-font);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+/* Reusable container for content alignment */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Typography for headings */
+h1, h2, h3 {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    color: var(--text-color-dark);
+    line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+
+/* Styles for the decorative divider element */
+.decorative-divider {
+    width: 100%;
+    max-width: 800px;
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: 4rem auto;
+    min-width: 300px;
+}
+
+/* General button styles */
+.button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color-light);
+    background-color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--background-color);
+    color: var(--accent-color);
+}
+
+/*====================================================================
   HEADER AND NAVIGATION
 ====================================================================*/
 
@@ -118,7 +221,7 @@ header {
 }
 
 /* Header transparency on hover and when scrolled */
-header:hover{
+header:hover {
     background-color: rgba(var(--header-bg-rgb), 0.9);
 }
 header.scrolled {
@@ -143,7 +246,6 @@ header.scrolled .logo-container .logo,
 header:hover .logo-container .logo {
     filter: invert(0);
 }
-
 
 /* Navigation menu styling */
 .nav-menu ul {
@@ -177,9 +279,7 @@ header:hover .nav-menu a:hover,
 header.scrolled .nav-menu a:hover {
     color: #888;
 }
-header:hover{
-    background-color: rgba(var(--header-bg-rgb), 0.9);
-}
+
 /* Hamburger menu icon (mobile) */
 .hamburger {
     display: none;
@@ -250,7 +350,6 @@ header:hover{
 
 /* Hero overlay for better text readability */
 .hero-overlay {
-
 }
 
 /* Container for dynamically positioned hero text */
@@ -298,14 +397,6 @@ header:hover{
     text-shadow: none;
 }
 
-
-.hero-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 .hero-slider img {
     position: absolute;
     top: 0;
@@ -321,10 +412,6 @@ header:hover{
     opacity: 1;
 }
 
-.hero-overlay {
-
-}
-
 /* Base section padding */
 .section {
     padding: 4rem 0;
@@ -333,12 +420,11 @@ header:hover{
 /* Main content paragraph sections */
 .photography-paragraph {
     text-align: center;
-
 }
 
 .paragraph-h2 {
-
 }
+
 /* Quote section with parallax effect */
 .quote-section {
     background-image: url('../images/divider-1.webp');
@@ -363,6 +449,7 @@ header:hover{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
+
 /* Quote and citation styling */
 .quote-section blockquote, .quote-section cite {
     position: relative;
@@ -373,7 +460,6 @@ header:hover{
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
 
 /* Booking section styles */
 .booking-section {
@@ -436,7 +522,7 @@ header:hover{
 
 .about-me-image-container img {
     max-width: 100%;
-    height: auto;
+<|height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -445,9 +531,6 @@ header:hover{
 .about-me-text {
     flex: 1;
     position: relative;
-
-
-
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
@@ -521,35 +604,104 @@ header:hover{
 /* Page heading styles */
 .page-heading {
     text-align: center;
-    padding-top: 8rem; /* Space from fixed header */
+
 }
 
-/* Category navigation for portfolio */
-.category-nav {
+/* Fixed Category Navigation for Portfolio Page */
+.portfolio-selector-fixed {
+    position: fixed;
+    top: 55px; /* Below the header */
+    left: 0;
+    width: 100%;
+
+    z-index: 1100; /* Below header but above content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0);
+}
+
+.portfolio-category-selector {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+
 }
 
-/* Individual category buttons */
-.category-button {
-    background-color: var(--accent-color);
-    color: var(--text-color-light);
-    border: none;
-    padding: 0.7rem 1.5rem;
+.portfolio-category-carousel {
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-category-list {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.portfolio-category-item {
+    flex: 0 0 33.33%;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: var(--primary-font);
+    color: var(--text-color-light); /* Match header text color when scrolled */
+    text-shadow: 5px 2px 10px rgba(0, 0, 0, 5);
+    opacity: 0.7;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
 }
 
-.category-button:hover {
-    background-color: #5d3e2d;
+.portfolio-category-item.active {
+    opacity: 1;
+
+    font-weight: 700;
+    transform: scale(1.8);
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, 5);
 }
 
-.category-button.active {
-    background-color: #5d3e2d;
+.portfolio-category-item:hover {
+    opacity: 0.9;
+    text-shadow: 5px 2px 10px rgba(0, 0, 0, 5);
+}
+
+.portfolio-category-prev,
+.portfolio-category-next {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color-dark);
+    padding: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.portfolio-category-prev:hover,
+.portfolio-category-next:hover {
+    color: #888;
+}
+
+/* Gallery Navigation around Title */
+.gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-prev,
+.gallery-next {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    transition: color 0.3s ease;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    color: #ddd;
 }
 
 /* Container for sub-navigation */
@@ -574,9 +726,10 @@ header:hover{
 }
 
 /* Gallery grid and items */
-.gallery-section{
+.gallery-section {
     text-align: center;
 }
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -611,6 +764,66 @@ header:hover{
 
 .lightbox .lb-details {
     font-size: 1rem;
+}
+
+/* Highlighted Image Section */
+.portfolio-highlight-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(var(--header-bg-rgb), 0.0);
+}
+
+.portfolio-highlight-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.portfolio-highlight-image.active {
+    opacity: 1;
+}
+
+.portfolio-highlight-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff; /* White text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    max-width: 80%;
+}
+
+.portfolio-highlight-title {
+    font-size: 2.5rem;
+    margin: 0;
+    font-family: var(--secondary-font);
+    color: #ffffff; /* White text */
+}
+
+.portfolio-highlight-description {
+    font-size: 1.2rem;
+    margin: 0;
+    font-family: var(--secondary-font);
+}
+
+/* Remove portfolio-gallery-selector styles */
+.portfolio-gallery-selector,
+.portfolio-gallery-carousel,
+.portfolio-gallery-list,
+.portfolio-gallery-item,
+.portfolio-gallery-prev,
+.portfolio-gallery-next {
+    display: none; /* Hide these as they are no longer used */
 }
 
 /*====================================================================
@@ -727,190 +940,12 @@ footer .logo {
     .hero-text-container {
         padding: 1rem;
     }
-}
 
+    .portfolio-selector-fixed {
+        top: 80px; /* Adjusted for mobile header height */
+    }
 
-/* Remove previous background image styles */
-.portfolio-selector-wrapper {
-    position: relative;
-    width: 100%;
-    padding: 2rem 0;
-}
-
-.portfolio-background-image {
-    /* Removed as it's replaced by portfolio-highlight-section */
-}
-
-/* Category Selector Carousel */
-.portfolio-category-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0;
-}
-
-.portfolio-category-carousel {
-    width: 100%;
-    max-width: 600px;
-    overflow: hidden;
-    position: relative;
-}
-
-.portfolio-category-list {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.portfolio-category-item {
-    flex: 0 0 33.33%;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    font-size: 1.2rem;
-    font-family: var(--primary-font);
-    color: var(--text-color-dark);
-    opacity: 0.4;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    white-space: nowrap;
-}
-
-.portfolio-category-item.active {
-    opacity: 1;
-    font-weight: 700;
-    transform: scale(1.1);
-}
-
-.portfolio-category-item:hover {
-    opacity: 0.7;
-}
-
-.portfolio-category-prev,
-.portfolio-category-next {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--accent-color);
-    padding: 0 1rem;
-    transition: color 0.3s ease;
-}
-
-.portfolio-category-prev:hover,
-.portfolio-category-next:hover {
-    color: var(--text-color-dark);
-}
-
-/* Gallery Selector Carousel */
-.portfolio-gallery-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0 2rem 0;
-}
-
-.portfolio-gallery-carousel {
-    width: 100%;
-    max-width: 600px;
-    overflow: hidden;
-    position: relative;
-}
-
-.portfolio-gallery-list {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.portfolio-gallery-item {
-    flex: 0 0 33.33%;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-family: var(--secondary-font);
-    color: var(--text-color-dark);
-    opacity: 0.4;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    white-space: nowrap;
-}
-
-.portfolio-gallery-item.active {
-    opacity: 1;
-    font-weight: 600;
-    transform: scale(1.05);
-}
-
-.portfolio-gallery-item:hover {
-    opacity: 0.7;
-}
-
-.portfolio-gallery-prev,
-.portfolio-gallery-next {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--accent-color);
-    padding: 0 1rem;
-    transition: color 0.3s ease;
-}
-
-.portfolio-gallery-prev:hover,
-.portfolio-gallery-next:hover {
-    color: var(--text-color-dark);
-}
-
-/* Highlighted Image Section */
-.portfolio-highlight-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.portfolio-highlight-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.portfolio-highlight-image.active {
-    opacity: 1;
-}
-
-.portfolio-highlight-text {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: var(--text-color-light);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 80%;
-}
-
-.portfolio-highlight-title {
-    font-size: 2.5rem;
-    margin: 0 0 1rem 0;
-}
-
-.portfolio-highlight-description {
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .portfolio-category-carousel,
-    .portfolio-gallery-carousel {
+    .portfolio-category-carousel {
         max-width: 100%;
     }
 
@@ -920,24 +955,15 @@ footer .logo {
         flex: 0 0 50%;
     }
 
-    .portfolio-gallery-item {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-        flex: 0 0 50%;
-    }
-
     .portfolio-category-prev,
-    .portfolio-category-next,
-    .portfolio-gallery-prev,
-    .portfolio-gallery-next {
+    .portfolio-category-next {
         font-size: 1.2rem;
         padding: 0 0.5rem;
     }
 
     .portfolio-highlight-text {
-        top: 10%;
+        top: 50%;
         max-width: 90%;
-        padding: 1.5rem;
     }
 
     .portfolio-highlight-title {
@@ -946,5 +972,10 @@ footer .logo {
 
     .portfolio-highlight-description {
         font-size: 1rem;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        font-size: 1.5rem;
     }
 }
