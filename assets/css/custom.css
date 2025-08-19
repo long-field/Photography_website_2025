@@ -70,110 +70,6 @@ h2 { font-size: 2.5rem; }
     height: 1px;
     background-color: var(--divider-color);
     margin: 4rem auto;
-    /* This is to ensure that on small screens there is no overflow and unwanted horizontal scroll */
-    min-width: 300px;
-}
-
-/* General button styles */
-.button {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-color-light);
-    background-color: var(--accent-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.button:hover {
-    background-color: var(--background-color);
-    color: var(--accent-color);
-}
-
-/*====================================================================
- ிப்ப
-
-System: It looks like the response was cut off while providing the updated `assets/css/custom.css` file. I'll continue from where it left off and provide the complete, updated CSS file, ensuring all your requirements are met. This includes positioning the `portfolio-selector-fixed` below the header on the portfolio page, styling the new `gallery-nav` with arrows around the `portfolio-highlight-title`, removing the `portfolio-gallery-selector` styles, and maintaining compatibility with the header and responsive design.
-
-Here’s the full updated `assets/css/custom.css`:
-
-```css
-/*====================================================================
-  GLOBAL STYLES AND UTILITIES
-====================================================================*/
-
-/* Root variables for consistent theming */
-:root {
-    --primary-font: 'Playfair Display', serif;
-    --secondary-font: 'Playfair Display', serif;
-    --text-color-dark: #222;
-    --text-color-dark-rgb: 34, 34, 34;
-    --text-color-light: #efe9dd;
-    --text-color-light-rgb: 239, 233, 221;
-    --background-color: #efe9dd;
-    --background-color-rgb: 239, 233, 221;
-    --divider-color: #e0e0e0;
-    --divider-color-rgb: 224, 224, 224;
-    --accent-color: #d1cebd;
-    --accent-color-rgb: 209, 206, 189;
-
-    /* Variabelen voor de headerkleur */
-    --header-bg-hex: #d1cebd; /* Hoofdkleur in hex */
-    --header-bg-rgb: 209, 206, 189; /* Converteerde RGB-waarden */
-}
-
-/* Universal box-sizing fix to prevent layout issues */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-/* Smooth scroll behavior for anchor links */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Body styles for font, color, and layout */
-body {
-    font-family: var(--secondary-font);
-    color: var(--text-color-dark);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-}
-
-/* Reusable container for content alignment */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-/* Typography for headings */
-h1, h2, h3 {
-    font-family: var(--primary-font);
-    font-weight: 700;
-    color: var(--text-color-dark);
-    line-height: 1.2;
-}
-
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
-
-/* Styles for the decorative divider element */
-.decorative-divider {
-    width: 100%;
-    max-width: 800px;
-    height: 1px;
-    background-color: var(--divider-color);
-    margin: 4rem auto;
     min-width: 300px;
 }
 
@@ -522,7 +418,7 @@ header.scrolled .nav-menu a:hover {
 
 .about-me-image-container img {
     max-width: 100%;
-<|height: auto;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -604,7 +500,6 @@ header.scrolled .nav-menu a:hover {
 /* Page heading styles */
 .page-heading {
     text-align: center;
-
 }
 
 /* Fixed Category Navigation for Portfolio Page */
@@ -613,7 +508,6 @@ header.scrolled .nav-menu a:hover {
     top: 55px; /* Below the header */
     left: 0;
     width: 100%;
-
     z-index: 1100; /* Below header but above content */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0);
 }
@@ -622,7 +516,6 @@ header.scrolled .nav-menu a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .portfolio-category-carousel {
@@ -642,41 +535,74 @@ header.scrolled .nav-menu a:hover {
     text-align: center;
     padding: 0.5rem 1rem;
     font-family: var(--primary-font);
-    color: var(--text-color-light); /* Match header text color when scrolled */
-    text-shadow: 5px 2px 10px rgba(0, 0, 0, 5);
+    color: var(--text-color-light);
+    text-shadow: 5px 2px 10px rgba(0, 0, 0, 0.5); /* Fixed rgba */
     opacity: 0.7;
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, font-weight 0.3s ease, text-shadow 0.3s ease;
     white-space: nowrap;
 }
 
 .portfolio-category-item.active {
     opacity: 1;
-
     font-weight: 700;
     transform: scale(1.8);
-    text-shadow: 1px 2px 6px rgba(0, 0, 0, 5);
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5); /* Fixed rgba */
 }
 
 .portfolio-category-item:hover {
     opacity: 0.9;
-    text-shadow: 5px 2px 10px rgba(0, 0, 0, 5);
+    text-shadow: 5px 2px 10px rgba(0, 0, 0, 0.5); /* Fixed rgba */
 }
 
 .portfolio-category-prev,
 .portfolio-category-next {
     background: none;
     border: none;
-    font-size: 1.5rem;
     cursor: pointer;
-    color: var(--text-color-dark);
-    padding: 0 0.5rem;
-    transition: color 0.3s ease;
+    font-size: 2rem; /* Larger arrows */
+    color: var(--text-color-light); /* Match category text color */
+    padding: 0 1rem;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-category-prev::after,
+.portfolio-category-next::after {
+    content: '\2190'; /* Unicode left arrow */
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+}
+
+.portfolio-category-next::after {
+    content: '\2192'; /* Unicode right arrow */
 }
 
 .portfolio-category-prev:hover,
 .portfolio-category-next:hover {
-    color: #888;
+    color: #ddd; /* Subtle hover effect */
+    transform: scale(1.2); /* Slight scale on hover */
+}
+
+.portfolio-category-prev.hidden,
+.portfolio-category-next.hidden {
+    display: none; /* Hide arrows when not needed */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .portfolio-category-prev,
+    .portfolio-category-next {
+        font-size: 1.5rem;
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* Gallery Navigation around Title */
@@ -692,16 +618,41 @@ header.scrolled .nav-menu a:hover {
 .gallery-next {
     background: none;
     border: none;
-    font-size: 2rem;
     cursor: pointer;
-    color: var(--text-color-light);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    transition: color 0.3s ease;
+    font-size: 0; /* Hide default text */
+    padding: 0 0.5rem;
+    position: relative;
+    width: 30px;
+    height: 30px;
 }
 
-.gallery-prev:hover,
-.gallery-next:hover {
-    color: #ddd;
+.gallery-prev::after,
+.gallery-next::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 15px;
+    height: 15px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: all 0.3s ease;
+}
+
+.gallery-prev::after {
+    left: 0;
+    transform: translateY(-50%) rotate(135deg);
+}
+
+.gallery-next::after {
+    right: 0;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.gallery-prev:hover::after,
+.gallery-next:hover::after {
+    border-color: #ddd;
 }
 
 /* Container for sub-navigation */
@@ -814,6 +765,48 @@ header.scrolled .nav-menu a:hover {
     font-size: 1.2rem;
     margin: 0;
     font-family: var(--secondary-font);
+}
+
+/* Scroll down arrow */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 9;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-arrow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: border-color 0.3s ease;
+}
+
+.scroll-down-arrow:hover::after {
+    border-color: #ddd;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%) rotate(45deg);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%) rotate(45deg);
+    }
 }
 
 /* Remove portfolio-gallery-selector styles */

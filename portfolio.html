@@ -10,42 +10,39 @@
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body data-page="portfolio" data-lang="nl">
 <div data-include="partials/header.html"></div>
 <main>
-    <!-- Portfolio Highlight and Navigation -->
     <section class="portfolio-highlight-section">
         <div class="portfolio-highlight-image"></div>
         <div class="portfolio-highlight-text">
             <div class="gallery-nav">
-                <button class="gallery-prev">&larr;</button>
+                <button class="gallery-prev"></button>
                 <h2 class="portfolio-highlight-title"></h2>
-                <button class="gallery-next">&rarr;</button>
+                <button class="gallery-next"></button>
             </div>
             <p class="portfolio-highlight-description"></p>
         </div>
-        <!-- Fixed Category Navigation -->
+        <a href="#gallery-go-to" class="scroll-down-arrow"></a>
         <div class="portfolio-selector-fixed">
             <div class="container">
                 <div class="portfolio-category-selector">
-                    <button class="portfolio-category-prev">&larr;</button>
+                    <button class="portfolio-category-prev"></button>
                     <div class="portfolio-category-carousel">
                         <div class="portfolio-category-list">
-                            <!-- Categories Loaded Dynamically -->
                         </div>
                     </div>
-                    <button class="portfolio-category-next">&rarr;</button>
+                    <button class="portfolio-category-next"></button>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Gallery Display -->
+    <div class="decorative-divider" id="gallery-go-to"></div>
     <section class="portfolio-galleries section">
         <div class="container" id="galleries-container">
-            <!-- Galleries rendered dynamically -->
         </div>
     </section>
     <div class="decorative-divider"></div>
