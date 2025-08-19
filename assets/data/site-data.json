@@ -54,6 +54,15 @@
           "title": "Laten we jouw verhaal vertellen",
           "text": "Ben je klaar om onvergetelijke momenten vast te leggen? Ik kijk ernaar uit om van je te horen en samen een unieke visuele reis te beginnen. Neem contact met me op voor een vrijblijvend gesprek.",
           "buttonText": "Neem contact op"
+        },
+        "contactPage": {
+          "pageTitle": "Contact | Dieter Vanlangenaker Photography",
+          "contactHeading": "Neem Contact Op",
+          "contactForm": {
+            "title": "Laten we jouw verhaal vastleggen",
+            "text": "Vul het onderstaande formulier in om een fotosessie te boeken of om meer informatie te krijgen. Ik kijk ernaar uit om samen met jou onvergetelijke momenten te creëren!",
+            "backgroundImage": "assets/images/featured/CarolineByBrussels.jpg"
+          }
         }
       },
       "portfolioPage": {

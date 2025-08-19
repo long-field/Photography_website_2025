@@ -31,10 +31,16 @@ async function initPortfolioPage(content) {
             categoryList.append(item);
         });
 
-        // Function to update arrow visibility
+        // Function to update category arrow visibility
         function updateArrowVisibility(activeIndex) {
             $('.portfolio-category-prev').toggleClass('hidden', activeIndex === 0);
             $('.portfolio-category-next').toggleClass('hidden', activeIndex === categories.length - 1);
+        }
+
+        // Function to update gallery arrow visibility
+        function updateGalleryArrowVisibility(currentGalleryIndex, filteredSections) {
+            $('.gallery-prev').toggleClass('hidden', currentGalleryIndex === 0);
+            $('.gallery-next').toggleClass('hidden', currentGalleryIndex === filteredSections.length - 1);
         }
 
         // Set initial active category and trigger rendering
@@ -66,6 +72,7 @@ async function initPortfolioPage(content) {
                 currentGalleryIndex = 0;
                 renderGallery([filteredSections[0]]);
                 updateHighlightSection(filteredSections[0]);
+                updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
             } else {
                 console.error(`No sections found for category: ${initialCategory}`);
             }
@@ -84,6 +91,9 @@ async function initPortfolioPage(content) {
                 currentGalleryIndex = 0;
                 renderGallery([filteredSections[0]]);
                 updateHighlightSection(filteredSections[0]);
+                updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 console.error(`No sections found for category: ${selectedCategory}`);
             }
@@ -105,6 +115,9 @@ async function initPortfolioPage(content) {
                     currentGalleryIndex = 0;
                     renderGallery([filteredSections[0]]);
                     updateHighlightSection(filteredSections[0]);
+                    updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
         });
@@ -124,6 +137,9 @@ async function initPortfolioPage(content) {
                     currentGalleryIndex = 0;
                     renderGallery([filteredSections[0]]);
                     updateHighlightSection(filteredSections[0]);
+                    updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
         });
@@ -136,6 +152,9 @@ async function initPortfolioPage(content) {
                 currentGalleryIndex--;
                 renderGallery([filteredSections[currentGalleryIndex]]);
                 updateHighlightSection(filteredSections[currentGalleryIndex]);
+                updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
 
@@ -146,22 +165,15 @@ async function initPortfolioPage(content) {
                 currentGalleryIndex++;
                 renderGallery([filteredSections[currentGalleryIndex]]);
                 updateHighlightSection(filteredSections[currentGalleryIndex]);
+                updateGalleryArrowVisibility(currentGalleryIndex, filteredSections);
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     }
-    // Update category carousel position
-    function updateCategoryCarousel(activeIndex) {
-        const itemWidth = $('.portfolio-category-item').outerWidth();
-        const containerWidth = $('.portfolio-category-carousel').width();
-        const offset = -(itemWidth * activeIndex) + (containerWidth / 2 - itemWidth / 2); // Center the active item
-        console.log(`Carousel offset: ${offset}px, itemWidth: ${itemWidth}px, containerWidth: ${containerWidth}px, activeIndex: ${activeIndex}`);
-        $('.portfolio-category-list').css({
-            'transform': `translateX(${offset}px)`,
-            'transition': 'transform 0.5s ease-in-out'
-        });
-    }
-    // Render galleries
+
     function renderGallery(sections) {
+        const galleriesContainer = $('#galleries-container');
         galleriesContainer.empty();
         sections.forEach(section => {
             if (section.type === 'photo-gallery') {
@@ -179,10 +191,10 @@ async function initPortfolioPage(content) {
 
                 const style = document.createElement('style');
                 style.innerHTML = `@media (max-width: 768px) {
-                    #${section.id} .gallery-grid {
-                        grid-template-columns: repeat(${section.displaySettings.mobileColumns}, 1fr);
-                    }
-                }`;
+                #${section.id} .gallery-grid {
+                    grid-template-columns: repeat(${section.displaySettings.mobileColumns}, 1fr);
+                }
+            }`;
                 document.head.appendChild(style);
 
                 section.images.forEach(image => {
@@ -204,10 +216,31 @@ async function initPortfolioPage(content) {
 
                 gallerySection.append(grid);
                 galleriesContainer.append(gallerySection);
+
+                // Add Back to Top button
+                const backToTopButton = $('<button>')
+                    .addClass('back-to-top')
+                    .text('Terug naar boven')
+                    .on('click', function() {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                gallerySection.append(backToTopButton);
             }
         });
         console.log("Portfolio-galerijen zijn geladen.");
     }
+    // Update category carousel position
+    function updateCategoryCarousel(activeIndex) {
+        const itemWidth = $('.portfolio-category-item').outerWidth();
+        const containerWidth = $('.portfolio-category-carousel').width();
+        const offset = -(itemWidth * activeIndex) + (containerWidth / 2 - itemWidth / 2); // Center the active item
+        console.log(`Carousel offset: ${offset}px, itemWidth: ${itemWidth}px, containerWidth: ${containerWidth}px, activeIndex: ${activeIndex}`);
+        $('.portfolio-category-list').css({
+            'transform': `translateX(${offset}px)`,
+            'transition': 'transform 0.5s ease-in-out'
+        });
+    }
+    // Render galleries
 
     // Update highlighted image section
     function updateHighlightSection(section) {
