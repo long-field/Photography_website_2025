@@ -3,7 +3,7 @@
     "nl": {
       "pageTitle": "Dieter Vanlangenaker Photography",
       "homePage": {
-        "quoteSection": {
+        "quoteSection": {o
           "quote": "Fotografie is de kunst om het leven vast te leggen. Het gaat niet alleen om wat je ziet, maar ook om wat je voelt.",
           "attribution": "Dieter Vanlangenaker",
           "image": "assets/images/featured/web-higher-119.jpg"
@@ -54,20 +54,21 @@
           "title": "Laten we jouw verhaal vertellen",
           "text": "Ben je klaar om onvergetelijke momenten vast te leggen? Ik kijk ernaar uit om van je te horen en samen een unieke visuele reis te beginnen. Neem contact met me op voor een vrijblijvend gesprek.",
           "buttonText": "Neem contact op"
-        },
-        "contactPage": {
-          "pageTitle": "Contact | Dieter Vanlangenaker Photography",
-          "contactHeading": "Neem Contact Op",
-          "contactForm": {
-            "title": "Laten we jouw verhaal vastleggen",
-            "text": "Vul het onderstaande formulier in om een fotosessie te boeken of om meer informatie te krijgen. Ik kijk ernaar uit om samen met jou onvergetelijke momenten te creëren!",
-            "backgroundImage": "assets/images/featured/CarolineByBrussels.jpg"
-          }
         }
+
       },
       "portfolioPage": {
         "pageTitle": "Portfolio | Dieter Vanlangenaker Photography",
         "portfolioHeading": "Portfolio"
+      },
+      "contactPage": {
+        "pageTitle": "Contact | Dieter Vanlangenaker Photography",
+        "contactHeading": "Neem Contact Op",
+        "contactForm": {
+          "title": "Laten we jouw verhaal vastleggen",
+          "text": "Vul het onderstaande formulier in om een fotosessie te boeken of om meer informatie te krijgen. Ik kijk ernaar uit om samen met jou onvergetelijke momenten te creëren!",
+          "backgroundImage": "assets/images/featured/CarolineByBrussels.jpg"
+        }
       }
     }
   }

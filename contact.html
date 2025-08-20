@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Dieter Vanlangenaker Photography</title>
-    <meta name="description" content="Contact Dieter Van Langenaker to book your wedding or portrait photography session.">
+    <title data-key="pageTitle">Contact | Dieter Vanlangenaker Photography</title>
+    <meta name="description" content="Neem contact op met Dieter Vanlangenaker om uw fotosessie te boeken.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -17,19 +17,19 @@
 <body data-page="contact" data-lang="nl">
 <div data-include="partials/header.html"></div>
 <main class="container">
-    <section class="contact">
+    <section class="contact-section">
         <h1 data-key="contactHeading"></h1>
-        <div class="contact-form">
+        <div class="contact-form-wrapper">
             <h2 data-key="contactForm.title"></h2>
             <p data-key="contactForm.text"></p>
-            <form action="https://formspree.io/f/xzzvyyby" method="POST">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="date" placeholder="Event Date">
-                <textarea name="message" placeholder="Message" required></textarea>
+            <form action="https://formspree.io/f/xzzvyyby" method="POST" class="contact-form-content">
+                <input type="text" name="name" placeholder="Naam" required>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="text" name="date" placeholder="Evenementdatum">
+                <textarea name="message" placeholder="Bericht" required></textarea>
                 <input type="text" name="_gotcha" style="display:none">
                 <div class="cf-turnstile" data-sitekey="your-turnstile-key"></div>
-                <button type="submit">Send</button>
+                <button type="submit" class="contact-submit-btn">Verzenden</button>
             </form>
         </div>
     </section>

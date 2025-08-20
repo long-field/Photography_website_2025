@@ -39,12 +39,33 @@ $(document).ready(function() {
                 const heroCarouselData = await heroCarouselResponse.json();
                 initHomePage(nlContent.homePage, heroCarouselData);
             } else if (page === 'portfolio' && lang === 'nl') {
-                // Call de nieuwe portfolio initialisatie functie
                 initPortfolioPage(nlContent.portfolioPage);
+            } else if (page === 'contact' && lang === 'nl') {
+                initContactPage(nlContent.contactPage);
             }
         } catch (error) {
             console.error('Fout bij het laden van JSON-bestanden:', error);
         }
+    }
+    function initContactPage(content) {
+        console.log("Start met het vullen van de contactpagina.");
+
+        // ---- SEO en Algemene Teksten ----
+        document.title = content.pageTitle;
+        $('meta[name="description"]').attr('content', 'Neem contact op met Dieter Vanlangenaker om uw fotosessie te boeken.');
+
+        // ---- CONTACT SECTION ----
+        $('.contact-section h1').text(content.contactHeading);
+        $('.contact-form-wrapper h2').text(content.contactForm.title);
+        $('.contact-form-wrapper p').text(content.contactForm.text);
+        $('.contact-section').css('background-image', `url(${content.contactForm.backgroundImage})`);
+
+        // Scroll-animatie voor contactsection
+        const contactSection = $('.contact-section');
+        const contactElements = contactSection.find('h1, h2, p');
+        applyScrollEffect(contactSection, contactElements);
+
+        console.log("Contactpagina gevuld.");
     }
 
     // Functie voor homepage-logica met dynamische content
@@ -259,6 +280,8 @@ $(document).ready(function() {
             showQuote(currentQuoteIndex);
         });
         console.log("Sliders geïnitialiseerd.");
+
+
 
 
         // ---- HERBRUIKBARE SCROLL-ANIMATIE FUNCTIE ----
