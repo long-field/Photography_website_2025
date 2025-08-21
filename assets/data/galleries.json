@@ -1,37 +1,32 @@
 {
   "gallery": {
-    "title": "Portfoliogalerij",
-    "description": "Een overzicht van mijn werk, ingedeeld per categorie.",
+    "title": "Portfolio Gallery",
+    "description": "A collection of photography work.",
     "categories": [
       {
-        "id": "huwelijk",
-        "name": "Huwelijk",
-        "description": "Momenten van liefde en viering."
+        "id": "Huwelijk",
+        "name": "Bruiloft Fotografie",
+        "description": "Huwelijk"
       },
       {
-        "id": "familie",
-        "name": "Familie & Lifestyle",
-        "description": "Authentieke en spontane beelden van gezinnen en het dagelijks leven."
+        "id": "Familie",
+        "name": "Familie",
+        "description": "Familie"
       },
       {
-        "id": "newborn",
-        "name": "Newborn",
-        "description": "De eerste, kostbare momenten van het nieuwe leven."
-      },
-      {
-        "id": "fashion",
-        "name": "Fashion & Portretten",
-        "description": "Stijlvolle en artistieke portretten en modereportages."
+        "id": "Lifestyle",
+        "name": "Lifestyle",
+        "description": "allerhande shoots"
       }
     ]
   },
   "sections": [
     {
       "type": "photo-gallery",
-      "id": "huwelijk-sarah-tommy",
-      "category": "huwelijk",
-      "title": "Huwelijk Sarah & Tommy",
-      "description": "Een prachtige dag vol emotie, vastgelegd in een reeks onvergetelijke beelden.",
+      "id": "amelie",
+      "category": "Familie",
+      "title": "Amélie",
+      "description": "Communie",
       "displaySettings": {
         "gridColumns": "3",
         "mobileColumns": "1",
@@ -39,141 +34,73 @@
       },
       "images": [
         {
-          "path": "assets/images/portfolio/Sarah&Tommy/S&T_Color_033.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sarah&Tommy/S&T_Color_033.jpg",
-          "alt": "Trouwfoto van Sarah en Tommy",
+          "path": "assets/images/portfolio/Amelie/_DVL0694-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0694-2.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sarah&Tommy/S&T_Color_035.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sarah&Tommy/S&T_Color_035.jpg",
-          "alt": "Trouwfoto van Sarah en Tommy",
+          "path": "assets/images/portfolio/Amelie/_DVL0794-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0794-2.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sarah&Tommy/S&T_Color_118.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sarah&Tommy/S&T_Color_118.jpg",
-          "alt": "Trouwfoto van Sarah en Tommy",
+          "path": "assets/images/portfolio/Amelie/_DVL0371.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0371.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sarah&Tommy/S&T_Color_122.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sarah&Tommy/S&T_Color_122.jpg",
-          "alt": "Trouwfoto van Sarah en Tommy",
-          "isHighlight": true
-        }
-      ]
-    },
-    {
-      "type": "photo-gallery",
-      "id": "newborn-sofie-jo",
-      "category": "newborn",
-      "title": "Newborn Sofie & Jo",
-      "description": "De tederheid en onschuld van een pasgeboren baby, vastgelegd in beelden voor het leven.",
-      "displaySettings": {
-        "gridColumns": "3",
-        "mobileColumns": "1",
-        "gap": "1rem"
-      },
-      "images": [
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn001.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn001.jpg",
-          "alt": "Newborn fotoshoot",
+          "path": "assets/images/portfolio/Amelie/_DVL0204.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0204.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn002.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn002.jpg",
-          "alt": "Newborn fotoshoot",
+          "path": "assets/images/portfolio/Amelie/_DVL0655-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0655-2.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn003.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn003.jpg",
-          "alt": "Newborn fotoshoot",
+          "path": "assets/images/portfolio/Amelie/_DVL0519-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0519-2.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn004.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn004.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn011.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn011.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn012.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn012.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn013.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn013.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn014.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn014.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn015.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn015.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn016.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn016.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn039.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn039.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn041.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn041.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn042.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn042.jpg",
-          "alt": "Newborn fotoshoot",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn043.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn043.jpg",
-          "alt": "Newborn fotoshoot",
+          "path": "assets/images/portfolio/Amelie/_DVL0814.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0814.jpg",
+          "alt": "Amélie",
           "isHighlight": true
         },
         {
-          "path": "assets/images/portfolio/Sofie&Jo/newborn063.jpg",
-          "thumbnailPath": "assets/images/portfolio/Sofie&Jo/newborn063.jpg",
-          "alt": "Newborn fotoshoot",
+          "path": "assets/images/portfolio/Amelie/_DVL0889-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0889-2.jpg",
+          "alt": "Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Amelie/_DVL0454.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0454.jpg",
+          "alt": "Amélie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Amelie/_DVL0401-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0401-2.jpg",
+          "alt": "Amélie",
           "isHighlight": false
         }
       ]
     },
     {
       "type": "photo-gallery",
-      "id": "familie-amelie",
-      "category": "familie",
-      "title": "Communie Amélie",
-      "description": "Een vrolijke communiereportage vol zonneschijn en kinderpret.",
+      "id": "venity",
+      "category": "Lifestyle",
+      "title": "Venity",
+      "description": "Pointe Perfectie",
       "displaySettings": {
         "gridColumns": "3",
         "mobileColumns": "1",
@@ -181,208 +108,792 @@
       },
       "images": [
         {
-          "path": "assets/images/portfolio/CommunieAmélie/_DVL0401-2_20.55.04.jpg",
-          "thumbnailPath": "assets/images/portfolio/CommunieAmélie/_DVL0401-2_20.55.04.jpg",
-          "alt": "Communie foto van Amélie",
+          "path": "assets/images/portfolio/Venity/artsymodel.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/artsymodel.jpg",
+          "alt": "Venity",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/CommunieAmélie/_DVL0454_20.55.04.jpg",
-          "thumbnailPath": "assets/images/portfolio/CommunieAmélie/_DVL0454_20.55.04.jpg",
-          "alt": "Communie foto van Amélie",
+          "path": "assets/images/portfolio/Venity/outdoorballetposesvenity.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/outdoorballetposesvenity.jpg",
+          "alt": "Venity",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/CommunieAmélie/_DVL0655_20.55.04.jpg",
-          "thumbnailPath": "assets/images/portfolio/CommunieAmélie/_DVL0655_20.55.04.jpg",
-          "alt": "Communie foto van Amélie",
+          "path": "assets/images/portfolio/Venity/modelbywindow.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/modelbywindow.jpg",
+          "alt": "Venity",
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/CommunieAmélie/_DVL0814_20.55.04.jpg",
-          "thumbnailPath": "assets/images/portfolio/CommunieAmélie/_DVL0814_20.55.04.jpg",
-          "alt": "Communie foto van Amélie",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/CommunieAmélie/dvltestamelie.jpg",
-          "thumbnailPath": "assets/images/portfolio/CommunieAmélie/dvltestamelie.jpg",
-          "alt": "Communie foto van Amélie",
-          "isHighlight": true
-        }
-      ]
-    },
-    {
-      "type": "photo-gallery",
-      "id": "fashion-kim",
-      "category": "fashion",
-      "title": "Fotoshoot Kim",
-      "description": "Een stijlvolle en dynamische fotoshoot, waarbij de focus ligt op mode en portret.",
-      "displaySettings": {
-        "gridColumns": "3",
-        "mobileColumns": "1",
-        "gap": "1rem"
-      },
-      "images": [
-        {
-          "path": "assets/images/portfolio/Kim/Kim-1.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-1.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-2.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-2.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-28.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-28.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-29.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-29.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-30.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-30.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-31.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-31.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-32.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-32.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-33.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-33.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-34.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-34.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-35.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-35.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": true
-        },
-        {
-          "path": "assets/images/portfolio/Kim/Kim-36.jpg",
-          "thumbnailPath": "assets/images/portfolio/Kim/Kim-36.jpg",
-          "alt": "Fotoshoot met Kim",
-          "isHighlight": false
-        }
-      ]
-    },
-    {
-      "type": "photo-gallery",
-      "id": "fashion-novaly",
-      "category": "fashion",
-      "title": "Fotoshoot Novaly",
-      "description": "Een creatieve fotoshoot met de nadruk op portretten en expressie.",
-      "displaySettings": {
-        "gridColumns": "3",
-        "mobileColumns": "1",
-        "gap": "1rem"
-      },
-      "images": [
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-1.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-1.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-48.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-48.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-49.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-49.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-CANON-3.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-3.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-CANON-4.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-4.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-CANON-5.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-5.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": true
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-CANON-6.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-6.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novaly/NOVA-CANON-62.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novaly/NOVA-CANON-62.jpg",
-          "alt": "Fotoshoot met Novaly",
-          "isHighlight": false
-        }
-      ]
-    },
-    {
-      "type": "photo-gallery",
-      "id": "fashion-venity",
-      "category": "fashion",
-      "title": "Fotoshoot Venity",
-      "description": "Artistieke beelden van een creatief project met Venity.",
-      "displaySettings": {
-        "gridColumns": "3",
-        "mobileColumns": "1",
-        "gap": "1rem"
-      },
-      "images": [
-        {
-          "path": "assets/images/portfolio/Venity/VenityBrug.jpg",
-          "thumbnailPath": "assets/images/portfolio/Venity/VenityBrug.jpg",
-          "alt": "Fotoshoot met Venity",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Venity/web higher-119.jpg",
-          "thumbnailPath": "assets/images/portfolio/Venity/web higher-119.jpg",
-          "alt": "Fotoshoot met Venity",
+          "path": "assets/images/portfolio/Venity/ballletposebetweentrees.jpg",
+          "thumbnailPath": "assets/images/portfolio/Venity/ballletposebetweentrees.jpg",
+          "alt": "Venity",
           "isHighlight": false
         },
         {
           "path": "assets/images/portfolio/Venity/web-246.jpg",
           "thumbnailPath": "assets/images/portfolio/Venity/web-246.jpg",
-          "alt": "Fotoshoot met Venity",
+          "alt": "Venity",
           "isHighlight": true
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "kimmichel",
+      "category": "Huwelijk",
+      "title": "Kim & Michel",
+      "description": "Bruiloft",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-32.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-32.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-8.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-8.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-25.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-25.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-13.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-13.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-3.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-3.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-2.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KimMichel/Kim-28.jpg",
+          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-28.jpg",
+          "alt": "Kim & Michel",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "novalie",
+      "category": "Familie",
+      "title": "Novalie",
+      "description": "Plechtige Communie",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-49.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-49.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-2.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-2.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-3.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-3.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-48.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-48.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-1.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-1.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-4.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-4.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-5.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-5.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-6.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-6.jpg",
+          "alt": "Image NOVA-CANON-6.jpg",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-29.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-29.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-28.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-28.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-11.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-11.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-39.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-39.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-CANON-62.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-62.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-23.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-23.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-36.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-36.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-20.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-20.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-21.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-21.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-19.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-19.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-25.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-25.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-24.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-24.jpg",
+          "alt": "Novalie",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-33.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-33.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-40.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-40.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-43.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-43.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-42.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-42.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-46.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-46.jpg",
+          "alt": "Image NOVA-46.jpg",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-47.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-47.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-45.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-45.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-51.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-51.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-50.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-50.jpg",
+          "alt": "Novalie",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/Novalie/NOVA-44.jpg",
+          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-44.jpg",
+          "alt": "DELETE",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "sarahtommy",
+      "category": "Huwelijk",
+      "title": "Sarah & Tommy",
+      "description": "Bruiloft",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_044.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_044.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_050.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_050.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_118.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_118.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_084.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_084.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_081.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_081.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_042.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_042.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_122.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_122.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_082.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_082.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_055.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_055.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_120.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_120.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_134.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_134.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_054.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_054.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_032.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_032.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_035.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_035.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_036.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_036.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_071.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_071.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_070.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_070.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/SarahTommy/ST_Color_100.jpg",
+          "thumbnailPath": "assets/images/portfolio/SarahTommy/ST_Color_100.jpg",
+          "alt": "Sarah & Tommy",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "sofiejo",
+      "category": "Familie",
+      "title": "Sofie & Jo",
+      "description": "Newborn",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn045.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn045.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn047.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn047.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn053.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn053.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn052.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn052.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn042.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn042.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn041.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn041.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn026.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn026.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn018.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn018.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn031.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn031.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn009.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn009.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn035.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn035.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn008.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn008.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn036.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn036.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn022.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn022.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn023.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn023.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn006.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn006.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn007.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn007.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn039.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn039.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn015.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn015.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn063.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn063.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/SofieJo/newborn060.jpg",
+          "thumbnailPath": "assets/images/portfolio/SofieJo/newborn060.jpg",
+          "alt": "Sofie & Jo",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "karinsteven",
+      "category": "Huwelijk",
+      "title": "Karin & Steven",
+      "description": "Bruiloft",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-054.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-054.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-004.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-004.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-158.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-158.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-006.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-006.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-003.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-003.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-014.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-014.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/KarinSteven/KarinSteven-064.jpg",
+          "thumbnailPath": "assets/images/portfolio/KarinSteven/KarinSteven-064.jpg",
+          "alt": "Karin & Steven",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "maraluc_verloving",
+      "category": "Lifestyle",
+      "title": "Mara & Luc",
+      "description": "Verloofd",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL3225.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL3225.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2677.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2677.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2558.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2558.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2603.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2603.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2624.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2624.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2630.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2630.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL3048.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL3048.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_Verloving/_DVL2958.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_Verloving/_DVL2958.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        }
+      ]
+    },
+    {
+      "type": "photo-gallery",
+      "id": "maraluc_trouw",
+      "category": "Huwelijk",
+      "title": "Mara & Luc",
+      "description": "Bruiloft",
+      "displaySettings": {
+        "gridColumns": "3",
+        "mobileColumns": "1",
+        "gap": "1rem"
+      },
+      "images": [
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled311.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled311.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled067.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled067.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled098.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled098.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled263.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled263.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled049.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled049.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled060.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled060.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled089.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled089.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": true
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled063.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled063.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled170.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled170.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled172.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled172.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled193.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled193.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled032.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled032.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled037.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled037.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled342.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled342.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled169.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled169.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled046.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled046.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled086.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled086.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled093.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled093.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
+        },
+        {
+          "path": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled056.jpg",
+          "thumbnailPath": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled056.jpg",
+          "alt": "Mara & Luc",
+          "isHighlight": false
         }
       ]
     }

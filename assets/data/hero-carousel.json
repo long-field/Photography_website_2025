@@ -5,79 +5,24 @@
   },
   "photos": [
     {
-      "url": "assets/images/slider/CarolineByBrussels.jpg",
-      "text_blocks": [
-        {
-          "style": "default",
-          "position": { "top": "37%", "left": "5%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "left",
-          "title": "Elke foto is...",
-          "text": ""
-        },
-        {
-          "style": "default",
-          "position": { "top": "60%", "left": "5%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "left",
-          "title": "     ...een moment",
-          "text": ""
-        }
-      ]
+      "url": "assets/images/slider/mainlogoimagewhitefontblackbackgroundfullscreen.png",
+      "text_blocks": []
     },
     {
       "url": "assets/images/slider/VenityBrug.jpg",
-      "text_blocks": [
-        {
-          "style": "default",
-          "position": { "top": "50%", "left": "5%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "center",
-          "title": "... om nooit meer te verliezen.",
-          "text": ""
-        },
-        {
-          "style": "default",
-          "position": { "top": "50%", "left": "65%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "center",
-          "title": "Een venster naar...",
-          "text": ""
-        }
-      ]
+      "text_blocks": []
     },
     {
       "url": "assets/images/slider/web-higher-119.jpg",
-      "text_blocks": [
-        {
-          "style": "default",
-          "position": { "top": "50%", "left": "33%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "center",
-          "title": "...andere tijden",
-          "text": ""
-        }
-      ]
-    },    {
+      "text_blocks": []
+    },
+    {
       "url": "assets/images/slider/web-444.jpg",
-      "text_blocks": [
-        {
-          "style": "default",
-          "position": { "top": "45%", "left": "1%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "left",
-          "title": "Bevroren...",
-          "text": ""
-        },
-        {
-          "style": "default",
-          "position": { "top": "60%", "left": "65%" },
-          "size": { "width": "auto", "height": "auto" },
-          "alignment": "right",
-          "title": "                 ...in de tijd",
-          "text": ""
-        }
-      ]
+      "text_blocks": []
+    },
+    {
+      "url": "assets/images/slider/CarolineByBrussels.jpg",
+      "text_blocks": []
     }
   ]
 }
