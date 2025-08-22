@@ -196,6 +196,32 @@ $(document).ready(function() {
         });
         console.log("Over-mij-sectie gevuld.");
 
+// ---- BOOKING STEPS ----
+        const bookingStepsContent = content.bookingSteps;
+        const bookingStepsSection = $('.booking-steps-section');
+        const stepsContainer = bookingStepsSection.find('.steps-grid');
+        const stepCards = stepsContainer.find('.step-card');
+
+        // Voeg de achtergrondafbeelding toe met clip-path
+        const backgroundImage = $('<img>').addClass('bg-image').attr('src', 'assets/images/featured/VenityBrug.jpg').attr('alt', 'Achtergrondafbeelding');
+        bookingStepsSection.prepend(backgroundImage);
+
+        // Vul de titel van de sectie
+        bookingStepsSection.find('h2').text(bookingStepsContent.title);
+
+        // Vul de stapkaarten met content
+        bookingStepsContent.steps.forEach((step, index) => {
+            const card = $(stepCards[index]);
+            card.find('h3').text(step.title);
+            card.find('p').text(step.description);
+            card.attr('data-hover-effect', step.hoverEffect);
+            card.addClass('animated');
+            // Icoon logica: hier zouden de SVG's geladen moeten worden, maar nu gebruiken we een placeholder
+            // In een echte applicatie kun je een functie maken om de SVG content te fetchen en in te voegen.
+            // Voor nu houden we de placeholder SVG's.
+        });
+
+
 
         // ---- BOOKING SECTION ----
         $('.booking-section h2').text(content.bookingProcess.title);

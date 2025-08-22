@@ -220,7 +220,7 @@ async function initPortfolioPage(content) {
                 // Add Back to Top button
                 const backToTopButton = $('<button>')
                     .addClass('back-to-top')
-                    .text('Terug naar boven')
+                    .text('Terug naar boven ▲')
                     .on('click', function() {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     });

@@ -16,9 +16,10 @@
 </head>
 <body data-page="contact" data-lang="nl">
 <div data-include="partials/header.html"></div>
-<main class="container">
+<main >
     <section class="contact-section">
         <h1 data-key="contactHeading"></h1>
+        <div class="contact-form-container">
         <div class="contact-form-wrapper">
             <h2 data-key="contactForm.title"></h2>
             <p data-key="contactForm.text"></p>
@@ -29,8 +30,9 @@
                 <textarea name="message" placeholder="Bericht" required></textarea>
                 <input type="text" name="_gotcha" style="display:none">
                 <div class="cf-turnstile" data-sitekey="your-turnstile-key"></div>
-                <button type="submit" class="contact-submit-btn">Verzenden</button>
+                <button type="submit" class="link-button">Verzenden</button>
             </form>
+        </div>
         </div>
     </section>
 </main>

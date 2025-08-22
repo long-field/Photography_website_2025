@@ -2,72 +2,154 @@
   "languages": {
     "nl": {
       "pageTitle": "Dieter Vanlangenaker Photography",
+      "navigation": {
+        "links": [
+          {
+            "title": "Portfolio",
+            "url": "/portfolio",
+            "icon": "portfolio-icon.svg"
+          },
+          {
+            "title": "Contact",
+            "url": "/contact",
+            "icon": "contact-icon.svg"
+          }
+        ]
+      },
       "homePage": {
         "quoteSection": {
-          "quote": "Fotografie is de kunst om het leven vast te leggen. Het gaat niet alleen om wat je ziet, maar ook om wat je voelt.",
-          "attribution": "Dieter Vanlangenaker",
+          "quote": "The best thing about a picture is that it never changes, even when the people in it do.",
+          "attribution": "Andy Warhol",
           "image": "assets/images/featured/web-higher-119.jpg"
         },
         "photographyParagraph": {
-          "title": "Tijdloze fotografie voor onvergetelijke levensverhalen.",
-          "text": "Mijn werk is een viering van de alledaagse schoonheid en de bijzondere momenten die ons leven vormgeven. Van de serene stilte van een landschap tot de bruisende energie van een stad, ik ben constant op zoek naar verhalen die het verdienen om verteld te worden. Met een passie voor detail en emotie, streef ik ernaar om beelden te creëren die niet alleen visueel aantrekkelijk zijn, maar ook een diepe verbinding teweegbrengen. Elk project is een unieke reis, en ik vind het een eer om deel uit te maken van jouw verhaal."
+          "title": "Voor altijd in licht.",
+          "text": "Een moment is meer dan een seconde – het is een hartslag, een lach, een liefde die blijft. Mijn fotografie vangt die kostbare flitsen van jouw leven: de vreugde van een familie, de tederheid van een omhelzing, de glans van eeuwige jeugd. Elk beeld is een belofte aan de toekomst, een herinnering die nooit vervaagt. Klaar om jouw film te vereeuwigen? Stuur me een bericht."
         },
         "clientQuotes": {
-          "title": "Wat klanten zeggen",
+          "title": "Wat mijn klanten voelen",
           "quotes": [
             {
-              "quote": "Dieter heeft onze verwachtingen overtroffen. Hij wist de essentie van ons bedrijf vast te leggen in prachtige, authentieke beelden.",
+              "quote": "Dieter zag wat wij wilden uitdrukken en vertaalde dat in beelden die ons verhaal perfect vertellen. Pure magie!",
               "client": "Marie-Claire, eigenaresse van 'De Oude Bakkerij'"
             },
             {
-              "quote": "De fotosessie was een geweldige ervaring! Dieter zorgde ervoor dat we ons meteen op ons gemak voelden en het resultaat is adembenemend.",
+              "quote": "Onze shoot met Dieter was een feest! Hij maakte ons zo relaxed, en de foto’s? Die blazen je omver.",
               "client": "Tom en Sarah, Bruidspaar"
             },
             {
-              "quote": "Elk beeld van Dieter vertelt een verhaal. Hij is een meester in zijn vak.",
+              "quote": "Elke foto van Dieter is een kunstwerk. Hij weet emoties te vangen zoals niemand anders.",
               "client": "Jan, Art Director"
             }
           ]
         },
         "aboutMe": {
-          "title": "Over mij",
-          "introduction": "Ik ben Dieter, een fotograaf met een onstilbare nieuwsgierigheid naar de wereld om me heen. Mijn camera is mijn oog op de wereld, en ik gebruik hem om verhalen te vangen die anders misschien verloren zouden gaan. Hieronder ontdek je meer over mijn drijfveren en de filosofie achter mijn werk.",
+          "title": "Dieter Vanlangenaker",
+          "introduction": "",
           "items": [
             {
-              "title": "Mijn Verhaal",
-              "text": "Ik ben begonnen met fotograferen om de wereld te verkennen en te begrijpen. Van de kleinste details in de natuur tot de complexe emoties van mensen, elk onderwerp vertelt een verhaal dat ik graag wil documenteren. Mijn reis als fotograaf heeft me geleerd om te luisteren, te observeren en te wachten op het perfecte moment.",
-              "image": "assets/images/featured/webhigher-83.jpg"
-            },
-            {
-              "title": "Mijn Visie en Stijl",
-              "text": "Mijn stijl is minimalistisch en authentiek. Ik geloof dat de mooiste beelden voortkomen uit de ware momenten van het leven. Ik vermijd overbodige bewerkingen en laat de natuurlijke schoonheid van mijn onderwerpen spreken. Ik werk graag met natuurlijk licht om de sfeer van elk moment te versterken.",
+              "title": "Vintage 1985 | Vang het leven door mijn lens",
+              "text": "Geboren in het legendarische 1985, vertel ik verhalen met mijn camera. Geïnspireerd door prachtige cinematografie, leg ik vluchtige momenten vast die blijven resoneren. “All those moments will be lost in time, like tears in rain.” Mijn fotografie maakt jouw verhaal onsterfelijk.",
               "image": "assets/images/featured/webevenmorehigherderder-1-2.jpg"
             },
             {
-              "title": "Mijn Passie",
-              "text": "Mijn passie voor fotografie is diep geworteld in mijn geloof dat elk moment uniek en waardevol is. Ik ben het meest geïnspireerd door de verbinding tussen mensen en hun omgeving. Het is mijn doel om beelden te creëren die je terugbrengen naar die ene emotie, die ene geur, dat ene moment in de tijd.",
-              "image": "assets/images/featured/MetroinBudapest.jpg"
+              "title": "Sinds 2012 | De wereld door mijn lens",
+              "text": "Sinds 2012 is mijn camera mijn trouwe metgezel, een stille getuige van mijn reizen over de wereld, gedreven door mijn carrière in de luchtvaart. Van de bruisende chaos van de markten in Bangkok tot de mystieke pracht van Angkor Wat, van de doorleefde straten van Bulgarije & Oekraïne, en van het zonovergoten Spanje tot de verborgen pleinen van Oost-Europa – elk moment heeft mijn oog voor detail gescherpt. Wat begon als een hobby groeide uit tot een missie: elk beeld is een tijdcapsule, een fragment van het leven bevroren in eeuwigheid. Door mijn lens transformeer ik het alledaagse in iets buitengewoons, geïnspireerd door licht, schaduw en de verhalen die de wereld vertelt.",
+              "image": "assets/images/featured/_DVL3085.jpg"
+            },
+            {
+              "title": "Sinds 2016 | Mijn mooiste kaders",
+              "text": "Caroline mijn prachtige vrouw en soms mijn briljante assistente tijdens shoots. Haar warmte en stralende schoonheid – vooral in die adembenemende foto toen ze hoogzwanger was van onze dochter in 2020 – maken elke sessie magisch. Klanten vallen voor haar charme, en ik voor haar, telkens weer. Onze dochter, geboren in 2020, steelt dagelijks mijn hart en geeft mijn werk een nieuwe dimensie van liefde en verwondering. Samen vullen we albums met herinneringen, van intieme momenten tot spontane lachbuien, al is er één nadeel: achter de lens sta ik zelden zelf in beeld. Maar dat is een kleine prijs voor het vastleggen van hun licht.",
+              "image": "assets/images/featured/web-167.jpg"
+            },
+            {
+              "title": "Toen de wereld aan onze voeten lag | Vriendschap",
+              "text": "Mijn kameraden uit mijn jonge jaren toen het leven enkel rock'n roll was, toen lange haren wapperden en alles mogelijk leek, voor altijd. We leefden in een roes tot zonsopgang, lachten onder een eindeloze sterrenhemel en jaagden dromen na. Die dagen, toen de wereld aan onze voeten lag en de jeugd nooit leek te vervagen, blijven hangen als een oude polaroid – scherp, bruisend, tijdloos. En fotografie is evenzeer dat, een ode aan de jeugd die in ons hart voor altijd jong blijft, vastgelegd op foto.",
+              "image": "assets/images/featured/Friends.jpg"
+            },
+
+
+            {
+              "title": "Licht vangen | Jouw momenten voor altijd",
+              "text": "Elke familie, elke liefde, elke sprankel van jeugd verdient een plek in de eeuwigheid. Mijn fotografie is een tijdmachine: ik vang de lach van een kind, de warme omhelzing van geliefden, de stille trots van een familie, en de vluchtige glans van vervlogen tijden. Met mijn lens transformeer ik deze momenten in kunstwerken die de toekomst omarmen, beelden die spreken wanneer woorden vervagen. Laat mij jouw verhaal van liefde, verbinding en eeuwige jeugd vastleggen in licht dat nooit dooft. Neem contact op en geef jouw kostbare momenten een thuis voor altijd.",
+              "image": "assets/images/featured/IcecreamCartBWNegativeLeft.jpeg"
             }
           ]
         },
         "bookingProcess": {
-          "title": "Laten we jouw verhaal vertellen",
-          "text": "Ben je klaar om onvergetelijke momenten vast te leggen? Ik kijk ernaar uit om van je te horen en samen een unieke visuele reis te beginnen. Neem contact met me op voor een vrijblijvend gesprek.",
-          "buttonText": "Neem contact op"
+          "title": "Laten we jouw verhaal vangen",
+          "text": "Klaar om jouw momenten te vereeuwigen? Ik kan niet wachten om jouw visie tot leven te brengen. Laat een bericht achter, en we starten samen een onvergetelijke reis.",
+          "buttonText": "Plan je shoot →"
+        },
+        "bookingSteps": {
+          "title": "Zo gaan we te werk",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Vertel je verhaal",
+              "description": "Vul het contactformulier in en deel je ideeën. Wat voor shoot droom je van? Laat het me weten!",
+              "icon": "form-icon.svg",
+              "animation": "fadeInUp",
+              "hoverEffect": "pulse"
+            },
+            {
+              "step": 2,
+              "title": "We maken een plan",
+              "description": "Binnen 24 uur bel of mail ik je om je visie te bespreken en een kick-ass plan te smeden.",
+              "icon": "phone-icon.svg",
+              "animation": "fadeInUp",
+              "hoverEffect": "pulse"
+            },
+            {
+              "step": 3,
+              "title": "We creëren magie",
+              "description": "We kiezen de perfecte datum en locatie, en samen maken we beelden die je voor altijd koestert.",
+              "icon": "camera-icon.svg",
+              "animation": "fadeInUp",
+              "hoverEffect": "pulse"
+            }
+          ]
         }
-
       },
       "portfolioPage": {
         "pageTitle": "Portfolio | Dieter Vanlangenaker Photography",
-        "portfolioHeading": "Portfolio"
+        "portfolioHeading": "Mijn Wereld in Beelden",
+        "navigation": {
+          "links": [
+            {
+              "title": "Portfolio",
+              "url": "/portfolio",
+              "icon": "portfolio-icon.svg"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact",
+              "icon": "contact-icon.svg"
+            }
+          ]
+        }
       },
       "contactPage": {
         "pageTitle": "Contact | Dieter Vanlangenaker Photography",
-        "contactHeading": "Neem Contact Op",
+        "contactHeading": "",
         "contactForm": {
-          "title": "Laten we jouw verhaal vastleggen",
-          "text": "Vul het onderstaande formulier in om een fotosessie te boeken of om meer informatie te krijgen. Ik kijk ernaar uit om samen met jou onvergetelijke momenten te creëren!",
-          "backgroundImage": "assets/images/featured/CarolineByBrussels.jpg"
+          "title": "Maak je verhaal onvergetelijk",
+          "text": "Drop je ideeën in het formulier hieronder, of je nu een shoot wilt boeken of gewoon wilt brainstormen. Ik sta klaar om jouw momenten te vangen met beelden die knallen!",
+          "backgroundImage": "assets/images/featured/VenityBrug.jpg"
+        },
+        "navigation": {
+          "links": [
+            {
+              "title": "Portfolio",
+              "url": "/portfolio",
+              "icon": "portfolio-icon.svg"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact",
+              "icon": "contact-icon.svg"
+            }
+          ]
         }
       }
     }

@@ -62,23 +62,68 @@ h2 { font-size: 2.5rem; }
     min-width: 300px;
 }
 
-.button {
+/* ================================================================
+   UNIFIED BUTTON STYLE
+================================================================ */
+
+.button,
+.back-to-top,
+.contact-submit-btn,
+.link-button {
+    position: relative;
     display: inline-block;
-    padding: 0.8rem 2rem;
+    font-family: var(--secondary-font);
     font-size: 1rem;
     font-weight: 600;
-    text-align: center;
+    color: var(--text-color-dark);
     text-decoration: none;
-    color: var(--text-color-light);
-    background-color: var(--accent-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0.4rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-.button:hover {
-    background-color: var(--background-color);
-    color: var(--accent-color);
+/* Animated underline */
+.button::after,
+.back-to-top::after,
+.contact-submit-btn::after,
+.link-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--text-color-dark);
+    transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.button:hover,
+.back-to-top:hover,
+.contact-submit-btn:hover,
+.link-button:hover {
+    color: var(--text-color-dark);
+}
+
+.button:hover::after,
+.back-to-top:hover::after,
+.contact-submit-btn:hover::after,
+.link-button:hover::after {
+    width: 100%;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+
+}
+
+.cta-buttons .button {
+    font-size: 1.1rem;
 }
 
 /*====================================================================
@@ -286,6 +331,10 @@ header.scrolled .nav-menu a:hover {
     text-align: center;
 }
 
+/*====================================================================
+  QUOTE SECTION
+====================================================================*/
+
 .quote-section {
     background-image: url('../images/divider-1.webp');
     background-attachment: fixed;
@@ -320,6 +369,10 @@ header.scrolled .nav-menu a:hover {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/*====================================================================
+  BOOKING SECTION
+====================================================================*/
+
 .booking-section {
     background-color: var(--accent-color);
     color: var(--text-color-light);
@@ -333,15 +386,163 @@ header.scrolled .nav-menu a:hover {
     margin-right: auto;
 }
 
-.booking-section .button {
-    background-color: var(--text-color-light);
-    color: var(--accent-color);
+
+/* Custom CSS for the Booking Steps section */
+.booking-steps-section {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+    background-color: var(--background-color);
+    text-align: center;
 }
 
-.booking-section .button:hover {
-    background-color: transparent;
-    color: var(--text-color-light);
+.booking-steps-section .section-title {
+    margin-bottom: 4rem;
 }
+
+.booking-steps-section .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.15; /* Subtiele doorschijnendheid */
+    clip-path: polygon(0 0, 100% 20%, 100% 80%, 0% 100%);
+    /* Effect van clipping */
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.step-card {
+    background-color: rgba(var(--text-color-light-rgb), 0.7);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-card p {
+    color: var(--text-color-dark);
+    font-size: 1rem;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.step-icon {
+    width: 30px;
+    height: 30px;
+    fill: var(--text-color-dark);
+}
+
+.step-card:hover .icon-container {
+    background-color: var(--accent-color);
+}
+
+/* Animations and Hover Effects */
+/* fadeInUp */
+.step-card.animated {
+
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.step-card.animated.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-card:nth-child(1).animated { transition-delay: 0s; }
+.step-card:nth-child(2).animated { transition-delay: 0.2s; }
+.step-card:nth-child(3).animated { transition-delay: 0.4s; }
+
+/* scaleUp Hover Effect */
+.step-card[data-hover-effect="scaleUp"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* borderGlow Hover Effect */
+.step-card[data-hover-effect="borderGlow"] {
+    position: relative;
+    overflow: hidden;
+}
+
+.step-card[data-hover-effect="borderGlow"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px var(--accent-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.step-card[data-hover-effect="borderGlow"]:hover::before {
+    opacity: 1;
+}
+
+/* pulse Hover Effect */
+.step-card[data-hover-effect="pulse"]:hover {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.step { animation: fadeInUp 0.6s ease-out forwards; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.4s; }
+
+
+.step:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 
 /*====================================================================
   ABOUT ME SECTION
@@ -517,42 +718,44 @@ header.scrolled .nav-menu a:hover {
 .portfolio-category-next,
 .gallery-prev,
 .gallery-next {
-    background: none;
+    background: rgba(0,0,0,0.1);
     border: none;
+    border-radius: 50%;
     cursor: pointer;
     font-size: 2rem;
-    color: var(--text-color-light);
-    padding: 0 1rem;
-    width: 40px;
-    height: 40px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    transition: background 0.3s ease, transform 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Pijlen via Font Awesome */
 .portfolio-category-prev::after,
 .gallery-prev::after {
-    content: '\2190'; /* Unicode left arrow */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f104"; /* fa-angle-left */
     font-size: 2rem;
-    font-weight: bold;
-    display: block;
 }
 
 .portfolio-category-next::after,
 .gallery-next::after {
-    content: '\2192'; /* Unicode right arrow */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f105"; /* fa-angle-right */
     font-size: 2rem;
-    font-weight: bold;
-    display: block;
 }
 
 .portfolio-category-prev:hover,
 .portfolio-category-next:hover,
 .gallery-prev:hover,
 .gallery-next:hover {
+    background: rgba(0,0,0,0.6);
     color: #ddd;
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 .portfolio-category-prev.hidden,
@@ -568,28 +771,6 @@ header.scrolled .nav-menu a:hover {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 1rem;
-}
-
-.back-to-top {
-    display: block;
-    margin: 2rem auto;
-    padding: 0.8rem 2rem;
-    font-family: var(--secondary-font);
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-color-light);
-    background-color: var(--accent-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-to-top:hover {
-    background-color: var(--background-color);
-    color: var(--accent-color);
 }
 
 .sub-nav-container {
@@ -618,7 +799,6 @@ header.scrolled .nav-menu a:hover {
 
 .gallery-nav a {
     text-decoration: none;
-    text-underline: none;
 }
 
 .gallery-grid {
@@ -655,6 +835,10 @@ header.scrolled .nav-menu a:hover {
 .lightbox .lb-details {
     font-size: 1rem;
 }
+
+/*====================================================================
+  HIGHLIGHT SECTION
+====================================================================*/
 
 .portfolio-highlight-section {
     position: relative;
@@ -706,6 +890,10 @@ header.scrolled .nav-menu a:hover {
     font-family: var(--secondary-font);
 }
 
+/*====================================================================
+  SCROLL DOWN ARROW
+====================================================================*/
+
 .scroll-down-arrow {
     position: absolute;
     bottom: 20px;
@@ -727,7 +915,6 @@ header.scrolled .nav-menu a:hover {
     height: 100%;
     border-right: 2px solid #fff;
     border-bottom: 2px solid #fff;
-    transform: rotate(-0deg);
     transition: border-color 0.3s ease;
 }
 
@@ -755,8 +942,6 @@ header.scrolled .nav-menu a:hover {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding-left: 10%;
-    padding-right: 10%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -773,7 +958,7 @@ header.scrolled .nav-menu a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
 
@@ -790,17 +975,23 @@ header.scrolled .nav-menu a:hover {
 .contact-section h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
-    color: var(--text-color-light);;
+    color: var(--text-color-light);
 }
-
+.contact-form-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+    padding-right: 20%; /* Add spacing from the right edge */
+}
 .contact-form-wrapper {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    bottom: 60%;
+    right: 60%; /* Moves the starting point 60% from the left */
+    transform: translateX(+50%); /* Shifts the form left by half of its own width, effectively centering it at the 60% mark */
     margin: 0 auto;
-    padding: 2rem;
-    color: var(--text-color-dark);;
-    background-color: rgba(var(--background-color-rgb), 0.9);
+    padding: 0m;
+    color: var(--text-color-dark);
+    background-color: rgba(var(--background-color-rgb), 0);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -828,26 +1019,6 @@ header.scrolled .nav-menu a:hover {
     resize: vertical;
 }
 
-.contact-submit-btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-color-light);
-    background-color: var(--accent-color);
-    border: 2px solid var(--accent-color);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.contact-submit-btn:hover {
-    background-color: var(--background-color);
-    color: var(--accent-color);
-}
-
 /*====================================================================
   FOOTER
 ====================================================================*/
@@ -868,7 +1039,7 @@ footer .logo {
 }
 
 /*====================================================================
-  RESPONSIVE DESIGN (MEDIA QUERIES)
+  RESPONSIVE DESIGN
 ====================================================================*/
 
 @media (max-width: 992px) {
@@ -989,34 +1160,5 @@ footer .logo {
 
     .portfolio-highlight-description {
         font-size: 1rem;
-    }
-
-    .back-to-top {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .contact-section {
-        background-attachment: scroll; /* Disable parallax on mobile */
-        min-height: auto;}
-        opacity: 1;
-
-    .contact-form-wrapper {
-        padding: 1rem;
-    }
-
-    .contact-section h1 {
-        font-size: 2.5rem;
-        opacity: 1;
-    }
-
-    .contact-form-content input,
-    .contact-form-content textarea {
-        font-size: 0.9rem;
-    }
-
-    .contact-submit-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
     }
 }
