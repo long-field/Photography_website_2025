@@ -336,7 +336,6 @@ header.scrolled .nav-menu a:hover {
 ====================================================================*/
 
 .quote-section {
-    background-image: url('../images/divider-1.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -937,7 +936,6 @@ header.scrolled .nav-menu a:hover {
 /*====================================================================
   CONTACT SECTION
 ====================================================================*/
-
 .contact-section {
     position: relative;
     width: 100%;
@@ -945,10 +943,13 @@ header.scrolled .nav-menu a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     color: var(--text-color-light);
     text-align: center;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to top */
+    padding-top: 2rem; /* Space from top edge */
 }
 
 .contact-section::before {
@@ -968,8 +969,13 @@ header.scrolled .nav-menu a:hover {
     position: relative;
     z-index: 1;
     opacity: 1;
+
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+    width: 80%; /* Constrain width for readability */
+    max-width: 800px; /* Limit max width */
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 3%;
 }
 
 .contact-section h1 {
@@ -977,23 +983,38 @@ header.scrolled .nav-menu a:hover {
     margin-bottom: 2rem;
     color: var(--text-color-light);
 }
-.contact-form-container {
-    display: flex;
-    justify-content: flex-end; /* Aligns content to the right */
-    padding-right: 20%; /* Add spacing from the right edge */
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color-light);
 }
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem; /* Space between text and form */
+    color: var(--text-color-light);
+}
+
+.contact-form-container {
+    display: block; /* Remove flex to avoid centering */
+    width: 100%; /* Full width for container */
+    text-align: left; /* Align content to the left */
+}
+
 .contact-form-wrapper {
     position: relative;
     z-index: 1;
-    bottom: 60%;
-    right: 60%; /* Moves the starting point 60% from the left */
-    transform: translateX(+50%); /* Shifts the form left by half of its own width, effectively centering it at the 60% mark */
-    margin: 0 auto;
-    padding: 0m;
-    color: var(--text-color-dark);
+    margin-top: 5%;
+/* Remove auto margins */
+    padding: 1rem;
+    color: var(--text-color-light);
     background-color: rgba(var(--background-color-rgb), 0);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Constrain width */
+    max-width: 30%; /* Limit max width */
+    margin-left: 15%; /* Position on left half */
 }
 
 .contact-form-content input,
@@ -1019,6 +1040,68 @@ header.scrolled .nav-menu a:hover {
     resize: vertical;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-section h1,
+    .contact-section h2,
+    .contact-section p {
+        width: 90%;
+    }
+
+    .contact-form-wrapper {
+        width: 90%;
+        max-width: 90%;
+        margin-left: 2%;
+    }
+
+    .contact-form-container {
+        padding: 0;
+    }
+}
+/* Custom Signature Styles */
+.signature-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 50%;
+    left: 25%;
+}
+
+.signature-logo {
+    position: absolute;
+    top: -60%; /* Kept higher as requested */
+    z-index: 10;
+    width: 300px;
+    filter: invert(1);
+    transform: translateY(10px); /* Bottom slightly below text */
+}
+
+.signature-text-wrapper {
+    position: absolute;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the wrapper horizontally */
+    width: 100px; /* Matches logo width */
+    font-size: 4rem;
+    z-index: 5;
+}
+
+.signature-firstname {
+    text-align: right; /* Aligns text to the right */
+    left: 50%
+}
+
+.signature-lastname {
+    margin-left: var(--lastname-offset, 100px); /* Unchanged, adjust if needed */
+    text-align: left; /* Aligns text to the left */
+}
+.signature-text-wrapper {
+    --firstname-offset: -20px; /* Adjust to move first name more/less to the right */
+    --lastname-offset: 300px; /* Adjust to move last name more/less to the left */
+}
 /*====================================================================
   FOOTER
 ====================================================================*/

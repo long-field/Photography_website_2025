@@ -5,12 +5,12 @@
     "categories": [
       {
         "id": "Huwelijk",
-        "name": "Bruiloft Fotografie",
+        "name": "Huwelijk",
         "description": "Huwelijk"
       },
       {
         "id": "Familie",
-        "name": "Familie",
+        "name": "Communie & Familie",
         "description": "Familie"
       },
       {
@@ -48,12 +48,6 @@
         {
           "path": "assets/images/portfolio/Amelie/_DVL0371.jpg",
           "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0371.jpg",
-          "alt": "Amélie",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Amelie/_DVL0204.jpg",
-          "thumbnailPath": "assets/images/portfolio/Amelie/_DVL0204.jpg",
           "alt": "Amélie",
           "isHighlight": false
         },
@@ -100,7 +94,7 @@
       "id": "venity",
       "category": "Lifestyle",
       "title": "Venity",
-      "description": "Pointe Perfectie",
+      "description": "Pointe Perfect",
       "displaySettings": {
         "gridColumns": "3",
         "mobileColumns": "1",
@@ -186,12 +180,6 @@
           "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-2.jpg",
           "alt": "Kim & Michel",
           "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/KimMichel/Kim-28.jpg",
-          "thumbnailPath": "assets/images/portfolio/KimMichel/Kim-28.jpg",
-          "alt": "Kim & Michel",
-          "isHighlight": false
         }
       ]
     },
@@ -214,12 +202,6 @@
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Novalie/NOVA-CANON-2.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-2.jpg",
-          "alt": "DELETE",
-          "isHighlight": false
-        },
-        {
           "path": "assets/images/portfolio/Novalie/NOVA-CANON-3.jpg",
           "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-3.jpg",
           "alt": "Novalie",
@@ -235,18 +217,6 @@
           "path": "assets/images/portfolio/Novalie/NOVA-CANON-1.jpg",
           "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-1.jpg",
           "alt": "Novalie",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-CANON-4.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-4.jpg",
-          "alt": "DELETE",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-CANON-5.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-5.jpg",
-          "alt": "DELETE",
           "isHighlight": false
         },
         {
@@ -271,18 +241,6 @@
           "path": "assets/images/portfolio/Novalie/NOVA-11.jpg",
           "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-11.jpg",
           "alt": "Novalie",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-39.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-39.jpg",
-          "alt": "DELETE",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-CANON-62.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-CANON-62.jpg",
-          "alt": "DELETE",
           "isHighlight": false
         },
         {
@@ -340,27 +298,9 @@
           "isHighlight": false
         },
         {
-          "path": "assets/images/portfolio/Novalie/NOVA-43.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-43.jpg",
-          "alt": "DELETE",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-42.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-42.jpg",
-          "alt": "DELETE",
-          "isHighlight": false
-        },
-        {
           "path": "assets/images/portfolio/Novalie/NOVA-46.jpg",
           "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-46.jpg",
           "alt": "Image NOVA-46.jpg",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-47.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-47.jpg",
-          "alt": "DELETE",
           "isHighlight": false
         },
         {
@@ -379,12 +319,6 @@
           "path": "assets/images/portfolio/Novalie/NOVA-50.jpg",
           "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-50.jpg",
           "alt": "Novalie",
-          "isHighlight": false
-        },
-        {
-          "path": "assets/images/portfolio/Novalie/NOVA-44.jpg",
-          "thumbnailPath": "assets/images/portfolio/Novalie/NOVA-44.jpg",
-          "alt": "DELETE",
           "isHighlight": false
         }
       ]

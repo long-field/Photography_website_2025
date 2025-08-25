@@ -56,8 +56,8 @@ $(document).ready(function() {
 
         // ---- CONTACT SECTION ----
         $('.contact-section h1').text(content.contactHeading);
-        $('.contact-form-wrapper h2').text(content.contactForm.title);
-        $('.contact-form-wrapper p').text(content.contactForm.text);
+        $('.contact-section h2').text(content.contactForm.title); // Target h2 under .contact-section
+        $('.contact-section p').text(content.contactForm.text); // Target p under .contact-section
         $('.contact-section').css('background-image', `url(${content.contactForm.backgroundImage})`);
 
         // Scroll-animatie voor contactsection
@@ -167,7 +167,6 @@ $(document).ready(function() {
 
         // ---- ABOUT ME SECTION ----
         const aboutMeSection = $('#about-section');
-        aboutMeSection.find('.about-me-intro h2').text(content.aboutMe.title);
         aboutMeSection.find('.about-me-intro p').text(content.aboutMe.introduction);
 
         aboutMeSection.find('.about-me-item').remove();

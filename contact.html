@@ -19,20 +19,22 @@
 <main >
     <section class="contact-section">
         <h1 data-key="contactHeading"></h1>
-        <div class="contact-form-container">
+        <h2 data-key="contactForm.title"></h2>
+        <p data-key="contactForm.text"></p>
         <div class="contact-form-wrapper">
-            <h2 data-key="contactForm.title"></h2>
-            <p data-key="contactForm.text"></p>
-            <form action="https://formspree.io/f/xzzvyyby" method="POST" class="contact-form-content">
-                <input type="text" name="name" placeholder="Naam" required>
-                <input type="email" name="email" placeholder="E-mail" required>
-                <input type="text" name="date" placeholder="Evenementdatum">
-                <textarea name="message" placeholder="Bericht" required></textarea>
-                <input type="text" name="_gotcha" style="display:none">
-                <div class="cf-turnstile" data-sitekey="your-turnstile-key"></div>
-                <button type="submit" class="link-button">Verzenden</button>
-            </form>
-        </div>
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/xzzvyyby" method="POST" class="contact-form-content">
+                    <input type="text" name="name" placeholder="Naam" required="">
+                    <input type="email" name="email" placeholder="E-mail" required="">
+                    <input type="text" name="date" placeholder="Evenementdatum">
+                    <textarea name="message" placeholder="Bericht" required=""></textarea>
+                    <input type="text" name="_gotcha" style="display:none">
+                    <div class="cf-turnstile" data-sitekey="your-turnstile-key">
+                        <div><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-qi3wi_response" value=""></div>
+                    </div>
+                    <button type="submit" class="link-button">Verzenden</button>
+                </form>
+            </div>
         </div>
     </section>
 </main>
