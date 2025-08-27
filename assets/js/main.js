@@ -167,10 +167,21 @@ $(document).ready(function() {
 
         // ---- ABOUT ME SECTION ----
         const aboutMeSection = $('#about-section');
-        aboutMeSection.find('.about-me-intro p').text(content.aboutMe.introduction);
+        const aboutMeIntro = aboutMeSection.find('.about-me-intro');
 
+// Set the logo as the intro
+  //      const logoImg = aboutMeIntro.find('.about-me-logo');
+    //    logoImg.attr('src', content.aboutMe.titlelogo);
+      //  logoImg.attr('alt', content.aboutMe.title || 'Dieter Vanlangenaker Logo');
+
+// Optionally set introduction text if desired (uncomment if needed)
+// aboutMeIntro.find('p').text(content.aboutMe.introduction);
+
+// Apply scroll effect to the logo
+       // applyScrollEffect(aboutMeIntro, logoImg);
+
+// Populate the rest of the about-me items
         aboutMeSection.find('.about-me-item').remove();
-
         content.aboutMe.items.forEach((item, index) => {
             const itemId = `about-me-item-${index}`;
             const aboutMeItem = $('<div>').addClass('about-me-item').attr('id', itemId);
@@ -190,8 +201,8 @@ $(document).ready(function() {
             }
 
             aboutMeSection.append(aboutMeItem);
-            applyScrollEffect(aboutMeItem,aboutMeText);
-            applyScrollEffect(aboutMeItem,aboutMeImageContainer);
+            applyScrollEffect(aboutMeItem, aboutMeText);
+            applyScrollEffect(aboutMeItem, aboutMeImageContainer);
         });
         console.log("Over-mij-sectie gevuld.");
 

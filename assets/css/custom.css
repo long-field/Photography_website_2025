@@ -82,6 +82,7 @@ h2 { font-size: 2.5rem; }
     border: none;
     cursor: pointer;
     transition: color 0.3s ease;
+    margin-top: 10px;
 }
 
 /* Animated underline */
@@ -342,7 +343,7 @@ header.scrolled .nav-menu a:hover {
     background-size: cover;
     color: var(--text-color-light);
     text-align: center;
-    padding: 20rem 0;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -599,11 +600,12 @@ header.scrolled .nav-menu a:hover {
     height: 2px;
     background-color: var(--accent-color);
     margin-top: 0.5rem;
+    text-align: right;
 }
 
 .about-me-item:nth-child(even) .about-me-text h3::after {
-    margin-left: auto;
-    margin-right: 0;
+
+    margin-right: auto;
 }
 
 /*====================================================================
