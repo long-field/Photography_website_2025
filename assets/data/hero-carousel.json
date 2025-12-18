@@ -5,7 +5,15 @@
   },
   "photos": [
     {
-      "url": "assets/images/slider/mainlogoimagewhitefontblackbackgroundfullscreen.png",
+      "url": "assets/images/slider/CarolineByBrussels.jpg",
+      "text_blocks": []
+    },
+    {
+      "url": "assets/images/portfolio/Novalie/NOVA-24.jpg",
+      "text_blocks": []
+    },
+    {
+      "url": "assets/images/portfolio/SofieJo/newborn063.jpg",
       "text_blocks": []
     },
     {
@@ -13,7 +21,15 @@
       "text_blocks": []
     },
     {
-      "url": "assets/images/slider/web-higher-119.jpg",
+      "url": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled089.jpg",
+      "text_blocks": []
+    },
+    {
+      "url": "assets/images/portfolio/SarahTommy/ST_Color_070.jpg",
+      "text_blocks": []
+    },
+    {
+      "url": "assets/images/slider/VenityBrug.jpg",
       "text_blocks": []
     },
     {
@@ -21,8 +37,10 @@
       "text_blocks": []
     },
     {
-      "url": "assets/images/slider/CarolineByBrussels.jpg",
+      "url": "assets/images/slider/mainlogoimagewhitefontblackbackgroundfullscreen.png",
       "text_blocks": []
     }
   ]
+
+
 }
