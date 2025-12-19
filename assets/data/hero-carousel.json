@@ -1,40 +1,106 @@
 {
   "settings": {
-    "slideDuration": 3900,
+    "slideDuration": 3000,
     "transitionEffect": "fade"
   },
   "photos": [
     {
       "url": "assets/images/slider/CarolineByBrussels.jpg",
-      "text_blocks": []
+      "text_blocks": [
+        {
+          "style": "default",
+          "position": { "top": "30%", "left": "5%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "left",
+          "title": "Elke foto...",
+          "text": ""
+        }
+      ]
     },
     {
       "url": "assets/images/portfolio/Novalie/NOVA-24.jpg",
-      "text_blocks": []
+      "text_blocks": [
+
+        {
+          "style": "default",
+          "position": { "top": "55%", "left": "70%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "Right",
+          "title": "...is",
+          "text": ""
+        }
+      ]
     },
     {
       "url": "assets/images/portfolio/SofieJo/newborn063.jpg",
-      "text_blocks": []
+      "text_blocks": [
+        {
+          "style": "default",
+          "position": { "top": "30%", "left": "65%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "left",
+          "title": "     ...een moment",
+          "text": ""
+        }
+
+      ]
     },
     {
       "url": "assets/images/slider/VenityBrug.jpg",
-      "text_blocks": []
+      "text_blocks": [
+        {
+          "style": "default",
+          "position": { "top": "57%", "left": "5%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "left",
+          "title": "... om nooit meer te verliezen.",
+          "text": ""
+        }
+
+      ]
     },
     {
       "url": "assets/images/portfolio/MaraLuc_trouw/Mara-Luc-Profiled089.jpg",
-      "text_blocks": []
+      "text_blocks": [
+        {
+          "style": "default",
+          "position": { "top": "20%", "left": "6%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "center",
+          "title": "Een venster naar...",
+          "text": ""
+        }
+
+      ]
     },
     {
       "url": "assets/images/portfolio/SarahTommy/ST_Color_070.jpg",
-      "text_blocks": []
-    },
-    {
-      "url": "assets/images/slider/VenityBrug.jpg",
-      "text_blocks": []
+      "text_blocks":
+      [
+      {
+        "style": "default",
+        "position": { "top": "80%", "left": "10%" },
+        "size": { "width": "auto", "height": "auto" },
+        "alignment": "left",
+        "title": "...andere tijden",
+        "text": ""
+      }
+
+
+
+    ]
     },
     {
       "url": "assets/images/slider/web-444.jpg",
-      "text_blocks": []
+      "text_blocks": [
+        {
+          "style": "default",
+          "position": { "top": "60%", "left": "65%" },
+          "size": { "width": "auto", "height": "auto" },
+          "alignment": "right",
+          "title": "                 ...voor altijd",
+          "text": ""
+        }]
     },
     {
       "url": "assets/images/slider/mainlogoimagewhitefontblackbackgroundfullscreen.png",
@@ -44,3 +110,5 @@
 
 
 }
+
+
