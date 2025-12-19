@@ -1,6 +1,18 @@
 // main.js
 
 $(document).ready(function() {
+    // Hamburger menu functionaliteit
+    $(document).on('click', '.hamburger', function() {
+        $('.nav-menu').toggleClass('active');
+        $(this).toggleClass('active');
+    });
+
+    // Menu sluiten bij klikken op een link
+    $(document).on('click', '.nav-menu a', function() {
+        $('.nav-menu').removeClass('active');
+        $('.hamburger').removeClass('active');
+    });
+
     // Scroll event listener om de 'scrolled' class toe te voegen aan de header
     $(window).scroll(function() {
         if ($(this).scrollTop() > 50) {

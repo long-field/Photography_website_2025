@@ -210,7 +210,18 @@ header.scrolled .nav-menu a:hover {
     cursor: pointer;
     background: none;
     border: none;
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2000; /* Verhoogde z-index om zeker boven de mobile menu overlay te liggen */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Zorgt voor zichtbaarheid op lichte achtergronden */
+}
+
+header:hover .hamburger,
+header.scrolled .hamburger,
+.hamburger.active { /* Ook donker maken als het menu actief (open) is */
     color: var(--text-color-dark);
+    text-shadow: none;
 }
 
 .nav-overlay {
@@ -1202,6 +1213,10 @@ footer .logo {
         height: 80px;
     }
 
+    .logo-container {
+        margin: 0;
+    }
+
     .logo-container .logo {
         height: 60px;
         margin-top: 0.5rem;
@@ -1245,5 +1260,16 @@ footer .logo {
 
     .portfolio-highlight-description {
         font-size: 1rem;
+    }
+
+    /* FIX VOOR FOOTER MOBIEL */
+    footer .logo {
+        height: auto;
+        max-width: 90%; /* Voorkom dat het logo buiten beeld valt */
+        margin-bottom: 1rem;
+    }
+
+    footer {
+        padding: 2rem 1rem; /* Zorg voor padding aan de zijkanten */
     }
 }
