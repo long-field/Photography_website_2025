@@ -75,7 +75,7 @@ h2 { font-size: 2.5rem; }
     font-family: var(--secondary-font);
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-color-dark);
+    color: var(--text-color-light);
     text-decoration: none;
     padding: 0.4rem 0;
     background: none;
@@ -96,7 +96,7 @@ h2 { font-size: 2.5rem; }
     bottom: 0;
     width: 0%;
     height: 2px;
-    background-color: var(--text-color-dark);
+    background-color: var(--text-color-light);
     transition: width 0.3s ease;
 }
 
@@ -105,7 +105,7 @@ h2 { font-size: 2.5rem; }
 .back-to-top:hover,
 .contact-submit-btn:hover,
 .link-button:hover {
-    color: var(--text-color-dark);
+    color: var(--text-color-light);
 }
 
 .button:hover::after,
@@ -143,7 +143,7 @@ header {
     padding: 1rem 1.5rem 1rem 0.5rem;
     background-color: rgba(var(--header-bg-rgb), 0);
     backdrop-filter: blur(1px);
-    z-index: 1000;
+    z-index: 2000; /* VERHOOGD naar 2000 om boven ALLES te staan, ook de portfolio selector */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: background-color 0.3s ease;
 }
@@ -1185,7 +1185,7 @@ footer .logo {
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
-        z-index: 1000;
+        z-index: 2001; /* VERHOOGD: Zorg dat het menu BOVEN de portfolio selector (1100) komt */
         padding-top: 5rem;
     }
 
@@ -1283,9 +1283,15 @@ footer .logo {
         background: transparent !important;
         color: #fff !important;
         border: none !important;
-        display: flex !important;
+        display: flex; /* AANGEPAST: !important verwijderd zodat hidden werkt */
         justify-content: center;
         align-items: center;
+    }
+
+    /* NIEUW: Zorg dat verborgen pijlen ook echt verborgen zijn op mobiel */
+    .portfolio-category-prev.hidden,
+    .portfolio-category-next.hidden {
+        display: none !important;
     }
 
     .portfolio-category-prev { left: 5px !important; }
@@ -1355,9 +1361,15 @@ footer .logo {
         z-index: 10;
         background: rgba(255,255,255,0.2) !important;
         border-radius: 50%;
-        display: flex !important;
+        display: flex; /* AANGEPAST: !important verwijderd zodat hidden werkt */
         justify-content: center;
         align-items: center;
+    }
+
+    /* NIEUW: Zorg dat verborgen pijlen ook echt verborgen zijn op mobiel */
+    .gallery-prev.hidden,
+    .gallery-next.hidden {
+        display: none !important;
     }
 
     .gallery-prev { left: 0 !important; }
