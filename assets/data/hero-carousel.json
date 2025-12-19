@@ -1,6 +1,6 @@
 {
   "settings": {
-    "slideDuration": 3000,
+    "slideDuration": 3200,
     "transitionEffect": "fade"
   },
   "photos": [
@@ -20,7 +20,6 @@
     {
       "url": "assets/images/portfolio/Novalie/NOVA-24.jpg",
       "text_blocks": [
-
         {
           "style": "default",
           "position": { "top": "55%", "left": "70%" },
@@ -42,7 +41,6 @@
           "title": "     ...een moment",
           "text": ""
         }
-
       ]
     },
     {
@@ -70,7 +68,6 @@
           "title": "Een venster naar...",
           "text": ""
         }
-
       ]
     },
     {
@@ -85,10 +82,7 @@
         "title": "...andere tijden",
         "text": ""
       }
-
-
-
-    ]
+      ]
     },
     {
       "url": "assets/images/slider/web-444.jpg",
@@ -107,8 +101,6 @@
       "text_blocks": []
     }
   ]
-
-
 }
 
 
